@@ -29,15 +29,7 @@ export async function login(formData: FormData) {
 
 export async function signup(formData: FormData) {
   const supabase = await createClient()
-  const headersList = await headers()
-  const host = headersList.get('host')
-  
-  // Use VERCEL_URL in production, fallback to host header
-  const siteUrl = process.env.VERCEL_URL 
-    ? `https://${process.env.VERCEL_URL}`
-    : process.env.NODE_ENV === 'development'
-      ? `http://${host}`
-      : `https://${host}`
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -45,7 +37,7 @@ export async function signup(formData: FormData) {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
     options: {
-      emailRedirectTo: `${siteUrl}/auth/callback`,
+      emailRedirectTo: `${supabaseUrl}/auth/v1/callback`,
       data: {
         email: formData.get('email') as string,
       },
