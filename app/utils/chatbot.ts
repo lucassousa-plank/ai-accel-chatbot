@@ -35,26 +35,38 @@ export async function getChatResponse(
     console.log("Starting chat interaction...");
     console.log("Environment variables:", {
       OPENAI_API_KEY: process.env.NEXT_PUBLIC_OPENAI_API_KEY ? "Present" : "Missing",
-      LANGCHAIN_API_KEY: process.env.LANGCHAIN_API_KEY ? "Present" : "Missing",
-      LANGCHAIN_ENDPOINT: process.env.LANGCHAIN_ENDPOINT,
-      LANGCHAIN_PROJECT: process.env.LANGCHAIN_PROJECT,
+      LANGSMITH_API_KEY: process.env.NEXT_PUBLIC_LANGSMITH_API_KEY ? "Present" : "Missing",
+      LANGSMITH_ENDPOINT: process.env.NEXT_PUBLIC_LANGSMITH_ENDPOINT,
+      LANGSMITH_PROJECT: process.env.NEXT_PUBLIC_LANGSMITH_PROJECT,
+      LANGSMITH_TRACING_V2: process.env.NEXT_PUBLIC_LANGSMITH_TRACING_V2,
     });
+
+    // Log the full config being passed to chain.invoke
+    const fullConfig = {
+      ...config,
+      tags: ["chatbot"],
+      metadata: {
+        project: process.env.NEXT_PUBLIC_LANGSMITH_PROJECT,
+      },
+    };
+    console.log("Chain config:", fullConfig);
 
     const response = await chain.invoke(
       { question },
-      {
-        ...config,
-        tags: ["chatbot"],
-        metadata: {
-          project: process.env.LANGCHAIN_PROJECT,
-        },
-      }
+      fullConfig
     );
 
     console.log("Got response:", response);
     return response;
   } catch (error) {
     console.error("Error getting chat response:", error);
+    if (error instanceof Error) {
+      console.error("Error details:", {
+        message: error.message,
+        stack: error.stack,
+        name: error.name,
+      });
+    }
     throw error;
   }
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { getChatResponse } from '@/app/utils/chatbot';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -36,10 +35,22 @@ export default function ChatInterface() {
     setIsLoading(true);
 
     try {
-      const response = await getChatResponse(input.trim());
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question: input.trim() }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
       const assistantMessage: Message = {
         role: 'assistant',
-        content: response,
+        content: data.response,
       };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
