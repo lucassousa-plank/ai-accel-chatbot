@@ -78,7 +78,7 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col h-[800px] w-full max-w-2xl mx-auto p-4 pl-4 bg-white rounded-lg shadow-lg">
+    <div className="flex flex-col h-[800px] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
         {messages.map((message, index) => (
           <div
@@ -89,18 +89,15 @@ export default function ChatInterface() {
           >
             <div className={`flex flex-col ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
               <div
-                className={`max-w-[80%] rounded-lg p-3 whitespace-normal overflow-hidden ${
+                className={`max-w-[80%] rounded-lg p-3 ${
                   message.role === 'user'
                     ? 'bg-blue-500 text-white'
-                    : 'bg-gray-100 text-gray-800'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white'
                 }`}
-                style={{ minWidth: '60px', maxWidth: 'fit-content' }}
               >
                 {message.content}
               </div>
-              <span className={`text-xs mt-1 ${
-                message.role === 'user' ? 'text-right' : 'text-left'
-              } text-gray-500 font-light`}>
+              <span className="text-xs mt-1 text-gray-500 dark:text-gray-400">
                 {formatTime(message.timestamp)}
               </span>
             </div>
@@ -108,7 +105,7 @@ export default function ChatInterface() {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-gray-100 text-gray-800 rounded-lg p-3">
+            <div className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg p-3">
               Thinking...
             </div>
           </div>
@@ -121,13 +118,17 @@ export default function ChatInterface() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type your message..."
-          className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-600"
+          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 
+            bg-white dark:bg-gray-700 text-gray-900 dark:text-white 
+            placeholder-gray-500 dark:placeholder-gray-400
+            rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={isLoading}
         />
         <button
           type="submit"
           disabled={isLoading}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 
+            focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
         >
           Send
         </button>
