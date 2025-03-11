@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  timestamp: Date;
 }
 
 export default function ChatInterface() {
@@ -28,6 +29,7 @@ export default function ChatInterface() {
     const userMessage: Message = {
       role: 'user',
       content: input.trim(),
+      timestamp: new Date(),
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -51,6 +53,7 @@ export default function ChatInterface() {
       const assistantMessage: Message = {
         role: 'assistant',
         content: data.response,
+        timestamp: new Date(),
       };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
@@ -58,6 +61,7 @@ export default function ChatInterface() {
       const errorMessage: Message = {
         role: 'assistant',
         content: 'Sorry, I encountered an error. Please try again.',
+        timestamp: new Date(),
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -65,24 +69,40 @@ export default function ChatInterface() {
     }
   };
 
+  const formatTime = (timestamp: Date): string => {
+    return timestamp.toLocaleTimeString([], { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: true 
+    });
+  };
+
   return (
-    <div className="flex flex-col h-[800px] w-full max-w-2xl mx-auto p-4 bg-white rounded-lg shadow-lg">
+    <div className="flex flex-col h-[800px] w-full max-w-2xl mx-auto p-4 pl-4 bg-white rounded-lg shadow-lg">
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${
+            className={`flex pr-2 ${
               message.role === 'user' ? 'justify-end' : 'justify-start'
             }`}
           >
-            <div
-              className={`max-w-[80%] rounded-lg p-3 ${
-                message.role === 'user'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-100 text-gray-800'
-              }`}
-            >
-              {message.content}
+            <div className={`flex flex-col ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
+              <div
+                className={`max-w-[80%] rounded-lg p-3 whitespace-normal overflow-hidden ${
+                  message.role === 'user'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-100 text-gray-800'
+                }`}
+                style={{ minWidth: '60px', maxWidth: 'fit-content' }}
+              >
+                {message.content}
+              </div>
+              <span className={`text-xs mt-1 ${
+                message.role === 'user' ? 'text-right' : 'text-left'
+              } text-gray-500 font-light`}>
+                {formatTime(message.timestamp)}
+              </span>
             </div>
           </div>
         ))}
