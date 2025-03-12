@@ -2,59 +2,50 @@
 
 import { login, signup } from './actions'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, Suspense } from 'react'
+import { useEffect } from 'react'
+import { createClient } from '@/utils/supabase/client'
 
-function LoginForm() {
+export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
   const message = searchParams.get('message')
+  const supabase = createClient()
 
   useEffect(() => {
     const checkAuth = async () => {
-      try {
-        const response = await fetch('/api/auth/verify')
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        const data = await response.json()
-        if (data.authenticated) {
-          router.push('/')
-        }
-      } catch (error) {
-        console.error('Auth check error:', error)
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        router.push('/')
       }
     }
 
     checkAuth()
-  }, [router])
+  }, [router, supabase.auth])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 dark:bg-gray-900">
+      <div className="w-full max-w-md space-y-8 rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Welcome back
+          <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Sign in to your account or create a new one
-          </p>
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded relative" role="alert">
-            <span className="block sm:inline">{error}</span>
+          <div className="rounded-md bg-red-50 dark:bg-red-900/50 p-4 text-red-700 dark:text-red-200">
+            {error}
           </div>
         )}
 
         {message && (
-          <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded relative" role="alert">
-            <span className="block sm:inline">{message}</span>
+          <div className="rounded-md bg-blue-50 dark:bg-blue-900/50 p-4 text-blue-700 dark:text-blue-200">
+            {message}
           </div>
         )}
 
-        <form className="mt-8 space-y-6">
-          <div className="rounded-md shadow-sm space-y-4">
+        <form action={login} className="mt-8 space-y-6">
+          <div className="-space-y-px rounded-md shadow-sm">
             <div>
               <label htmlFor="email" className="sr-only">
                 Email address
@@ -63,8 +54,9 @@ function LoginForm() {
                 id="email"
                 name="email"
                 type="email"
+                autoComplete="email"
                 required
-                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="relative block w-full rounded-t-md border-0 py-1.5 px-3 text-gray-900 dark:text-white dark:bg-gray-700 ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 placeholder="Email address"
               />
             </div>
@@ -76,46 +68,33 @@ function LoginForm() {
                 id="password"
                 name="password"
                 type="password"
+                autoComplete="current-password"
                 required
-                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="relative block w-full rounded-b-md border-0 py-1.5 px-3 text-gray-900 dark:text-white dark:bg-gray-700 ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 placeholder="Password"
               />
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div>
             <button
-              formAction={login}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              type="submit"
+              className="group relative flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               Sign in
             </button>
-            <button
-              formAction={signup}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            >
-              Sign up
-            </button>
           </div>
         </form>
-      </div>
-    </div>
-  )
-}
 
-export default function LoginPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto mt-4"></div>
-          </div>
+        <div className="text-center">
+          <button
+            onClick={() => signup}
+            className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500"
+          >
+            Don't have an account? Sign up
+          </button>
         </div>
       </div>
-    }>
-      <LoginForm />
-    </Suspense>
+    </div>
   )
 }

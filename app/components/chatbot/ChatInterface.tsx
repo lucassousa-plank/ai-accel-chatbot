@@ -90,13 +90,6 @@ export default function ChatInterface() {
             </div>
           )
         ))}
-        {status === 'submitted' && (
-          <div className="flex justify-start">
-            <div className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg p-3">
-              Thinking...
-            </div>
-          </div>
-        )}
       </div>
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
