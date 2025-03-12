@@ -1,21 +1,23 @@
 import { Message as VercelChatMessage, createDataStreamResponse } from 'ai'
 import { NextRequest } from 'next/server'
 import { ChatOpenAI } from "@langchain/openai"
-import { HumanMessage, SystemMessage, BaseMessage, AIMessage } from "@langchain/core/messages"
+import { HumanMessage, SystemMessage, BaseMessage } from "@langchain/core/messages"
 import { StateGraph, MemorySaver, MessagesAnnotation, START, END } from "@langchain/langgraph"
-import { RunnableSequence } from "@langchain/core/runnables"
 import { PromptTemplate } from "@langchain/core/prompts"
 import { v4 as uuidv4 } from "uuid";
+import { detectIntent } from "@/backend/src/utils/intentDetector";
+import { createWeatherAgentNode } from "@/backend/src/agents/weatherAgent";
+import { createChatAgent } from "@/backend/src/agents/chatAgent";
 
-// Initialize the chat model with streaming enabled
-const model = new ChatOpenAI({
+// Initialize the chat chatModel with streaming enabled
+const chatModel = new ChatOpenAI({
   modelName: "gpt-4o-mini",
   temperature: 0.7,
   openAIApiKey: process.env.OPENAI_API_KEY,
   streaming: true
 });
 
-// Create a prompt template
+// Create a prompt template for chat history
 const prompt = PromptTemplate.fromTemplate(`
 Previous conversation:
 {history}
@@ -24,43 +26,66 @@ Current question: {question}
 
 Response: `);
 
-// Create and initialize the conversation agent
+// Create and initialize the conversation agent with intent routing
 const createConversationAgent = async () => {
+  const weatherAgent = createWeatherAgentNode(chatModel);
+  console.log("Creating chat agent")
+  const chatAgent = createChatAgent(chatModel);
+
   const callModel = async (state: typeof MessagesAnnotation.State, callbacks: any) => {
-    // Format the conversation history
-    const history = state.messages
-      .slice(0, -1) // Exclude the last message (current question)
-      .map(msg => `${msg.getType()}: ${msg.content}`)
-      .join('\n');
-
     // Get the current question (last message)
-    const question = state.messages[state.messages.length - 1].content;
-
-    // Create a new chain with callbacks for streaming
-    const streamingChain = RunnableSequence.from([
-      prompt,
-      new ChatOpenAI({
-        ...model,
-        callbacks: callbacks
-      })
-    ]);
-
-    // Get response from the chain
-    const response = await streamingChain.invoke({
-      history: history || "No previous conversation.",
-      question: question
-    });
+    const lastMessage = state.messages[state.messages.length - 1];
+    const question = typeof lastMessage.content === 'string' 
+      ? lastMessage.content 
+      : lastMessage.content.toString();
     
+    // Detect intent
+    const intent = await detectIntent(chatModel, question);
 
+    console.log("question", question);
+    console.log("intent", intent);
+
+    let response;
+    switch (intent) {
+      case "weather":
+        const weatherResult = await weatherAgent({
+          messages: state.messages
+        });
+        response = weatherResult.messages[0];
+        break;
+      
+      case "news":
+        // Use chat agent with news context
+        const newsResult = await chatAgent({
+          messages: [
+            ...state.messages,
+            new SystemMessage("The user asked about news. Explain as Nandor that you don't have access to news yet, but you'll learn this power soon."),
+          ]
+        });
+        response = newsResult.messages[0];
+        break;
+      
+      case "chat":
+      default:
+        const chatResult = await chatAgent({
+          messages: [
+            ...state.messages,
+          ]
+        });
+        
+        response = chatResult.messages[0];
+    }
+
+    console.log("createConversationAgent", ...state.messages, response);
     // Return updated state with the new message
     return { messages: [...state.messages, response] };
   };
   
   // Define a new graph
   const workflow = new StateGraph(MessagesAnnotation)
-    .addNode("model", callModel)
-    .addEdge(START, "model")
-    .addEdge("model", END);
+    .addNode("chatModel", callModel)
+    .addEdge(START, "chatModel")
+    .addEdge("chatModel", END);
 
   // Compile the graph with memory saver
   return workflow.compile({
@@ -100,50 +125,36 @@ export async function POST(req: NextRequest) {
             console.log('Starting stream execution');
             // Add the new message to the current state
             currentState.messages.push(new HumanMessage(lastMessage.content));
+            console.log("current state messages", currentState.messages)
 
             let currentChunk = '';
             const responseId = uuidv4(); // Generate one ID for the entire response
-            
-            // Format messages for the model
-            const messages = currentState.messages.map(msg => {
-              if (msg instanceof SystemMessage) {
-                return { role: 'system', content: msg.content };
-              } else if (msg instanceof HumanMessage) {
-                return { role: 'user', content: msg.content };
-              } else if (msg instanceof AIMessage) {
-                return { role: 'assistant', content: msg.content };
-              }
-              return { role: 'user', content: msg.content };
+
+            // Use the conversation agent with streaming and thread_id
+            const result = await conversationAgent.invoke(currentState, {
+              configurable: {
+                thread_id: responseId // Use the responseId as the thread_id
+              },
+              callbacks: [{
+                handleLLMNewToken(token: string) {
+                  console.log("token", token)
+                  currentChunk += token;
+                  const message = JSON.stringify({
+                    id: responseId,
+                    role: 'assistant',
+                    content: currentChunk
+                  }) + '\n';
+                  writer.write(`0:${message}\n`);
+                },
+              }],
             });
 
-            console.log('Sending messages to model:', messages);
+            // Send the final DONE message
+            console.log('Stream complete, writing DONE');
+            writer.write('0:[DONE]\n\n');
 
-            // Use the model's stream method directly
-            const stream = await model.stream(messages);
-
-            try {
-              for await (const chunk of stream) {
-                console.log('Received chunk:', chunk);
-                currentChunk += chunk.content;
-                const message = JSON.stringify({
-                  id: responseId,  // Use the same ID for all chunks
-                  role: 'assistant',
-                  content: currentChunk  // Send accumulated content
-                }) + '\n';
-                console.log('Writing message:', message);
-                writer.write(`0:${message}\n`);
-              }
-
-              // Send the final DONE message
-              console.log('Stream complete, writing DONE');
-              writer.write('0:[DONE]\n\n');
-
-              // Update the current state with the complete message
-              currentState.messages.push(new AIMessage(currentChunk));
-            } catch (error) {
-              console.error('Error in stream processing:', error);
-              throw error;
-            }
+            // Update the current state with the complete message
+            currentState = result;
           } catch (error) {
             console.error('Error in stream execution:', error);
             throw error;
@@ -154,7 +165,7 @@ export async function POST(req: NextRequest) {
           return 'An error occurred while processing your request.';
         }
       });
-      console.log('Response created:', response instanceof Response);
+      console.log('Response created:', response);
       return response;
     } catch (error) {
       console.error('Error creating stream response:', error);
