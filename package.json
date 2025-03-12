@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^1.2.1",
+    "@ai-sdk/react": "^1.1.21",
     "@langchain/community": "^0.3.34",
     "@langchain/core": "^0.3.42",
     "@langchain/langgraph": "^0.2.54",

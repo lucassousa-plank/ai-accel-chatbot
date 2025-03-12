@@ -1,132 +1,118 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-
-interface Message {
-  role: 'user' | 'assistant';
-  content: string;
-  timestamp: Date;
-}
+import { useChat, Message } from '@ai-sdk/react';
 
 export default function ChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-
-    const userMessage: Message = {
-      role: 'user',
-      content: input.trim(),
-      timestamp: new Date(),
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
-
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question: input.trim() }),
-      });
-
+  const { messages, input, handleInputChange, handleSubmit, status, error, setMessages } = useChat({
+    api: '/api/chat',
+    initialMessages: [
+      {
+        id: 'system-1',
+        role: 'system',
+        content: 'You are a 16th century vampire. You were once a great conqueror called Nandor the Relentless. Now you live in a shared apartment with your vampire friends. Yet, you\'re helpful and will help with the tasks.'
+      }
+    ],
+    onResponse: async (response: Response) => {
       if (!response.ok) {
-        throw new Error('Failed to get response');
+        console.error('Response not ok:', response.status, response.statusText);
+        return;
       }
 
-      const data = await response.json();
-      const assistantMessage: Message = {
-        role: 'assistant',
-        content: data.response,
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, assistantMessage]);
-    } catch (error) {
-      console.error('Error getting response:', error);
-      const errorMessage: Message = {
-        role: 'assistant',
-        content: 'Sorry, I encountered an error. Please try again.',
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
 
-  const formatTime = (timestamp: Date): string => {
-    return timestamp.toLocaleTimeString([], { 
-      hour: '2-digit', 
-      minute: '2-digit',
-      hour12: true 
-    });
-  };
+      if (!reader) {
+        console.error('No reader available');
+        return;
+      }
+
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          
+          if (done) {
+            console.log('Stream complete');
+            break;
+          }
+
+          const chunk = decoder.decode(value);
+          const lines = chunk.split('\n').filter(Boolean);
+          
+          for (const line of lines) {
+            if (line.includes('[DONE]')) continue;
+            
+            const data = line.replace(/^0:/, '');
+            try {
+              const parsed = JSON.parse(data);
+              setMessages((currentMessages) => [
+                ...currentMessages.filter(m => m.id !== parsed.id),
+                parsed
+              ]);
+            } catch (e) {
+              console.error('Error parsing chunk:', e);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error reading stream:', error);
+      } finally {
+        reader.releaseLock();
+      }
+    },
+    onError: (error) => {
+      console.error('Chat error:', error);
+    }
+  });
 
   return (
     <div className="flex flex-col h-[800px] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`flex pr-2 ${
-              message.role === 'user' ? 'justify-end' : 'justify-start'
-            }`}
-          >
-            <div className={`flex flex-col ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
-              <div
-                className={`max-w-[80%] rounded-lg p-3 ${
-                  message.role === 'user'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white'
-                }`}
-              >
-                {message.content}
+        {messages.map((message: Message) => (
+          console.log({message, status}),
+          message.role !== 'system' && (
+            <div
+              key={message.id}
+              className={`flex pr-2 ${
+                message.role === 'user' ? 'justify-end' : 'justify-start'
+              }`}
+            >
+              <div className={`flex flex-col ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
+                <div
+                  className={`max-w-[80%] rounded-lg p-3 ${
+                    message.role === 'user'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white'
+                  }`}
+                >
+                  {message.content}
+                </div>
               </div>
-              <span className="text-xs mt-1 text-gray-500 dark:text-gray-400">
-                {formatTime(message.timestamp)}
-              </span>
             </div>
-          </div>
+          )
         ))}
-        {isLoading && (
+        {status === 'submitted' && (
           <div className="flex justify-start">
             <div className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg p-3">
               Thinking...
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleInputChange}
           placeholder="Type your message..."
           className="flex-1 p-2 border border-gray-300 dark:border-gray-600 
             bg-white dark:bg-gray-700 text-gray-900 dark:text-white 
             placeholder-gray-500 dark:placeholder-gray-400
             rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          disabled={isLoading}
+          disabled={status === 'submitted' || status === 'streaming'}
         />
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={status === 'submitted' || status === 'streaming'}
           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 
             focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
         >
