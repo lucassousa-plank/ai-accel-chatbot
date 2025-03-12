@@ -29,7 +29,6 @@ Response: `);
 // Create and initialize the conversation agent with intent routing
 const createConversationAgent = async () => {
   const weatherAgent = createWeatherAgentNode(chatModel);
-  console.log("Creating chat agent")
   const chatAgent = createChatAgent(chatModel);
 
   const callModel = async (state: typeof MessagesAnnotation.State, callbacks: any) => {
@@ -41,9 +40,6 @@ const createConversationAgent = async () => {
     
     // Detect intent
     const intent = await detectIntent(chatModel, question);
-
-    console.log("question", question);
-    console.log("intent", intent);
 
     let response;
     switch (intent) {
@@ -76,7 +72,6 @@ const createConversationAgent = async () => {
         response = chatResult.messages[0];
     }
 
-    console.log("createConversationAgent", ...state.messages, response);
     // Return updated state with the new message
     return { messages: [...state.messages, response] };
   };
@@ -109,10 +104,7 @@ export const runtime = 'edge';
 export async function POST(req: NextRequest) {
   try {
     const { messages } = await req.json();
-    console.log('Received messages:', messages);
-    
     const lastMessage = messages[messages.length - 1] as VercelChatMessage;
-    console.log('Last message:', lastMessage);
 
     if (!lastMessage.content) {
       return new Response('Message content is required', { status: 400 });
@@ -122,10 +114,8 @@ export async function POST(req: NextRequest) {
       const response = createDataStreamResponse({
         execute: async (writer) => {
           try {
-            console.log('Starting stream execution');
             // Add the new message to the current state
             currentState.messages.push(new HumanMessage(lastMessage.content));
-            console.log("current state messages", currentState.messages)
 
             let currentChunk = '';
             const responseId = uuidv4(); // Generate one ID for the entire response
@@ -137,7 +127,6 @@ export async function POST(req: NextRequest) {
               },
               callbacks: [{
                 handleLLMNewToken(token: string) {
-                  console.log("token", token)
                   currentChunk += token;
                   const message = JSON.stringify({
                     id: responseId,
@@ -149,8 +138,6 @@ export async function POST(req: NextRequest) {
               }],
             });
 
-            // Send the final DONE message
-            console.log('Stream complete, writing DONE');
             writer.write('0:[DONE]\n\n');
 
             // Update the current state with the complete message
@@ -165,7 +152,6 @@ export async function POST(req: NextRequest) {
           return 'An error occurred while processing your request.';
         }
       });
-      console.log('Response created:', response);
       return response;
     } catch (error) {
       console.error('Error creating stream response:', error);

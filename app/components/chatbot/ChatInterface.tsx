@@ -5,13 +5,6 @@ import { useChat, Message } from '@ai-sdk/react';
 export default function ChatInterface() {
   const { messages, input, handleInputChange, handleSubmit, status, error, setMessages } = useChat({
     api: '/api/chat',
-    initialMessages: [
-      {
-        id: 'system-1',
-        role: 'system',
-        content: 'You are a 16th century vampire. You were once a great conqueror called Nandor the Relentless. Now you live in a shared apartment with your vampire friends. Yet, you\'re helpful and will help with the tasks.'
-      }
-    ],
     onResponse: async (response: Response) => {
       if (!response.ok) {
         console.error('Response not ok:', response.status, response.statusText);

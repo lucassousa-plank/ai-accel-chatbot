@@ -53,9 +53,7 @@ export const createWeatherAgentNode = (model: ChatOpenAI) => {
     config?: RunnableConfig,
   ) => {
     const result = await weatherAgent.invoke(state, config);
-    
     const lastMessage = result.messages[result.messages.length - 1];
-    
     return {
       messages: [new AIMessage(lastMessage.content.toString())],
     };

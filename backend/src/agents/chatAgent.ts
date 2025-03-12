@@ -19,9 +19,7 @@ Keep responses concise but maintain character.`),
     config?: RunnableConfig,
   ) => {
     const result = await chatAgent.invoke(state, config);
-    
     const lastMessage = result.messages[result.messages.length - 1];
-    
     return {
       messages: [new AIMessage(lastMessage.content.toString())],
     };
