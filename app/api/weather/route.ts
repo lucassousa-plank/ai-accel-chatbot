@@ -2,11 +2,18 @@ import { NextResponse } from 'next/server';
 import { Tool } from "@langchain/core/tools";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { ChatOpenAI } from "@langchain/openai";
-import { HumanMessage, AIMessage, SystemMessage } from "@langchain/core/messages";
+import { HumanMessage, AIMessage, SystemMessage, BaseMessage } from "@langchain/core/messages";
+import { StateGraph, END } from "@langchain/langgraph";
+import { RunnableConfig } from "@langchain/core/runnables";
 
 // OpenWeather API configuration
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
 const OPENWEATHER_BASE_URL = 'http://api.openweathermap.org/data/2.5';
+
+// Define the state type
+type AgentState = {
+  messages: BaseMessage[];
+};
 
 // Create a tool for fetching weather data
 class WeatherTool extends Tool {
@@ -37,6 +44,30 @@ class WeatherTool extends Tool {
   }
 }
 
+// Create the weather agent node
+const createWeatherAgentNode = (model: ChatOpenAI) => {
+  const tools = [new WeatherTool()];
+
+  const weatherAgent = createReactAgent({
+    llm: model,
+    tools,
+    stateModifier: new SystemMessage("You're a weather reporter. When you receive weather data, return it in this exact JSON format: {\"success\": true, \"data\": {\"temperature\": \"X°C\", \"description\": \"Y\", \"humidity\": \"Z%\", \"windSpeed\": \"W m/s\"}, \"message\": \"Current weather information retrieved successfully.\"}"),
+  });
+
+  return async (
+    state: AgentState,
+    config?: RunnableConfig,
+  ) => {
+    const result = await weatherAgent.invoke(state, config);
+    const lastMessage = result.messages[result.messages.length - 1];
+    return {
+      messages: [
+        new HumanMessage({ content: lastMessage.content, name: "WeatherAgent" }),
+      ],
+    };
+  };
+};
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -49,27 +80,21 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create the model and tools
+    // Create the model
     const model = new ChatOpenAI({
       modelName: "gpt-4o-mini",
       temperature: 0,
     });
 
-    const tools = [new WeatherTool()];
+    // Create the weather agent node
+    const weatherAgentNode = createWeatherAgentNode(model);
 
-    // Create the React agent with state modifier
-    const agent = createReactAgent({
-      llm: model,
-      tools,
-      stateModifier: new SystemMessage("You're a weather reporter. When you receive weather data, return it in this exact JSON format: {\"success\": true, \"data\": {\"temperature\": \"X°C\", \"description\": \"Y\", \"humidity\": \"Z%\", \"windSpeed\": \"W m/s\"}, \"message\": \"Current weather information retrieved successfully.\"}"),
-    });
+    // Execute the agent directly for now
+    const result = await weatherAgentNode(
+      { messages: [new HumanMessage(`Get the current weather in ${city}.`)] },
+    );
 
-    // Execute the agent
-    const result = await agent.invoke({
-      messages: [new HumanMessage(`Get the current weather in ${city}.`)],
-    });
-
-    // Parse the final message to get our formatted response
+    // Get the final message and parse it
     const finalMessage = result.messages[result.messages.length - 1];
     const response = JSON.parse(finalMessage.content as string);
     
