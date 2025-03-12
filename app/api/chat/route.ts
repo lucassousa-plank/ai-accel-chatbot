@@ -4,7 +4,6 @@ import { ChatOpenAI } from "@langchain/openai"
 import { HumanMessage, SystemMessage, BaseMessage, AIMessage } from "@langchain/core/messages"
 import { StateGraph, MemorySaver, MessagesAnnotation, START, END } from "@langchain/langgraph"
 import { RunnableSequence } from "@langchain/core/runnables"
-import { StringOutputParser } from "@langchain/core/output_parsers"
 import { PromptTemplate } from "@langchain/core/prompts"
 import { v4 as uuidv4 } from "uuid";
 
