@@ -5,13 +5,6 @@ import { useChat, Message } from '@ai-sdk/react';
 export default function ChatInterface() {
   const { messages, input, handleInputChange, handleSubmit, status, error, setMessages } = useChat({
     api: '/api/chat',
-    initialMessages: [
-      {
-        id: 'system-1',
-        role: 'system',
-        content: 'You are a 16th century vampire. You were once a great conqueror called Nandor the Relentless. Now you live in a shared apartment with your vampire friends. Yet, you\'re helpful and will help with the tasks.'
-      }
-    ],
     onResponse: async (response: Response) => {
       if (!response.ok) {
         console.error('Response not ok:', response.status, response.statusText);
@@ -65,7 +58,7 @@ export default function ChatInterface() {
   });
 
   return (
-    <div className="flex flex-col h-[800px] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+    <div className="flex flex-col h-[80vh] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
         {messages.map((message: Message) => (
           console.log({message, status}),
