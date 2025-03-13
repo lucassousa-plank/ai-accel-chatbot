@@ -2,14 +2,13 @@ import { Message as VercelChatMessage, createDataStreamResponse } from 'ai'
 import { NextRequest } from 'next/server'
 import { ChatOpenAI } from "@langchain/openai"
 import { HumanMessage, SystemMessage, BaseMessage } from "@langchain/core/messages"
-import { StateGraph, MemorySaver, MessagesAnnotation, START, END } from "@langchain/langgraph"
-import { PromptTemplate } from "@langchain/core/prompts"
+import { StateGraph, MemorySaver, Annotation, START, END } from "@langchain/langgraph"
 import { v4 as uuidv4 } from "uuid";
-import { detectIntent } from "@/backend/src/utils/intentDetector";
 import { createWeatherAgentNode } from "@/backend/src/agents/weatherAgent";
 import { createChatAgent } from "@/backend/src/agents/chatAgent";
+import { createSupervisorChain, members } from "@/backend/src/agents/supervisorChain";
 
-// Initialize the chat chatModel with streaming enabled
+// Initialize the chat model with streaming enabled
 const chatModel = new ChatOpenAI({
   modelName: "gpt-4o-mini",
   temperature: 0.7,
@@ -17,70 +16,55 @@ const chatModel = new ChatOpenAI({
   streaming: true
 });
 
-// Create a prompt template for chat history
-const prompt = PromptTemplate.fromTemplate(`
-Previous conversation:
-{history}
+// Initialize a separate model for the other models that don't need streaming
+const baseModel = new ChatOpenAI({
+  modelName: "gpt-4o-mini",
+  temperature: 0, // Lower temperature for more consistent routing decisions
+  openAIApiKey: process.env.OPENAI_API_KEY,
+  streaming: false
+});
 
-Current question: {question}
-
-Response: `);
+// This defines the object that is passed between each node
+// in the graph. We will create different nodes for each agent and tool
+const AgentState = Annotation.Root({
+  messages: Annotation<BaseMessage[]>({
+    reducer: (x, y) => x.concat(y),
+    default: () => [],
+  }),
+  // The agent node that last performed work
+  next: Annotation<string>({
+    reducer: (x, y) => y ?? x ?? END,
+    default: () => END,
+  }),
+});
 
 // Create and initialize the conversation agent with intent routing
 const createConversationAgent = async () => {
-  const weatherAgent = createWeatherAgentNode(chatModel);
+  console.log('Creating conversation agent');
+  const weatherAgent = createWeatherAgentNode(baseModel);
   const chatAgent = createChatAgent(chatModel);
-
-  const callModel = async (state: typeof MessagesAnnotation.State, callbacks: any) => {
-    // Get the current question (last message)
-    const lastMessage = state.messages[state.messages.length - 1];
-    const question = typeof lastMessage.content === 'string' 
-      ? lastMessage.content 
-      : lastMessage.content.toString();
-    
-    // Detect intent
-    const intent = await detectIntent(chatModel, question);
-
-    let response;
-    switch (intent) {
-      case "weather":
-        const weatherResult = await weatherAgent({
-          messages: state.messages
-        });
-        response = weatherResult.messages[0];
-        break;
-      
-      case "news":
-        // Use chat agent with news context
-        const newsResult = await chatAgent({
-          messages: [
-            ...state.messages,
-            new SystemMessage("The user asked about news. Explain as Nandor that you don't have access to news yet, but you'll learn this power soon."),
-          ]
-        });
-        response = newsResult.messages[0];
-        break;
-      
-      case "chat":
-      default:
-        const chatResult = await chatAgent({
-          messages: [
-            ...state.messages,
-          ]
-        });
-        
-        response = chatResult.messages[0];
-    }
-
-    // Return updated state with the new message
-    return { messages: [...state.messages, response] };
-  };
+  const supervisorChain = await createSupervisorChain(baseModel);
   
   // Define a new graph
-  const workflow = new StateGraph(MessagesAnnotation)
-    .addNode("chatModel", callModel)
-    .addEdge(START, "chatModel")
-    .addEdge("chatModel", END);
+  const workflow = new StateGraph(AgentState)
+    .addNode("weather_reporter", weatherAgent)
+    .addNode("chatbot", chatAgent)
+    .addNode("supervisor", supervisorChain);
+
+  // Add edges from each agent back to supervisor
+  workflow.addEdge("weather_reporter", "chatbot");
+
+  // Add conditional edges from supervisor to agents
+  workflow.addConditionalEdges(
+    "supervisor",
+    (x: typeof AgentState.State) => {
+      console.log('Add conditional edge from supervisor to', x.next);
+      return x.next;
+    },
+  );
+
+  // Start with supervisor
+  workflow.addEdge(START, "supervisor");
 
   // Compile the graph with memory saver
   return workflow.compile({
@@ -91,7 +75,7 @@ const createConversationAgent = async () => {
 // Initialize the conversation agent
 let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>>;
 let currentState: { messages: BaseMessage[] } = {
-  messages: [new SystemMessage("You are a 16th century vampire named Nandor the Relentless, living in a shared apartment. Be helpful but maintain your vampire personality.")]
+  messages: []
 };
 
 // Initialize the agent when the module loads
@@ -114,8 +98,10 @@ export async function POST(req: NextRequest) {
       const response = createDataStreamResponse({
         execute: async (writer) => {
           try {
+            console.log('Current state before update:', currentState);
             // Add the new message to the current state
             currentState.messages.push(new HumanMessage(lastMessage.content));
+            console.log('State after adding new message:', currentState);
 
             let currentChunk = '';
             const responseId = uuidv4(); // Generate one ID for the entire response
@@ -138,10 +124,14 @@ export async function POST(req: NextRequest) {
               }],
             });
 
+            console.log('Result from conversation agent:', result);
+            console.log('Next value in result:', result.next);
+
             writer.write('0:[DONE]\n\n');
 
             // Update the current state with the complete message
             currentState = result;
+            console.log('Updated current state:', currentState);
           } catch (error) {
             console.error('Error in stream execution:', error);
             throw error;

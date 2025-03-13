@@ -58,7 +58,7 @@ export default function ChatInterface() {
   });
 
   return (
-    <div className="flex flex-col h-[800px] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+    <div className="flex flex-col h-[80vh] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
         {messages.map((message: Message) => (
           console.log({message, status}),

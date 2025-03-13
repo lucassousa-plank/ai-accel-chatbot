@@ -1,0 +1,318 @@
+
+> ai-accel-chatbot@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.2.1 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.252.144:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Compiled in 162ms
+ ✓ Ready in 811ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1204ms
+ GET / 200 in 1389ms
+ ✓ Compiled /favicon.ico in 212ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 249ms
+ ○ Compiling /api/chat ...
+ ✓ Compiled /api/chat in 654ms
+Supervisor prompt: [object Object]
+Current state before update: { messages: [] }
+State after adding new message: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Weather in Paris',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Weather in Paris',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+]
+}
+Supervisor raw output: AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '',
+  name: undefined,
+  additional_kwargs: {
+  function_call: undefined,
+  tool_calls: [
+  {
+  id: 'call_MD036n1nSkhXY1HZYin8RGg5',
+  type: 'function',
+  function: { name: 'route', arguments: '{"next":"weather_reporter"}' }
+}
+]
+},
+  response_metadata: {
+  model_name: 'gpt-4o-mini-2024-07-18',
+  usage: {
+  prompt_tokens: 178,
+  completion_tokens: 8,
+  total_tokens: 186,
+  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
+  completion_tokens_details: {
+  reasoning_tokens: 0,
+  audio_tokens: 0,
+  accepted_prediction_tokens: 0,
+  rejected_prediction_tokens: 0
+}
+},
+  system_fingerprint: 'fp_06737a9306'
+},
+  id: 'chatcmpl-BAfhNKngh8wV5FXcMQtyDGEyKK6L7',
+  tool_calls: [
+  {
+  name: 'route',
+  args: { next: 'weather_reporter' },
+  type: 'tool_call',
+  id: 'call_MD036n1nSkhXY1HZYin8RGg5'
+}
+],
+  invalid_tool_calls: [],
+  usage_metadata: {
+  output_tokens: 8,
+  input_tokens: 178,
+  total_tokens: 186,
+  input_token_details: { audio: 0, cache_read: 0 },
+  output_token_details: { audio: 0, reasoning: 0 }
+}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '',
+  name: undefined,
+  additional_kwargs: {
+  function_call: undefined,
+  tool_calls: [
+  {
+  id: 'call_MD036n1nSkhXY1HZYin8RGg5',
+  type: 'function',
+  function: { name: 'route', arguments: '{"next":"weather_reporter"}' }
+}
+]
+},
+  response_metadata: {
+  tokenUsage: { promptTokens: 178, completionTokens: 8, totalTokens: 186 },
+  finish_reason: 'stop',
+  model_name: 'gpt-4o-mini-2024-07-18',
+  usage: {
+  prompt_tokens: 178,
+  completion_tokens: 8,
+  total_tokens: 186,
+  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
+  completion_tokens_details: {
+  reasoning_tokens: 0,
+  audio_tokens: 0,
+  accepted_prediction_tokens: 0,
+  rejected_prediction_tokens: 0
+}
+},
+  system_fingerprint: 'fp_06737a9306'
+},
+  id: 'chatcmpl-BAfhNKngh8wV5FXcMQtyDGEyKK6L7',
+  tool_calls: [
+  {
+  name: 'route',
+  args: { next: 'weather_reporter' },
+  type: 'tool_call',
+  id: 'call_MD036n1nSkhXY1HZYin8RGg5'
+}
+],
+  invalid_tool_calls: [],
+  usage_metadata: {
+  output_tokens: 8,
+  input_tokens: 178,
+  total_tokens: 186,
+  input_token_details: { audio: 0, cache_read: 0 },
+  output_token_details: { audio: 0, reasoning: 0 }
+}
+}
+Supervisor final output: { next: 'weather_reporter' }
+Supervisor raw output: AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '',
+  name: undefined,
+  additional_kwargs: {
+  function_call: undefined,
+  tool_calls: [
+  {
+  id: 'call_e59jDXPliVV6PbDd224EeTfN',
+  type: 'function',
+  function: { name: 'route', arguments: '{"next":"__end__"}' }
+}
+]
+},
+  response_metadata: {
+  model_name: 'gpt-4o-mini-2024-07-18',
+  usage: {
+  prompt_tokens: 234,
+  completion_tokens: 8,
+  total_tokens: 242,
+  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
+  completion_tokens_details: {
+  reasoning_tokens: 0,
+  audio_tokens: 0,
+  accepted_prediction_tokens: 0,
+  rejected_prediction_tokens: 0
+}
+},
+  system_fingerprint: 'fp_06737a9306'
+},
+  id: 'chatcmpl-BAfhQ60zpVXwrWo2qhKUHYIgCCHhy',
+  tool_calls: [
+  {
+  name: 'route',
+  args: { next: '__end__' },
+  type: 'tool_call',
+  id: 'call_e59jDXPliVV6PbDd224EeTfN'
+}
+],
+  invalid_tool_calls: [],
+  usage_metadata: {
+  output_tokens: 8,
+  input_tokens: 234,
+  total_tokens: 242,
+  input_token_details: { audio: 0, cache_read: 0 },
+  output_token_details: { audio: 0, reasoning: 0 }
+}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '',
+  name: undefined,
+  additional_kwargs: {
+  function_call: undefined,
+  tool_calls: [
+  {
+  id: 'call_e59jDXPliVV6PbDd224EeTfN',
+  type: 'function',
+  function: { name: 'route', arguments: '{"next":"__end__"}' }
+}
+]
+},
+  response_metadata: {
+  tokenUsage: { promptTokens: 234, completionTokens: 8, totalTokens: 242 },
+  finish_reason: 'stop',
+  model_name: 'gpt-4o-mini-2024-07-18',
+  usage: {
+  prompt_tokens: 234,
+  completion_tokens: 8,
+  total_tokens: 242,
+  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
+  completion_tokens_details: {
+  reasoning_tokens: 0,
+  audio_tokens: 0,
+  accepted_prediction_tokens: 0,
+  rejected_prediction_tokens: 0
+}
+},
+  system_fingerprint: 'fp_06737a9306'
+},
+  id: 'chatcmpl-BAfhQ60zpVXwrWo2qhKUHYIgCCHhy',
+  tool_calls: [
+  {
+  name: 'route',
+  args: { next: '__end__' },
+  type: 'tool_call',
+  id: 'call_e59jDXPliVV6PbDd224EeTfN'
+}
+],
+  invalid_tool_calls: [],
+  usage_metadata: {
+  output_tokens: 8,
+  input_tokens: 234,
+  total_tokens: 242,
+  input_token_details: { audio: 0, cache_read: 0 },
+  output_token_details: { audio: 0, reasoning: 0 }
+}
+}
+Supervisor final output: { next: '__end__' }
+Result from conversation agent: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Weather in Paris',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Weather in Paris',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+Next value in result: __end__
+Updated current state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Weather in Paris',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Weather in Paris',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+ POST /api/chat 200 in 5276ms
+[?25h
