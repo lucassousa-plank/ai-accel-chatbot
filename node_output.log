@@ -8,28 +8,30 @@
    - Environments: .env.local
 
  ✓ Starting...
- ✓ Compiled in 162ms
- ✓ Ready in 811ms
+ ✓ Compiled in 179ms
+ ✓ Ready in 831ms
  ○ Compiling / ...
- ✓ Compiled / in 1204ms
- GET / 200 in 1389ms
- ✓ Compiled /favicon.ico in 212ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 249ms
+ ✓ Compiled / in 1174ms
+ GET / 200 in 1372ms
+ ✓ Compiled /favicon.ico in 232ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 267ms
  ○ Compiling /api/chat ...
- ✓ Compiled /api/chat in 654ms
-Supervisor prompt: [object Object]
+ ✓ Compiled /api/chat in 744ms
+Creating conversation agent
+Adding edge from weather_reporter to supervisor
+Adding edge from news_reporter to supervisor
 Current state before update: { messages: [] }
 State after adding new message: {
   messages: [
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Weather in Paris',
+  content: 'Did Grok break you?',
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Weather in Paris',
+  content: 'Did Grok break you?',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
@@ -37,232 +39,41 @@ State after adding new message: {
 }
 ]
 }
-Supervisor raw output: AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: '',
-  name: undefined,
-  additional_kwargs: {
-  function_call: undefined,
-  tool_calls: [
-  {
-  id: 'call_MD036n1nSkhXY1HZYin8RGg5',
-  type: 'function',
-  function: { name: 'route', arguments: '{"next":"weather_reporter"}' }
-}
-]
-},
-  response_metadata: {
-  model_name: 'gpt-4o-mini-2024-07-18',
-  usage: {
-  prompt_tokens: 178,
-  completion_tokens: 8,
-  total_tokens: 186,
-  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
-  completion_tokens_details: {
-  reasoning_tokens: 0,
-  audio_tokens: 0,
-  accepted_prediction_tokens: 0,
-  rejected_prediction_tokens: 0
-}
-},
-  system_fingerprint: 'fp_06737a9306'
-},
-  id: 'chatcmpl-BAfhNKngh8wV5FXcMQtyDGEyKK6L7',
-  tool_calls: [
-  {
-  name: 'route',
-  args: { next: 'weather_reporter' },
-  type: 'tool_call',
-  id: 'call_MD036n1nSkhXY1HZYin8RGg5'
-}
-],
-  invalid_tool_calls: [],
-  usage_metadata: {
-  output_tokens: 8,
-  input_tokens: 178,
-  total_tokens: 186,
-  input_token_details: { audio: 0, cache_read: 0 },
-  output_token_details: { audio: 0, reasoning: 0 }
-}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '',
-  name: undefined,
-  additional_kwargs: {
-  function_call: undefined,
-  tool_calls: [
-  {
-  id: 'call_MD036n1nSkhXY1HZYin8RGg5',
-  type: 'function',
-  function: { name: 'route', arguments: '{"next":"weather_reporter"}' }
-}
-]
-},
-  response_metadata: {
-  tokenUsage: { promptTokens: 178, completionTokens: 8, totalTokens: 186 },
-  finish_reason: 'stop',
-  model_name: 'gpt-4o-mini-2024-07-18',
-  usage: {
-  prompt_tokens: 178,
-  completion_tokens: 8,
-  total_tokens: 186,
-  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
-  completion_tokens_details: {
-  reasoning_tokens: 0,
-  audio_tokens: 0,
-  accepted_prediction_tokens: 0,
-  rejected_prediction_tokens: 0
-}
-},
-  system_fingerprint: 'fp_06737a9306'
-},
-  id: 'chatcmpl-BAfhNKngh8wV5FXcMQtyDGEyKK6L7',
-  tool_calls: [
-  {
-  name: 'route',
-  args: { next: 'weather_reporter' },
-  type: 'tool_call',
-  id: 'call_MD036n1nSkhXY1HZYin8RGg5'
-}
-],
-  invalid_tool_calls: [],
-  usage_metadata: {
-  output_tokens: 8,
-  input_tokens: 178,
-  total_tokens: 186,
-  input_token_details: { audio: 0, cache_read: 0 },
-  output_token_details: { audio: 0, reasoning: 0 }
-}
-}
-Supervisor final output: { next: 'weather_reporter' }
-Supervisor raw output: AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: '',
-  name: undefined,
-  additional_kwargs: {
-  function_call: undefined,
-  tool_calls: [
-  {
-  id: 'call_e59jDXPliVV6PbDd224EeTfN',
-  type: 'function',
-  function: { name: 'route', arguments: '{"next":"__end__"}' }
-}
-]
-},
-  response_metadata: {
-  model_name: 'gpt-4o-mini-2024-07-18',
-  usage: {
-  prompt_tokens: 234,
-  completion_tokens: 8,
-  total_tokens: 242,
-  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
-  completion_tokens_details: {
-  reasoning_tokens: 0,
-  audio_tokens: 0,
-  accepted_prediction_tokens: 0,
-  rejected_prediction_tokens: 0
-}
-},
-  system_fingerprint: 'fp_06737a9306'
-},
-  id: 'chatcmpl-BAfhQ60zpVXwrWo2qhKUHYIgCCHhy',
-  tool_calls: [
-  {
-  name: 'route',
-  args: { next: '__end__' },
-  type: 'tool_call',
-  id: 'call_e59jDXPliVV6PbDd224EeTfN'
-}
-],
-  invalid_tool_calls: [],
-  usage_metadata: {
-  output_tokens: 8,
-  input_tokens: 234,
-  total_tokens: 242,
-  input_token_details: { audio: 0, cache_read: 0 },
-  output_token_details: { audio: 0, reasoning: 0 }
-}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '',
-  name: undefined,
-  additional_kwargs: {
-  function_call: undefined,
-  tool_calls: [
-  {
-  id: 'call_e59jDXPliVV6PbDd224EeTfN',
-  type: 'function',
-  function: { name: 'route', arguments: '{"next":"__end__"}' }
-}
-]
-},
-  response_metadata: {
-  tokenUsage: { promptTokens: 234, completionTokens: 8, totalTokens: 242 },
-  finish_reason: 'stop',
-  model_name: 'gpt-4o-mini-2024-07-18',
-  usage: {
-  prompt_tokens: 234,
-  completion_tokens: 8,
-  total_tokens: 242,
-  prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
-  completion_tokens_details: {
-  reasoning_tokens: 0,
-  audio_tokens: 0,
-  accepted_prediction_tokens: 0,
-  rejected_prediction_tokens: 0
-}
-},
-  system_fingerprint: 'fp_06737a9306'
-},
-  id: 'chatcmpl-BAfhQ60zpVXwrWo2qhKUHYIgCCHhy',
-  tool_calls: [
-  {
-  name: 'route',
-  args: { next: '__end__' },
-  type: 'tool_call',
-  id: 'call_e59jDXPliVV6PbDd224EeTfN'
-}
-],
-  invalid_tool_calls: [],
-  usage_metadata: {
-  output_tokens: 8,
-  input_tokens: 234,
-  total_tokens: 242,
-  input_token_details: { audio: 0, cache_read: 0 },
-  output_token_details: { audio: 0, reasoning: 0 }
-}
-}
-Supervisor final output: { next: '__end__' }
+Add conditional edge from supervisor to chatbot
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.
+=== Chat Agent End ===
+
 Result from conversation agent: {
   messages: [
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Weather in Paris',
+  content: 'Did Grok break you?',
   additional_kwargs: {},
   response_metadata: {},
-  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Weather in Paris',
+  content: 'Did Grok break you?',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
@@ -280,29 +91,29 @@ Updated current state: {
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Weather in Paris',
+  content: 'Did Grok break you?',
   additional_kwargs: {},
   response_metadata: {},
-  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Weather in Paris',
+  content: 'Did Grok break you?',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '2b0cd507-0078-4269-8cd0-695107b1659c'
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "7.79°C", "description": "broken clouds", "humidity": "65%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
@@ -314,5 +125,951 @@ Updated current state: {
 ],
   next: '__end__'
 }
- POST /api/chat 200 in 5276ms
-[?25h
+ POST /api/chat 200 in 3575ms
+Current state before update: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+State after adding new message: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__end__'
+}
+Add conditional edge from supervisor to weather_reporter
+
+=== Weather Agent Start ===
+Message history length: 3
+Received city: Rome
+Received city: CEO news
+Last message content: {"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+Add conditional edge from supervisor to news_reporter
+
+=== News Agent Start ===
+Message history length: 4
+
+=== NewsTool Start ===
+Input received: CEOs news
+Parsed query: CEOs news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: weather in Rome
+Parsed query: weather in Rome
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'The Untold History of Milk: From Ancient Rome to Swill Milk',
+  description: 'Did you know that naming your cow could actually make her more productive? Forget the cows’ names in “Charlotte’s Web,” because the key to more milk is a little tender loving care and, apparently, a good moniker. A 2009 study revealed that a cow with a name a…',
+  url: 'https://www.geeksaresexy.net/2025/03/06/the-untold-history-of-milk-from-ancient-rome-to-swill-milk/',
+  publishedAt: '2025-03-06T18:00:29Z'
+}
+=== NewsTool End ===
+
+Found 4 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Current Weather in Rome
+- **Temperature**: 24.92°C
+- **Condition**: Broken clouds
+- **Humidity**: 45%
+- **Wind Speed**: 2.24 m/s
+
+### Recent News About CEOs
+1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  
+   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)
+
+2. **[Grok AI Caught Hiding 'Misinformation' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  
+   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)
+
+3. **[Execs shouldn't leave social media to Gen Z interns. Here's why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  
+   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)
+
+4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  
+   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)
+
+For more detailed information, you can follow the links provided.
+=== News Agent End ===
+
+Add conditional edge from supervisor to chatbot
+
+=== Chat Agent Start ===
+Message history length: 5
+Last message content: Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.
+
+As for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!
+
+But, I digress! The world spins on, and so must I!
+=== Chat Agent End ===
+
+Result from conversation agent: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+Next value in result: __end__
+Updated current state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+ POST /api/chat 200 in 16416ms
+Current state before update: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+State after adding new message: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Do you remember my first question?',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Do you remember my first question?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__end__'
+}
+Add conditional edge from supervisor to chatbot
+
+=== Chat Agent Start ===
+Message history length: 7
+Last message content: Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...
+=== Chat Agent End ===
+
+Result from conversation agent: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Do you remember my first question?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '94e1de06-2e04-4518-9c69-08003168daf9'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Do you remember my first question?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '94e1de06-2e04-4518-9c69-08003168daf9'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+Next value in result: __end__
+Updated current state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Did Grok break you?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Did Grok break you?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me about the weather in Rome and the news about CEOs',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Do you remember my first question?',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '94e1de06-2e04-4518-9c69-08003168daf9'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Do you remember my first question?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '94e1de06-2e04-4518-9c69-08003168daf9'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: '__end__'
+}
+ POST /api/chat 200 in 1617ms

@@ -2,53 +2,53 @@ import { ChatOpenAI } from "@langchain/openai";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts";
 import { z } from "zod";
-import { END } from "@langchain/langgraph";
 
-const members = ["weather_reporter", "chatbot"] as const;
-const options = [...members, END] as const;
+const members = ["weather_reporter", "news_reporter", "chatbot"] as const;
+const options = [...members] as const;
 
 const routingTool = {
   name: "route",
   description: "Select the next role to handle the request.",
   schema: z.object({
-    next: z.enum([END, ...members]),
+    next: z.enum(members),
   }),
-}
+};
 
 export const createSupervisorChain = async (model: ChatOpenAI) => {
   const supervisorPrompt = ChatPromptTemplate.fromMessages([
-    new SystemMessage(`You are a task router. Your job is to analyze the user's request and determine which agent should handle it.
+    new SystemMessage(`You are a task router. Analyze the user's request and conversation history.
 
 Available agents:
 - weather_reporter: For weather-related queries
-- chatbot: For general conversation and other queries
-- END: To finish the conversation
+- news_reporter: For news and current events queries
+- chatbot: For general conversation and final responses
 
-Respond ONLY with the appropriate agent name.`),
+Routing rules:
+1. Route to weather_reporter or news_reporter for their specific queries
+2. After each specialized agent provides data, route to chatbot
+3. For general conversation, route directly to chatbot
+4. The chatbot will end the conversation
+
+Multi-task handling:
+- If the user asks for multiple things (e.g., "weather and news"), handle one task at a time
+- Check the conversation history:
+  - If weather data is missing and requested, route to weather_reporter
+  - If news data is missing and requested, route to news_reporter
+  - If all requested data is present, route to chatbot
+
+Return EXACTLY one of: ${options.join(", ")}`),
     new MessagesPlaceholder("messages"),
-    new HumanMessage(`Based on the conversation above, which agent should handle the next request? Select one of: ${options.join(", ")}`),
+    new HumanMessage(`Which agent should handle the next step? Select one of: ${options.join(", ")}`),
   ]);
 
-  console.log('Supervisor prompt:', supervisorPrompt.toString());
-
   return supervisorPrompt
-    .pipe(model.bindTools(
-      [routingTool],
-      {
-        tool_choice: "route",
-      },
-    ))
+    .pipe(model.bindTools([routingTool], { tool_choice: "route" }))
     .pipe((x) => {
-      console.log('Supervisor raw output:', x);
       const args = x.tool_calls?.[0]?.args;
-      console.log('Supervisor parsed args:', args);
-      return args;
-    })
-    .pipe((output) => {
-      console.log('Supervisor final decision:', output);
-      const result = { next: output?.next };
-      console.log('Supervisor returning:', result);
-      return result;
+      if (!args?.next || !options.includes(args.next)) {
+        throw new Error(`Invalid next value: ${args?.next}. Must be one of: ${options.join(", ")}`);
+      }
+      return { next: args.next };
     });
 };
 

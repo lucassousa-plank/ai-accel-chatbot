@@ -1,7 +1,7 @@
 import { Tool } from "@langchain/core/tools";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { ChatOpenAI } from "@langchain/openai";
-import { HumanMessage, SystemMessage, BaseMessage, AIMessage } from "@langchain/core/messages";
+import { SystemMessage, AIMessage } from "@langchain/core/messages";
 import { RunnableConfig } from "@langchain/core/runnables";
 import { AgentState } from "../types";
 
@@ -15,6 +15,7 @@ class WeatherTool extends Tool {
   description = "Get the current weather in a given city. Input should be a city name.";
 
   async _call(city: string) {
+    console.log('Received city:', city);
     try {
       const response = await fetch(
         `${OPENWEATHER_BASE_URL}/weather?q=${encodeURIComponent(city)}&appid=${OPENWEATHER_API_KEY}&units=metric`
@@ -52,10 +53,19 @@ export const createWeatherAgentNode = (model: ChatOpenAI) => {
     state: AgentState,
     config?: RunnableConfig,
   ) => {
+    console.log('\n=== Weather Agent Start ===');
+    console.log('Message history length:', state.messages.length);
+    
     const result = await weatherAgent.invoke(state, config);
+    
+    console.log('Last message content:', result.messages[result.messages.length - 1].content);
+    console.log('=== Weather Agent End ===\n');
+    
     const lastMessage = result.messages[result.messages.length - 1];
+    
     return {
       messages: [new AIMessage(lastMessage.content.toString())],
+      next: "supervisor"
     };
   };
 }; 

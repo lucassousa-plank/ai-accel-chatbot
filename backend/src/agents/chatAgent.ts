@@ -1,5 +1,5 @@
 import { ChatOpenAI } from "@langchain/openai";
-import { SystemMessage, AIMessage, HumanMessage } from "@langchain/core/messages";
+import { SystemMessage, AIMessage } from "@langchain/core/messages";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { AgentState } from "../types";
 import { RunnableConfig } from "@langchain/core/runnables";
@@ -23,15 +23,27 @@ Always respond as Nandor, even when explaining technical information or weather 
     state: AgentState,
     config?: RunnableConfig,
   ) => {
-    console.log('Chat agent received state:', state);
+    console.log('\n=== Chat Agent Start ===');
+    console.log('Message history length:', state.messages.length);
+    
     const result = await chatAgent.invoke(state, config);
-    console.log('Chat agent result:', result);
+    
+    console.log('Last message content:', result.messages[result.messages.length - 1].content);
+    console.log('=== Chat Agent End ===\n');
+    
     const lastMessage = result.messages[result.messages.length - 1];
     
-    // Return both AIMessage for user display and HumanMessage for internal communication
+    // Get unique messages from other agents
+    const previousMessages = state.messages.filter((msg, index, self) => 
+      (msg.content.toString().includes('"success": true') || 
+       msg.content.toString().includes('"temperature":')) &&
+      // Only keep the first occurrence of each message
+      self.findIndex(m => m.content.toString() === msg.content.toString()) === index
+    );
+    
     return {
       messages: [new AIMessage(lastMessage.content.toString())],
-      next: END,
+      next: END
     };
   };
 }; 

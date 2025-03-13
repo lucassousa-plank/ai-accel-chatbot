@@ -6,6 +6,7 @@ import { StateGraph, MemorySaver, Annotation, START, END } from "@langchain/lang
 import { v4 as uuidv4 } from "uuid";
 import { createWeatherAgentNode } from "@/backend/src/agents/weatherAgent";
 import { createChatAgent } from "@/backend/src/agents/chatAgent";
+import { createNewsAgentNode } from "@/backend/src/agents/newsAgent";
 import { createSupervisorChain, members } from "@/backend/src/agents/supervisorChain";
 
 // Initialize the chat model with streaming enabled
@@ -42,18 +43,24 @@ const AgentState = Annotation.Root({
 const createConversationAgent = async () => {
   console.log('Creating conversation agent');
   const weatherAgent = createWeatherAgentNode(baseModel);
+  const newsAgent = createNewsAgentNode(baseModel);
   const chatAgent = createChatAgent(chatModel);
   const supervisorChain = await createSupervisorChain(baseModel);
   
   // Define a new graph
   const workflow = new StateGraph(AgentState)
     .addNode("weather_reporter", weatherAgent)
+    .addNode("news_reporter", newsAgent)
     .addNode("chatbot", chatAgent)
     .addNode("supervisor", supervisorChain);
 
-  // Add edges from each agent back to supervisor
-  workflow.addEdge("weather_reporter", "chatbot");
+  // Add edges from each agent (except chatbot) back to supervisor
+  members.filter(member => member !== 'chatbot').forEach((member) => {
+    console.log('Adding edge from', member, 'to supervisor');
+    workflow.addEdge(member, "supervisor");
+  });
 
+  workflow.addEdge("chatbot", END);
   // Add conditional edges from supervisor to agents
   workflow.addConditionalEdges(
     "supervisor",
