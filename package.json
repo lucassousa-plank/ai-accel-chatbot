@@ -17,6 +17,7 @@
     "@langchain/openai": "^0.4.4",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
+    "@vercel/kv": "^3.0.0",
     "ai": "^4.1.54",
     "langchain": "^0.3.19",
     "langsmith": "^0.3.13",

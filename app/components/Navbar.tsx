@@ -21,7 +21,7 @@ export default function Navbar() {
           <div className="w-24"></div>
           {/* Centered title */}
           <div className="flex-1 flex justify-center">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">AI Chat Assistant</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Interview with the Vampire</h1>
           </div>
           {/* Theme toggle and sign out button */}
           <div className="w-24 flex justify-end items-center space-x-2">

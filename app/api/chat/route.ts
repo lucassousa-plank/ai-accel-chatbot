@@ -80,22 +80,42 @@ const createConversationAgent = async () => {
 };
 
 // Initialize the conversation agent
-let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>>;
-let currentState: { messages: BaseMessage[] } = {
-  messages: []
+export let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>>;
+
+// Function to clear the state
+export const clearState = async (threadId: string) => {
+  try {
+    console.log('Clearing state with thread ID:', threadId);
+    
+    // Clear the LangGraph state by setting empty state
+    await conversationAgent.updateState(
+      { configurable: { thread_id: threadId } },
+      { messages: [], next: END }
+    );
+    
+    console.log('State cleared successfully');
+  } catch (error) {
+    console.error('Error clearing state:', error);
+    throw error;
+  }
 };
 
 // Initialize the agent when the module loads
 createConversationAgent().then(agent => {
   conversationAgent = agent;
+  console.log('Conversation agent initialized');
 });
 
 export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
+    const { messages, thread_id } = await req.json();
     const lastMessage = messages[messages.length - 1] as VercelChatMessage;
+
+    if (!thread_id) {
+      return new Response('thread_id is required', { status: 400 });
+    }
 
     if (!lastMessage.content) {
       return new Response('Message content is required', { status: 400 });
@@ -105,25 +125,26 @@ export async function POST(req: NextRequest) {
       const response = createDataStreamResponse({
         execute: async (writer) => {
           try {
-            console.log('Current state before update:', currentState);
-            // Add the new message to the current state
-            currentState.messages.push(new HumanMessage(lastMessage.content));
-            console.log('State after adding new message:', currentState);
-
             let currentChunk = '';
-            const responseId = uuidv4(); // Generate one ID for the entire response
+            const messageId = uuidv4(); // Generate unique ID for this message
+
+            // Create initial state for this conversation
+            const initialState = {
+              messages: [new HumanMessage(lastMessage.content)],
+              next: START
+            };
 
             // Use the conversation agent with streaming and thread_id
-            const result = await conversationAgent.invoke(currentState, {
+            const result = await conversationAgent.invoke(initialState, {
               configurable: {
-                thread_id: responseId // Use the responseId as the thread_id
+                thread_id: thread_id
               },
               callbacks: [{
                 handleLLMNewToken(token: string) {
                   currentChunk += token;
                   const message = JSON.stringify({
-                    id: responseId,
-                    role: 'assistant',
+                    id: messageId,
+                    role: 'assistant', 
                     content: currentChunk
                   }) + '\n';
                   writer.write(`0:${message}\n`);
@@ -131,14 +152,7 @@ export async function POST(req: NextRequest) {
               }],
             });
 
-            console.log('Result from conversation agent:', result);
-            console.log('Next value in result:', result.next);
-
             writer.write('0:[DONE]\n\n');
-
-            // Update the current state with the complete message
-            currentState = result;
-            console.log('Updated current state:', currentState);
           } catch (error) {
             console.error('Error in stream execution:', error);
             throw error;

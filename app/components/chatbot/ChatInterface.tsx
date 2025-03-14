@@ -1,10 +1,23 @@
 'use client';
 
 import { useChat, Message } from '@ai-sdk/react';
+import { Button } from '@/app/components/ui/button';
+import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ChatInterface() {
+  const [threadId, setThreadId] = useState<string>('');
+
+  useEffect(() => {
+    // Generate a new thread ID when the component mounts
+    setThreadId(uuidv4());
+  }, []);
+
   const { messages, input, handleInputChange, handleSubmit, status, error, setMessages } = useChat({
     api: '/api/chat',
+    body: {
+      thread_id: threadId
+    },
     onResponse: async (response: Response) => {
       if (!response.ok) {
         console.error('Response not ok:', response.status, response.statusText);
@@ -24,7 +37,6 @@ export default function ChatInterface() {
           const { done, value } = await reader.read();
           
           if (done) {
-            console.log('Stream complete');
             break;
           }
 
@@ -37,10 +49,10 @@ export default function ChatInterface() {
             const data = line.replace(/^0:/, '');
             try {
               const parsed = JSON.parse(data);
-              setMessages((currentMessages) => [
-                ...currentMessages.filter(m => m.id !== parsed.id),
-                parsed
-              ]);
+              setMessages((currentMessages) => {
+                const filteredMessages = currentMessages.filter(m => m.id !== parsed.id);
+                return [...filteredMessages, parsed];
+              });
             } catch (e) {
               console.error('Error parsing chunk:', e);
             }
@@ -57,11 +69,46 @@ export default function ChatInterface() {
     }
   });
 
+  const clearHistory = async () => {
+    if (!threadId) return;
+    
+    try {
+      const response = await fetch("/api/chat/clear", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ thread_id: threadId })
+      });
+      
+      if (!response.ok) {
+        throw new Error("Failed to clear chat history");
+      }
+      
+      // Clear local state
+      setMessages([]);
+      // Generate new thread ID for next conversation
+      setThreadId(uuidv4());
+    } catch (error) {
+      console.error("Error clearing chat history:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col h-[80vh] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+      <div className="flex justify-between items-center mb-4">
+        <Button 
+          variant="outline" 
+          size="icon"
+          onClick={clearHistory}
+          className="text-red-500 hover:text-red-700"
+        >
+          Clear
+        </Button>
+      </div>
+
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
         {messages.map((message: Message) => (
-          console.log({message, status}),
           message.role !== 'system' && (
             <div
               key={message.id}
@@ -96,14 +143,12 @@ export default function ChatInterface() {
             rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={status === 'submitted' || status === 'streaming'}
         />
-        <button
+        <Button
           type="submit"
           disabled={status === 'submitted' || status === 'streaming'}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 
-            focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
         >
           Send
-        </button>
+        </Button>
       </form>
     </div>
   );
