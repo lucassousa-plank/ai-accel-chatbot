@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cinzel } from "next/font/google";
 import "./globals.css";
-import ThemeProvider from './components/ThemeProvider';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -27,9 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cinzel.variable} dark`}>
       <body className="min-h-screen bg-gray-950 text-gray-100 antialiased">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

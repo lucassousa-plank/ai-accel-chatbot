@@ -2,7 +2,6 @@
 
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
-import ThemeToggle from './ThemeToggle';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -44,7 +43,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-800 shadow-md">
+    <nav className="bg-gray-800 shadow-md">
       <div className="max-w-full mx-4 px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center">
           {/* Empty div for spacing */}
@@ -55,8 +54,8 @@ export default function Navbar() {
             Interview with the Vampire
           </h1>
           </div>
-          {/* Theme toggle and sign out button */}
-          <div className="w-24 flex justify-end items-center space-x-2">
+          {/* Sign out button */}
+          <div className="w-24 flex justify-end items-center">
             <ThemeProvider theme={muiTheme}>
               <Button 
                 variant="outlined"
@@ -80,7 +79,6 @@ export default function Navbar() {
                 Sign Out
               </Button>
             </ThemeProvider>
-            <ThemeToggle />
           </div>
         </div>
       </div>

@@ -3,23 +3,56 @@
 import { useChat, Message } from '@ai-sdk/react';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useTheme } from '../ThemeProvider';
 import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 export default function ChatInterface() {
   const [threadId, setThreadId] = useState<string>('');
-  const { theme } = useTheme();
 
-  // Create a custom MUI theme for our vampire aesthetic
+  const getAgentChips = (message: Message) => {
+    const chips = [
+      { label: "Nandor the Relentless", color: "primary" }
+    ];
+
+    // Check message content for agent indicators
+    if (message.content.includes('"temperature":') || 
+        message.content.includes('"weather":')) {
+      chips.push({ label: "Weather Agent", color: "info" });
+    }
+
+    if (message.content.includes('"title":') || 
+        message.content.includes('"news":')) {
+      chips.push({ label: "News Agent", color: "success" });
+    }
+
+    return chips as Array<{ label: string, color: "primary" | "info" | "success" }>;
+  };
+
+  // Create a custom MUI theme to match our vampire aesthetic
   const muiTheme = createTheme({
     palette: {
       mode: 'dark',
       primary: {
-        main: '#9333ea', // purple-600
+        main: '#9333ea', // purple-600 for Nandor
+      },
+      info: {
+        main: '#0ea5e9', // sky-500 for Weather
+      },
+      success: {
+        main: '#22c55e', // green-500 for News
       },
       error: {
         main: '#ef4444', // red-500
+      },
+      background: {
+        default: '#1f2937',
+        paper: '#111827',
+      },
+      text: {
+        primary: '#f3f4f6',
+        secondary: '#9ca3af',
       },
     },
     typography: {
@@ -37,6 +70,17 @@ export default function ChatInterface() {
             '&:hover': {
               borderWidth: '2px',
             },
+          },
+        },
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            fontFamily: 'var(--font-cinzel)',
+            fontSize: '0.75rem',
+          },
+          outlined: {
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
           },
         },
       },
@@ -166,6 +210,19 @@ export default function ChatInterface() {
                     message.role === 'user' ? 'items-end' : 'items-start'
                   }`}
                 >
+                  {message.role === 'assistant' && (
+                    <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
+                      {getAgentChips(message).map((chip, index) => (
+                        <Chip
+                          key={index}
+                          label={chip.label}
+                          variant="outlined"
+                          size="small"
+                          color={chip.color}
+                        />
+                      ))}
+                    </Stack>
+                  )}
                   <div
                     className={`rounded-lg p-4 ${
                       message.role === 'user'

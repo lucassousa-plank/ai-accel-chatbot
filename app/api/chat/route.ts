@@ -1,7 +1,7 @@
 import { Message as VercelChatMessage, createDataStreamResponse } from 'ai'
 import { NextRequest } from 'next/server'
 import { ChatOpenAI } from "@langchain/openai"
-import { HumanMessage, SystemMessage, BaseMessage } from "@langchain/core/messages"
+import { HumanMessage, BaseMessage } from "@langchain/core/messages"
 import { StateGraph, MemorySaver, Annotation, START, END } from "@langchain/langgraph"
 import { v4 as uuidv4 } from "uuid";
 import { createWeatherAgentNode } from "@/backend/src/agents/weatherAgent";
@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
             };
 
             // Use the conversation agent with streaming and thread_id
-            const result = await conversationAgent.invoke(initialState, {
+            await conversationAgent.invoke(initialState, {
               configurable: {
                 thread_id: thread_id
               },
