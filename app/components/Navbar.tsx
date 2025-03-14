@@ -3,10 +3,40 @@
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import ThemeToggle from './ThemeToggle';
+import Button from '@mui/material/Button';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 export default function Navbar() {
   const router = useRouter();
   const supabase = createClient();
+
+  // Create a custom MUI theme to match our vampire aesthetic
+  const muiTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#9333ea', // purple-600
+      },
+    },
+    typography: {
+      fontFamily: 'var(--font-cinzel)',
+      button: {
+        textTransform: 'none',
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderWidth: '2px',
+            '&:hover': {
+              borderWidth: '2px',
+            },
+          },
+        },
+      },
+    },
+  });
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -21,16 +51,35 @@ export default function Navbar() {
           <div className="w-24"></div>
           {/* Centered title */}
           <div className="flex-1 flex justify-center">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Interview with the Vampire</h1>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-400 via-purple-400 to-red-600 bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-cinzel)' }}>
+            Interview with the Vampire
+          </h1>
           </div>
           {/* Theme toggle and sign out button */}
           <div className="w-24 flex justify-end items-center space-x-2">
-            <button
-              onClick={handleSignOut}
-              className="px-3 py-1.5 text-sm whitespace-nowrap bg-gray-600 text-white rounded-lg hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
-            >
-              Sign Out
-            </button>
+            <ThemeProvider theme={muiTheme}>
+              <Button 
+                variant="outlined"
+                onClick={handleSignOut}
+                size="medium"
+                sx={{
+                  px: 3,
+                  py: 0.5,
+                  fontSize: '0.75rem',
+                  whiteSpace: 'nowrap',
+                  minWidth: 'auto',
+                  height: '32px',
+                  borderColor: 'rgba(147, 51, 234, 0.5)',
+                  color: 'text.primary',
+                  '&:hover': {
+                    borderColor: 'rgba(147, 51, 234, 0.8)',
+                    backgroundColor: 'rgba(147, 51, 234, 0.1)',
+                  },
+                }}
+              >
+                Sign Out
+              </Button>
+            </ThemeProvider>
             <ThemeToggle />
           </div>
         </div>

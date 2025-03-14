@@ -1,12 +1,47 @@
 'use client';
 
 import { useChat, Message } from '@ai-sdk/react';
-import { Button } from '@/app/components/ui/button';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useTheme } from '../ThemeProvider';
+import Button from '@mui/material/Button';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 export default function ChatInterface() {
   const [threadId, setThreadId] = useState<string>('');
+  const { theme } = useTheme();
+
+  // Create a custom MUI theme for our vampire aesthetic
+  const muiTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#9333ea', // purple-600
+      },
+      error: {
+        main: '#ef4444', // red-500
+      },
+    },
+    typography: {
+      fontFamily: 'var(--font-cinzel)',
+      button: {
+        textTransform: 'none',
+        fontSize: '1.125rem',
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderWidth: '2px',
+            '&:hover': {
+              borderWidth: '2px',
+            },
+          },
+        },
+      },
+    },
+  });
 
   useEffect(() => {
     // Generate a new thread ID when the component mounts
@@ -95,61 +130,87 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col h-[80vh] w-full max-w-2xl mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-      <div className="flex justify-between items-center mb-4">
-        <Button 
-          variant="outline" 
-          size="icon"
-          onClick={clearHistory}
-          className="text-red-500 hover:text-red-700"
-        >
-          Clear
-        </Button>
-      </div>
+    <ThemeProvider theme={muiTheme}>
+      <div className="flex flex-col h-[80vh] w-full max-w-2xl mx-auto p-6 bg-gray-900/50 backdrop-blur-sm rounded-lg shadow-2xl border border-purple-900/50">
+        <div className="flex justify-end mb-8 pb-4 border-b border-purple-900/30">
+          <Button 
+            variant="outlined"
+            onClick={clearHistory}
+            color="error"
+            size="small"
+            sx={{
+              px: 2,
+              fontSize: '0.875rem',
+              borderColor: 'rgba(127, 29, 29, 0.5)',
+              '&:hover': {
+                borderColor: 'rgba(127, 29, 29, 0.8)',
+                backgroundColor: 'rgba(127, 29, 29, 0.1)',
+              },
+            }}
+          >
+            Clear conversation
+          </Button>
+        </div>
 
-      <div className="flex-1 overflow-y-auto mb-4 space-y-4">
-        {messages.map((message: Message) => (
-          message.role !== 'system' && (
-            <div
-              key={message.id}
-              className={`flex pr-2 ${
-                message.role === 'user' ? 'justify-end' : 'justify-start'
-              }`}
-            >
-              <div className={`flex flex-col ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
-                <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
-                    message.role === 'user'
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white'
+        <div className="flex-1 overflow-y-auto mb-6 space-y-6 scrollbar-thin scrollbar-thumb-purple-900/50 scrollbar-track-gray-900/30 pr-4">
+          {messages.map((message: Message) => (
+            message.role !== 'system' && (
+              <div
+                key={message.id}
+                className={`flex ${
+                  message.role === 'user' ? 'justify-end' : 'justify-start'
+                } animate-in fade-in slide-in-from-bottom duration-300`}
+              >
+                <div 
+                  className={`flex flex-col max-w-[80%] ${
+                    message.role === 'user' ? 'items-end' : 'items-start'
                   }`}
                 >
-                  {message.content}
+                  <div
+                    className={`rounded-lg p-4 ${
+                      message.role === 'user'
+                        ? 'bg-purple-900/75 text-purple-50 shadow-purple-900/20'
+                        : 'bg-gray-800/75 text-red-50 border border-red-900/20'
+                    } shadow-lg font-inter backdrop-blur-sm`}
+                  >
+                    {message.content}
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        ))}
+            )
+          ))}
+        </div>
+
+        <form onSubmit={handleSubmit} className="flex gap-3">
+          <input
+            type="text"
+            value={input}
+            onChange={handleInputChange}
+            placeholder="Ask your question..."
+            className="flex-1 p-3 bg-gray-800/50 border border-purple-900/50 text-gray-100
+              placeholder-gray-500 rounded-lg focus:outline-none focus:ring-2 
+              focus:ring-purple-500/50 focus:border-transparent font-inter
+              backdrop-blur-sm transition-all duration-200"
+            disabled={status === 'submitted' || status === 'streaming'}
+          />
+          <Button
+            type="submit"
+            variant="outlined"
+            disabled={status === 'submitted' || status === 'streaming'}
+            sx={{
+              px: 3,
+              minWidth: '100px',
+              borderColor: 'rgba(147, 51, 234, 0.5)',
+              '&:hover': {
+                borderColor: 'rgba(147, 51, 234, 0.8)',
+                backgroundColor: 'rgba(147, 51, 234, 0.1)',
+              },
+            }}
+          >
+            {status === 'streaming' ? 'Thinking...' : 'Send'}
+          </Button>
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="flex gap-2">
-        <input
-          type="text"
-          value={input}
-          onChange={handleInputChange}
-          placeholder="Type your message..."
-          className="flex-1 p-2 border border-gray-300 dark:border-gray-600 
-            bg-white dark:bg-gray-700 text-gray-900 dark:text-white 
-            placeholder-gray-500 dark:placeholder-gray-400
-            rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          disabled={status === 'submitted' || status === 'streaming'}
-        />
-        <Button
-          type="submit"
-          disabled={status === 'submitted' || status === 'streaming'}
-        >
-          Send
-        </Button>
-      </form>
-    </div>
+    </ThemeProvider>
   );
 } 
