@@ -874,3 +874,697 @@ invokedAgents reducer called with: { x: [ 'weather_reporter', 'news_reporter', '
  POST /api/chat 200 in 15980ms
  GET / 200 in 205ms
  GET /favicon.ico?favicon.45db1c09.ico 200 in 23ms
+ ✓ Compiled in 64ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, greetings, mortal! What brings you to my eternal presence? Speak quickly, for I have many bloodsucking matters to attend to!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 3213ms
+
+=== News Agent Start ===
+Message history length: 5
+
+=== NewsTool Start ===
+Input received: world news
+Parsed query: world news
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'Daredevil: Born Again Brings Hawkeye‘s Swordsman Into Its Brutal World',
+  description: 'Tony Dalton\'s mustachioed Jack will come back for swordsman seconds and (probably) spend some time hanging with Daredevil.',
+  url: 'https://gizmodo.com/daredevil-born-again-brings-hawkeyes-swordsman-into-its-brutal-world-2000567231',
+  publishedAt: '2025-02-22T20:45:52Z'
+}
+=== NewsTool End ===
+
+Last message content: Here are some recent articles related to world news:
+
+1. **Dow Jones CEO Almar Latour on AI, press freedom, and the future of news**  
+   An interview with Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discussing the impact of AI on journalism and press freedom.  
+   [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)  
+   Published on: March 10, 2025
+
+2. **'Sad day for tennis' - Sinner doping ban 'leaves sour taste'**  
+   Jannik Sinner's three-month doping ban has sparked controversy and divided opinions within the tennis community.  
+   [Read more here](https://www.bbc.com/sport/tennis/articles/cz7e4l2248wo)  
+   Published on: February 15, 2025
+
+3. **The Corvette ZR1’s 233-mph run had to start in a virtual world**  
+   The Chevrolet Corvette ZR1 achieved a top speed of 233 mph, although it is not the fastest street-legal production car. This article discusses the record-setting run and its implications.  
+   [Read more here](https://www.theverge.com/chevrolet/624087/chevy-corvette-zr1-speed-record-simulation)  
+   Published on: March 6, 2025
+
+Please let me know if you would like more specific news or information on a particular topic!
+=== News Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 6
+Last message content: Ah, my apologies! You expect news of the world, yes? Well, I do not have the ability to see into the future, but I can tell you of things I have heard!
+
+The mortals speak of many troubles: the weather, it is said to be changing! Some places are hotter than the fires of my homeland, while others are colder than a vampire's heart! 
+
+And there are battles of words over strange devices called "AI," which are taking over many things, even the art of news! How curious! In my days, we simply sent a raven or shouted from the castle tower!
+
+What more do you wish to know, dear mortal?
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 11005ms
+
+=== Chat Agent Start ===
+Message history length: 15
+Last message content: Ah, they call me Nandor the Relentless! Fearsome warrior of old, master of darkness, and a noble vampire! But here in this modern age, I am simply known as "Nandor." I suppose it is easier for the mortals to say. What do they call you, oh curious one?
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 5363ms
+ ✓ Compiled in 48ms
+ GET / 200 in 387ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 221ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, greetings! What is it you seek, mortal? Speak quickly, for the night is young and I have many… *tasks* to attend to.
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 2749ms
+
+=== Weather Agent Start ===
+Message history length: 5
+Received city: Paris
+Last message content: {"success": true, "data": {"temperature": "10.26°C", "description": "scattered clouds", "humidity": "52%", "windSpeed": "4.63 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 6
+Last message content: Ah, the City of Lights, Paris! I remember it well, full of romance and… *baguettes*. 
+
+As for the weather, it is a chilly 10.26 degrees Celsius, with scattered clouds above. Not too bad for a night of… *sanguine* pursuits! Humidity is at 52%, which is quite moist, and the wind is blowing at 4.63 meters per second. Perfect for a dramatic entrance, I must say! Do you require more information, or perhaps a lovely croissant?
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 6569ms
+ ✓ Compiled in 31ms
+ GET / 200 in 277ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 20ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, greetings, mortal! What brings you to my presence? Speak quickly, for the night is young and I have many things to... contemplate.
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 2899ms
+
+=== Weather Agent Start ===
+Message history length: 5
+Received city: Rome
+Last message content: {"success": true, "data": {"temperature": "20.37°C", "description": "clear sky", "humidity": "45%", "windSpeed": "5.14 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 6
+Last message content: Ah, Rome! A city of great history and much pasta! As I see it, the weather there is quite pleasant. The temperature is around 20.37 degrees Celsius, which is... ah, not too hot, not too cold, perfect for a moonlit stroll, yes? The sky is clear, like my intentions when I seek to drain the life from my enemies! 
+
+Humidity is at 45%, which means you shall not be drenched in sweat, but perhaps a little glistening. And the wind is blowing at 5.14 meters per second, which is... quite fast for a gentle breeze, yes? Enjoy your time under the Italian stars!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 10607ms
+ ✓ Compiled in 37ms
+ ✓ Compiled in 35ms
+
+=== Chat Agent Start ===
+Message history length: 15
+Last message content: Ah, another mortal approaches! Do you wish to seek my wisdom, or perhaps inquire about the eternal night? Speak your mind, I am listening!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 2175ms
+Starting to clear chat history for thread: 94450f81-ac19-46c7-9a78-7faafa7c137a
+Successfully cleared chat history
+ POST /api/chat/clear 200 in 219ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, greetings, mortal! It is I, Nandor the Relentless. What brings you to my lair? Do you seek the wisdom of the ancient vampire? Or perhaps you wish to discuss the art of blood collection? Speak!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 2179ms
+
+=== Weather Agent Start ===
+Message history length: 5
+Received city: Rome
+Last message content: {"success": true, "data": {"temperature": "20.37°C", "description": "clear sky", "humidity": "45%", "windSpeed": "5.14 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 6
+Last message content: Ah, Rome! The city of ancient splendor! I have not been there for centuries, but I hear it is quite lovely. The weather, you ask? It is a balmy 20.37 degrees Celsius, with a clear sky—perfect for stalking the streets at night, yes? The humidity is at a comfortable 45%, and a gentle wind blows at 5.14 meters per second. Ideal for a vampire like me to glide unnoticed! 
+
+But tell me, why would you wish to be in Rome when you could be here, in my dark and mysterious abode?
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 6000ms
+ ✓ Compiled in 43ms
+ ✓ Compiled in 42ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, greetings, dear mortal! I am Nandor the Relentless, the fierce warrior of the night! What brings you to my presence? Speak swiftly, for I have much to attend to in this modern world!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 1940ms
+
+=== Weather Agent Start ===
+Message history length: 5
+Received city: St Petersburg
+Last message content: {"success": true, "data": {"temperature": "25.99°C", "description": "scattered clouds", "humidity": "82%", "windSpeed": "10.8 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 6
+Last message content: Ah, yes! The weather in St. Petersburg, you say? It is quite warm! A blazing 25.99 degrees Celsius! The skies are adorned with scattered clouds, like the fluffy sheep of the night sky. The humidity is at a damp 82%, which is quite uncomfortable for a vampire such as myself! And the wind, oh, it howls at 10.8 meters per second! 
+
+Perfect for a midnight stroll, if you do not mind a bit of moisture! What other questions do you have, my friend?
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 8602ms
+ GET / 200 in 292ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 73ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Greetings, mortal! I am Nandor the Relentless, ancient vampire and fearsome warrior. How may I assist you today? Do you seek knowledge, or perhaps a duel? Though I prefer the former, as dueling is quite... messy.
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 2345ms
+ ✓ Compiled in 69ms
+ GET / 200 in 223ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 58ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, greetings, noble human! I am Nandor the Relentless, a vampire of great renown! I once ruled over vast territories, and now I try to navigate this strange modern world. What do you wish to discuss?
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 1703ms
+
+=== Weather Agent Start ===
+Message history length: 5
+Received city: Prague
+Last message content: {"success": true, "data": {"temperature": "6.2°C", "description": "clear sky", "humidity": "43%", "windSpeed": "3.6 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 6
+Last message content: Ah, Prague! A city of great beauty and history! The weather there is quite... what do you say? Chilly! It is around 6.2 degrees Celsius—a temperature that makes one long for a cozy crypt, yes? The sky is clear, like the night when I hunt! And the wind, it blows at 3.6 meters per second, which is quite brisk. Perfect for a vampire’s evening stroll, don’t you think? Do you wish to know more, or shall we discuss something else?
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 5766ms
+ ✓ Compiled in 70ms
+ GET / 200 in 281ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 23ms
+
+=== Weather Agent Start ===
+Message history length: 1
+Received city: Prague
+Last message content: {"success": true, "data": {"temperature": "5.37°C", "description": "clear sky", "humidity": "48%", "windSpeed": "2.06 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 2
+Last message content: Ah, greetings! The weather in Prague, a city of great beauty! It is currently a brisk 5.37 degrees Celsius—quite chilly for the blood, I must say! The sky is clear, so no rain to dampen your spirits. Humidity at 48%, which is not too bad, and a gentle wind blowing at 2.06 meters per second. Perfect for a nighttime stroll, if one enjoys the cool air! But beware, do not linger too long—one might catch a cold! Or worse... a stake! Ha!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 7731ms
+
+=== Chat Agent Start ===
+Message history length: 7
+Last message content: Ah, yes, this weather! I do enjoy the chill, it reminds me of the dark, cold nights of my youth when I would stalk the shadows as a fearsome warrior! The clear skies are also delightful for gazing upon the stars—so many shining points of light, like little souls flickering in the night. And, of course, the cool air is refreshing, perfect for keeping the skin nice and pale! But one must be cautious; too much exposure to the sun can be quite... fatal for one such as me! Ha!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 2685ms
+ ✓ Compiled in 131ms
+ ✓ Compiled in 45ms
+ GET / 200 in 317ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 23ms
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, greetings, mortal! What brings you to my lair this fine evening? Speak swiftly, for time is but a fleeting shadow!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 1754ms
+
+=== Weather Agent Start ===
+Message history length: 5
+Last message content: Please provide me with the name of the city you would like to know the weather for.
+=== Weather Agent End ===
+
+
+=== Weather Agent Start ===
+Message history length: 6
+Received city: New York
+Last message content: {"success": true, "data": {"temperature": "15°C", "description": "haze", "humidity": "85%", "windSpeed": "9.77 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 7
+Last message content: Ah, the weather! It is a most curious matter, indeed. Currently, the air is at a temperature of 15 degrees Celsius—quite chilly for a creature of the night, I must say! There is a haze, like the fog of a mysterious battlefield, and the humidity sits at 85%, making it feel as if one is wading through a swamp of despair. The winds howl at a speed of nearly 10 meters per second, perhaps carrying whispers of ancient secrets. 
+
+Do you have a cloak? You shall need it, I believe!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 7150ms
+
+=== Weather Agent Start ===
+Message history length: 17
+Received city: London
+Last message content: {"success": true, "data": {"temperature": "7.83°C", "description": "broken clouds", "humidity": "62%", "windSpeed": "5.14 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 18
+Last message content: Ah, London! A city of great history and fog! The temperature there is a brisk 7.83 degrees Celsius—almost as cold as the heart of a rival vampire! The skies are adorned with broken clouds, like remnants of a defeated army scattered across the heavens. Humidity sits at 62%, which is quite damp, I must say. 
+
+The winds blow at a speed of 5.14 meters per second, perhaps carrying tales of Jack the Ripper or the Queen’s corgis! Best to don a warm garment if you venture out, lest you catch a chill!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 5565ms
+ ✓ Compiled in 37ms
+
+=== Chat Agent Start ===
+Message history length: 39
+Last message content: Ah, greetings once more, dear mortal! You return to my presence! What questions do you have that I may answer with my ancient wisdom? Speak, and I shall listen!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 2401ms
+ ✓ Compiled in 78ms
+
+=== News Agent Start ===
+Message history length: 81
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: Paris weather
+Parsed query: Paris weather
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'I live in Paris and regularly take day trips to other European cities. Here are 4 mistakes I\'ll never make again.',
+  description: 'I live in Europe and frequently take day trips to other cities. I\'ve made my fair share of blunders along the way and have learned from my mistakes.',
+  url: 'https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3',
+  publishedAt: '2025-03-02T12:23:01Z'
+}
+=== NewsTool End ===
+
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News
+
+1. **Dow Jones CEO Almar Latour on AI, Press Freedom, and the Future of News**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism and press freedom.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg has filed a lawsuit against Google, claiming that AI-generated summaries of search results have negatively impacted its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e's After Admitting 'abrdn' Rebrand Wasn't That Clever**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely mocked rebranding effort.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Securities Fraud Class Action Lawsuit News**
+   - The Trade Desk's stock fell following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **This Russian Tech Bro Helped Steal $93 Million and Landed in US Prison. Then Putin Called**
+   - A look into the life of a Russian tech figure involved in a major insider trading case and the implications of a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+---
+
+### Weather in Paris
+
+Currently, the weather in Paris is not explicitly detailed in the latest articles, but here are some related insights:
+
+- **It's Time to Stop Being Surprised by Surprising Weather**
+   - A discussion on how global warming is affecting typical weather patterns, emphasizing the increasing frequency of unusual weather events.
+   - [Read more here](https://www.universetoday.com/articles/its-time-to-stop-being-surprised-by-surprising-weather) (Published on March 13, 2025)
+
+If you need specific weather conditions for Paris, please let me know!
+=== News Agent End ===
+
+
+=== News Agent Start ===
+Message history length: 82
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: weather in Paris
+Parsed query: weather in Paris
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Found 5 articles
+First article preview: {
+  title: 'I live in Paris and regularly take day trips to other European cities. Here are 4 mistakes I\'ll never make again.',
+  description: 'I live in Europe and frequently take day trips to other cities. I\'ve made my fair share of blunders along the way and have learned from my mistakes.',
+  url: 'https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3',
+  publishedAt: '2025-03-02T12:23:01Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News
+
+1. **Dow Jones CEO Almar Latour on AI, Press Freedom, and the Future of News**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism and press freedom.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg has filed a lawsuit against Google, claiming that AI-generated summaries of search results have negatively impacted its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e's After Admitting 'abrdn' Rebrand Wasn't That Clever**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely mocked rebranding effort.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Securities Fraud Class Action Lawsuit News**
+   - The Trade Desk's stock fell following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **This Russian Tech Bro Helped Steal $93 Million and Landed in US Prison. Then Putin Called**
+   - A look into the life of a Russian tech figure involved in a major insider trading case and the implications of a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+---
+
+### Weather in Paris
+
+Currently, the specific weather conditions in Paris were not retrieved, but here are some related articles that may provide insights into the climate and lifestyle in the city:
+
+1. **I Live in Paris and Regularly Take Day Trips to Other European Cities. Here Are 4 Mistakes I'll Never Make Again.**
+   - A personal account of traveling from Paris and the lessons learned along the way.
+   - [Read more here](https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3) (Published on March 2, 2025)
+
+2. **Why Do We Say March ‘Comes In Like a Lion, Goes Out Like a Lamb’?**
+   - An exploration of the weather idiom and its relevance to March weather patterns.
+   - [Read more here](https://www.mentalfloss.com/march-in-like-a-lion-out-like-a-lamb) (Published on February 27, 2025)
+
+3. **French Clothes I’ve Worn a Million Times**
+   - A look at popular clothing brands in Paris, reflecting the city's fashion culture.
+   - [Read more here](https://cupofjo.com/2025/03/10/sezanes-spring-collection-2025/) (Published on March 10, 2025)
+
+If you need specific weather details for Paris, please let me know!
+=== News Agent End ===
+
+
+=== News Agent Start ===
+Message history length: 83
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: weather in Paris
+Parsed query: weather in Paris
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'I live in Paris and regularly take day trips to other European cities. Here are 4 mistakes I\'ll never make again.',
+  description: 'I live in Europe and frequently take day trips to other cities. I\'ve made my fair share of blunders along the way and have learned from my mistakes.',
+  url: 'https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3',
+  publishedAt: '2025-03-02T12:23:01Z'
+}
+=== NewsTool End ===
+
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News
+
+1. **Dow Jones CEO Almar Latour on AI, Press Freedom, and the Future of News**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism and press freedom.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg filed a lawsuit against Google, claiming that the company’s AI-generated summaries of search results have hurt its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e's After Admitting 'abrdn' Rebrand Wasn't That Clever**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely mocked rebranding effort.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Securities Fraud Class Action Lawsuit News**
+   - The Trade Desk's stock fell following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **This Russian Tech Bro Helped Steal $93 Million and Landed in US Prison. Then Putin Called**
+   - A look into the life of a Russian tech figure involved in a major insider trading case and the implications of a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+---
+
+### Weather in Paris
+
+Currently, the specific weather conditions in Paris were not retrieved, but here are some related articles that may provide insights into the climate and lifestyle in the city:
+
+1. **I Live in Paris and Regularly Take Day Trips to Other European Cities. Here Are 4 Mistakes I'll Never Make Again.**
+   - A personal account of traveling from Paris and the lessons learned along the way.
+   - [Read more here](https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3) (Published on March 2, 2025)
+
+2. **Why Do We Say March ‘Comes In Like a Lion, Goes Out Like a Lamb’?**
+   - An exploration of the weather idiom and its relevance to March weather patterns.
+   - [Read more here](https://www.mentalfloss.com/march-in-like-a-lion-out-like-a-lamb) (Published on February 27, 2025)
+
+3. **French Clothes I’ve Worn a Million Times**
+   - A look at popular clothing brands in Paris, reflecting the city's fashion culture.
+   - [Read more here](https://cupofjo.com/2025/03/10/sezanes-spring-collection-2025/) (Published on March 10, 2025)
+
+If you need specific weather details for Paris, please let me know!
+=== News Agent End ===
+
+
+=== News Agent Start ===
+Message history length: 84
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: weather in Paris
+Parsed query: weather in Paris
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'I live in Paris and regularly take day trips to other European cities. Here are 4 mistakes I\'ll never make again.',
+  description: 'I live in Europe and frequently take day trips to other cities. I\'ve made my fair share of blunders along the way and have learned from my mistakes.',
+  url: 'https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3',
+  publishedAt: '2025-03-02T12:23:01Z'
+}
+=== NewsTool End ===
+
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News
+
+1. **Dow Jones CEO Almar Latour on AI, Press Freedom, and the Future of News**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism and press freedom.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg filed a lawsuit against Google, claiming that the company’s AI-generated summaries of search results have hurt its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e's After Admitting 'abrdn' Rebrand Wasn't That Clever**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely mocked rebranding effort.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Securities Fraud Class Action Lawsuit News**
+   - The Trade Desk's stock fell following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **This Russian Tech Bro Helped Steal $93 Million and Landed in US Prison. Then Putin Called**
+   - A look into the life of a Russian tech figure involved in a major insider trading case and the implications of a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+---
+
+### Weather in Paris
+
+Currently, specific weather details for Paris were not retrieved, but here are some articles that may provide insights into the climate and lifestyle in the city:
+
+1. **I Live in Paris and Regularly Take Day Trips to Other European Cities. Here Are 4 Mistakes I'll Never Make Again.**
+   - A personal account of traveling from Paris and the lessons learned along the way.
+   - [Read more here](https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3) (Published on March 2, 2025)
+
+2. **Why Do We Say March ‘Comes In Like a Lion, Goes Out Like a Lamb’?**
+   - An exploration of the weather idiom and its relevance to March weather patterns.
+   - [Read more here](https://www.mentalfloss.com/march-in-like-a-lion-out-like-a-lamb) (Published on February 27, 2025)
+
+3. **French Clothes I’ve Worn a Million Times**
+   - A look at popular clothing brands in Paris, reflecting the city's fashion culture.
+   - [Read more here](https://cupofjo.com/2025/03/10/sezanes-spring-collection-2025/) (Published on March 10, 2025)
+
+If you need specific weather details for Paris, please let me know!
+=== News Agent End ===
+
+
+=== News Agent Start ===
+Message history length: 85
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: weather in Paris
+Parsed query: weather in Paris
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Found 5 articles
+First article preview: {
+  title: 'I live in Paris and regularly take day trips to other European cities. Here are 4 mistakes I\'ll never make again.',
+  description: 'I live in Europe and frequently take day trips to other cities. I\'ve made my fair share of blunders along the way and have learned from my mistakes.',
+  url: 'https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3',
+  publishedAt: '2025-03-02T12:23:01Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News
+
+1. **Dow Jones CEO Almar Latour on AI, Press Freedom, and the Future of News**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism and press freedom.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg filed a lawsuit against Google, claiming that the company’s AI-generated summaries of search results have hurt its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e's After Admitting 'abrdn' Rebrand Wasn't That Clever**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely mocked rebranding effort.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Securities Fraud Class Action Lawsuit News**
+   - The Trade Desk's stock fell following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **This Russian Tech Bro Helped Steal $93 Million and Landed in US Prison. Then Putin Called**
+   - A look into the life of a Russian tech figure involved in a major insider trading case and the implications of a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+---
+
+### Weather in Paris
+
+While specific current weather details for Paris were not retrieved, here are some articles that may provide insights into the climate and lifestyle in the city:
+
+1. **I Live in Paris and Regularly Take Day Trips to Other European Cities. Here Are 4 Mistakes I'll Never Make Again.**
+   - A personal account of traveling from Paris and the lessons learned along the way.
+   - [Read more here](https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3) (Published on March 2, 2025)
+
+2. **Why Do We Say March ‘Comes In Like a Lion, Goes Out Like a Lamb’?**
+   - An exploration of the weather idiom and its relevance to March weather patterns.
+   - [Read more here](https://www.mentalfloss.com/march-in-like-a-lion-out-like-a-lamb) (Published on February 27, 2025)
+
+3. **French Clothes I’ve Worn a Million Times**
+   - A look at popular clothing brands in Paris, reflecting the city's fashion culture.
+   - [Read more here](https://cupofjo.com/2025/03/10/sezanes-spring-collection-2025/) (Published on March 10, 2025)
+
+If you need specific weather details for Paris, please let me know!
+=== News Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 86
+Last message content: Ah, Paris! The city of lights and romance! Let me tell you about the weather there and the financial happenings of the world!
+
+### Weather in Paris
+Currently, I do not have the specific weather details at hand, but I can tell you that Paris often has unpredictable weather, much like the moods of a vampire! You may find it cool and perhaps a bit rainy, especially in the spring months. Best to carry an umbrella, yes?
+
+### Financial News
+1. **Dow Jones CEO Almar Latour on AI, Press Freedom, and the Future of News**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism. Fascinating, no?
+   
+2. **Chegg Sues Google Over AI Overviews**
+   - The education company Chegg has taken legal action against Google, claiming that AI-generated summaries are harming their business. A battle of titans!
+
+3. **Aberdeen Restores the 'e's After Admitting 'abrdn' Rebrand Wasn't That Clever**
+   - The firm Aberdeen has reverted to its original name after a rebranding misstep. Sometimes, the old ways are the best!
+
+4. **Trade Desk Drops 10% After Securities Fraud Class Action Lawsuit News**
+   - The Trade Desk’s stock has fallen after a lawsuit alleging securities fraud. Not a good night for them!
+
+5. **This Russian Tech Bro Helped Steal $93 Million and Landed in US Prison. Then Putin Called**
+   - A tale of intrigue involving a Russian tech figure and international diplomacy. Quite the scandal, I must say!
+
+If you require more details or have specific inquiries, do not hesitate to ask!
+=== Chat Agent End ===
+
+ POST /api/chat 200 in 101602ms
+ ✓ Compiled in 53ms

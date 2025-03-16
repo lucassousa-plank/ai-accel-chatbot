@@ -146,6 +146,7 @@ export async function POST(req: NextRequest) {
           try {
             let currentChunk = '';
             const messageId = uuidv4(); // Generate unique ID for this message
+            let currentAgent: string | null = null;
 
             // Create initial state for this conversation
             const initialState = {
@@ -165,7 +166,10 @@ export async function POST(req: NextRequest) {
                   const message = JSON.stringify({
                     id: messageId,
                     role: 'assistant', 
-                    content: currentChunk
+                    content: currentChunk,
+                    metadata: {
+                      isThinking: true // Always thinking while streaming
+                    }
                   }) + '\n';
                   writer.write(`0:${message}\n`);
                 }
@@ -178,7 +182,8 @@ export async function POST(req: NextRequest) {
               role: 'assistant',
               content: currentChunk,
               metadata: {
-                invokedAgents: result.invokedAgents || []
+                invokedAgents: result.invokedAgents || [],
+                isThinking: false // Not thinking anymore, we have the final answer
               }
             }) + '\n';
             writer.write(`0:${finalMessage}\n`);

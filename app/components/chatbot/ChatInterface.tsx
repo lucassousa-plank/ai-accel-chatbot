@@ -1,7 +1,7 @@
 'use client';
 
 import { useChat, Message } from '@ai-sdk/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
@@ -11,23 +11,39 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 interface ExtendedMessage extends Message {
   metadata?: {
     invokedAgents: string[];
+    currentAgent?: string;
+    isThinking?: boolean;
   };
 }
 
 export default function ChatInterface() {
   const [threadId, setThreadId] = useState<string>('');
+  const [localInput, setLocalInput] = useState('');
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const getAgentChips = (message: ExtendedMessage) => {
     const invokedAgents = message.metadata?.invokedAgents || [];
     const agentLabels: { [key: string]: { label: string, color: "primary" | "info" | "success" } } = {
       'chatbot': { label: "Nandor the Relentless", color: "primary" },
-      'weather_reporter': { label: "Weather Agent", color: "info" },
-      'news_reporter': { label: "News Agent", color: "success" }
+      'weather_reporter': { label: "Consulted Weather Agent", color: "info" },
+      'news_reporter': { label: "Consulted News Agent", color: "success" }
     };
 
-    return invokedAgents
+    // First, get all the chips
+    const chips = invokedAgents
       .map((agent: string) => agentLabels[agent])
       .filter(Boolean);
+
+    // Sort the array to put Nandor first
+    return chips.sort((a, b) => {
+      if (a.label === "Nandor the Relentless") return -1;
+      if (b.label === "Nandor the Relentless") return 1;
+      return 0;
+    });
   };
 
   // Create a custom MUI theme to match our vampire aesthetic
@@ -42,6 +58,9 @@ export default function ChatInterface() {
       },
       success: {
         main: '#22c55e', // green-500 for News
+      },
+      warning: {
+        main: '#dc2626', // blood red for thinking state
       },
       error: {
         main: '#ef4444', // red-500
@@ -78,6 +97,7 @@ export default function ChatInterface() {
           root: {
             fontFamily: 'var(--font-cinzel)',
             fontSize: '0.75rem',
+            fontWeight: 700,
           },
           outlined: {
             backgroundColor: 'rgba(0, 0, 0, 0.2)',
@@ -92,7 +112,7 @@ export default function ChatInterface() {
     setThreadId(uuidv4());
   }, []);
 
-  const { messages, input, handleInputChange, handleSubmit, status, error, setMessages } = useChat({
+  const { messages, status, error, setMessages } = useChat({
     api: '/api/chat',
     body: {
       thread_id: threadId
@@ -147,6 +167,91 @@ export default function ChatInterface() {
       console.error('Chat error:', error);
     }
   });
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]); // Scroll when messages change
+
+  const handleCustomSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!localInput.trim()) return;
+
+    // Add user message
+    const userMessage: ExtendedMessage = {
+      id: uuidv4(),
+      content: localInput,
+      role: 'user'
+    };
+
+    // Clear input immediately after submission
+    setLocalInput('');
+
+    // Add initial assistant message with thinking state
+    const assistantMessage: ExtendedMessage = {
+      id: uuidv4(),
+      content: '',
+      role: 'assistant',
+      metadata: {
+        isThinking: true,
+        invokedAgents: []
+      }
+    };
+
+    setMessages((messages) => [...messages, userMessage, assistantMessage]);
+
+    // Make the API call
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [...messages, userMessage],
+          thread_id: threadId
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+
+      if (!reader) {
+        throw new Error('No reader available');
+      }
+
+      while (true) {
+        const { done, value } = await reader.read();
+        
+        if (done) {
+          break;
+        }
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n').filter(Boolean);
+        
+        for (const line of lines) {
+          if (line.includes('[DONE]')) continue;
+          
+          const data = line.replace(/^0:/, '');
+          try {
+            const parsed = JSON.parse(data);
+            setMessages((currentMessages) => {
+              const filteredMessages = currentMessages.filter(m => m.id !== parsed.id && m.id !== assistantMessage.id);
+              return [...filteredMessages, parsed];
+            });
+          } catch (e) {
+            console.error('Error parsing chunk:', e);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error in chat:', error);
+    }
+  };
 
   const clearHistory = async () => {
     if (!threadId) return;
@@ -212,15 +317,30 @@ export default function ChatInterface() {
                 >
                   {message.role === 'assistant' && (
                     <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
-                      {getAgentChips(message).map((chip, index) => (
+                      {message.metadata?.isThinking ? (
                         <Chip
-                          key={index}
-                          label={chip.label}
+                          label="Consulting the Dark Powers..."
                           variant="outlined"
                           size="small"
-                          color={chip.color}
+                          color="warning"
+                          sx={{
+                            borderColor: 'rgba(220, 38, 38, 0.5)', // blood red with opacity
+                            '& .MuiChip-label': {
+                              color: '#dc2626', // blood red text
+                            }
+                          }}
                         />
-                      ))}
+                      ) : (
+                        getAgentChips(message).map((chip, index) => (
+                          <Chip
+                            key={index}
+                            label={chip.label}
+                            variant="outlined"
+                            size="small"
+                            color={chip.color}
+                          />
+                        ))
+                      )}
                     </Stack>
                   )}
                   <div
@@ -236,13 +356,14 @@ export default function ChatInterface() {
               </div>
             )
           ))}
+          <div ref={messagesEndRef} /> {/* Scroll anchor */}
         </div>
 
-        <form onSubmit={handleSubmit} className="flex gap-3">
+        <form onSubmit={handleCustomSubmit} className="flex gap-3">
           <input
             type="text"
-            value={input}
-            onChange={handleInputChange}
+            value={localInput}
+            onChange={(e) => setLocalInput(e.target.value)}
             placeholder="Ask your question..."
             className="flex-1 p-3 bg-gray-800/50 border border-purple-900/50 text-gray-100
               placeholder-gray-500 rounded-lg focus:outline-none focus:ring-2 
