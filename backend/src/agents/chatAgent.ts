@@ -32,18 +32,12 @@ Always respond as Nandor, even when explaining technical information or weather 
     console.log('=== Chat Agent End ===\n');
     
     const lastMessage = result.messages[result.messages.length - 1];
-    
-    // Get unique messages from other agents
-    const previousMessages = state.messages.filter((msg, index, self) => 
-      (msg.content.toString().includes('"success": true') || 
-       msg.content.toString().includes('"temperature":')) &&
-      // Only keep the first occurrence of each message
-      self.findIndex(m => m.content.toString() === msg.content.toString()) === index
-    );
+
     
     return {
       messages: [new AIMessage(lastMessage.content.toString())],
-      next: END
+      next: END,
+      invokedAgents: "chatbot"
     };
   };
 }; 

@@ -4,1096 +4,873 @@
 
    ▲ Next.js 15.2.1 (Turbopack)
    - Local:        http://localhost:3000
-   - Network:      http://192.168.0.11:3000
+   - Network:      http://192.168.0.9:3000
    - Environments: .env.local
 
  ✓ Starting...
- ✓ Compiled in 207ms
- ✓ Ready in 897ms
+ ✓ Compiled in 179ms
+ ✓ Ready in 841ms
  ○ Compiling / ...
- ✓ Compiled / in 1450ms
- GET / 200 in 1676ms
- ✓ Compiled /favicon.ico in 243ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 282ms
+ ✓ Compiled / in 1939ms
+ GET / 200 in 2185ms
+ ✓ Compiled /favicon.ico in 238ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 271ms
  ○ Compiling /api/chat ...
- ✓ Compiled /api/chat in 684ms
+ ✓ Compiled /api/chat in 710ms
 Creating conversation agent
 Adding edge from weather_reporter to supervisor
 Adding edge from news_reporter to supervisor
 Conversation agent initialized
-Using thread ID: undefined
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
- POST /api/chat 200 in 4533ms
- GET / 200 in 45ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 18ms
-Using thread ID: undefined
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
- POST /api/chat 200 in 2280ms
-Using thread ID: undefined
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
- POST /api/chat 200 in 5346ms
- GET / 200 in 55ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 16ms
-Creating conversation agent
-Adding edge from weather_reporter to supervisor
-Adding edge from news_reporter to supervisor
-Conversation agent initialized
-Using conversation ID: caa88c10-f84d-41da-8a81-8d492aa00a89
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, Lucas! I am Nandor the Relentless, master of the night and fearsome warrior of old! What brings you to my presence? Speak quickly, for I have much to do—like pondering the mysteries of the modern world and how to procure more blood.
-=== Chat Agent End ===
-
-Result from conversation agent: {
+Initial state: {
   messages: [
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Hi my name is Lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '02feb4a8-810e-490c-bae8-832a3b684275'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi my name is Lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '02feb4a8-810e-490c-bae8-832a3b684275'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless, master of the night and fearsome warrior of old! What brings you to my presence? Speak quickly, for I have much to do—like pondering the mysteries of the modern world and how to procure more blood.',
-  tool_calls: [],
-  invalid_tool_calls: [],
+  content: 'Hi there, tell me the weather of rome',
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless, master of the night and fearsome warrior of old! What brings you to my presence? Speak quickly, for I have much to do—like pondering the mysteries of the modern world and how to procure more blood.',
+  content: 'Hi there, tell me the weather of rome',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
+  id: undefined
 }
 ],
-  next: '__end__'
+  next: '__start__',
+  invokedAgents: []
 }
-Next value in result: __end__
- POST /api/chat 200 in 2918ms
-Using conversation ID: afd1648a-e14e-4303-b614-85909a6a2952
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, my dear friend, I do not possess the power to read minds, unlike some ancient beings! But, perhaps you shall tell me your name, and I shall remember it for eternity… or at least until the next night!
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Whats my name?',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'bd019449-b903-41f2-b902-ee9d4531d9e4'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Whats my name?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'bd019449-b903-41f2-b902-ee9d4531d9e4'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, my dear friend, I do not possess the power to read minds, unlike some ancient beings! But, perhaps you shall tell me your name, and I shall remember it for eternity… or at least until the next night!',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, my dear friend, I do not possess the power to read minds, unlike some ancient beings! But, perhaps you shall tell me your name, and I shall remember it for eternity… or at least until the next night!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
+invokedAgents reducer called with: { x: [], y: [] }
+Added agent array: [] Result: []
+Supervisor state before routing: { next: 'weather_reporter', invokedAgents: [], messages: 1 }
+Adding agent to invoked list: weather_reporter
+Supervisor state after update: {
+  next: 'weather_reporter',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 1
 }
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 1594ms
- ✓ Compiled in 25ms
- ✓ Compiled in 28ms
- ✓ Compiled in 94ms
- GET / 200 in 188ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 17ms
-Creating conversation agent
-Adding edge from weather_reporter to supervisor
-Adding edge from news_reporter to supervisor
-Conversation agent initialized
-Using conversation ID: e707368d-bc5c-47c2-a93d-d1cc2539dc00
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, Lucas! I am Nandor the Relentless. It is a pleasure to meet you, though I must ask—are you a friend or a foe? I prefer my friends to not be made of garlic! What brings you to my presence?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi there, im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7cc1a79a-c6b3-4cb5-81bb-2eb9f3bd7568'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi there, im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7cc1a79a-c6b3-4cb5-81bb-2eb9f3bd7568'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless. It is a pleasure to meet you, though I must ask—are you a friend or a foe? I prefer my friends to not be made of garlic! What brings you to my presence?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless. It is a pleasure to meet you, though I must ask—are you a friend or a foe? I prefer my friends to not be made of garlic! What brings you to my presence?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 3142ms
-Using conversation ID: e707368d-bc5c-47c2-a93d-d1cc2539dc00
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 3
-Last message content: Ah, Lucas! Yes, I remember now. A fine name indeed! It rolls off the tongue like a fine wine... or blood, which is more my style. How can I assist you today, dear Lucas?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi there, im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7cc1a79a-c6b3-4cb5-81bb-2eb9f3bd7568'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi there, im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7cc1a79a-c6b3-4cb5-81bb-2eb9f3bd7568'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless. It is a pleasure to meet you, though I must ask—are you a friend or a foe? I prefer my friends to not be made of garlic! What brings you to my presence?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'a83f3033-b679-45b9-b138-b047ac8cafb3'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless. It is a pleasure to meet you, though I must ask—are you a friend or a foe? I prefer my friends to not be made of garlic! What brings you to my presence?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'a83f3033-b679-45b9-b138-b047ac8cafb3',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'tell me my name',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '0775e92c-eb0e-4eda-a571-6ef2b09da686'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'tell me my name',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '0775e92c-eb0e-4eda-a571-6ef2b09da686'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Lucas! Yes, I remember now. A fine name indeed! It rolls off the tongue like a fine wine... or blood, which is more my style. How can I assist you today, dear Lucas?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Lucas! Yes, I remember now. A fine name indeed! It rolls off the tongue like a fine wine... or blood, which is more my style. How can I assist you today, dear Lucas?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 1938ms
-Using conversation ID: e707368d-bc5c-47c2-a93d-d1cc2539dc00
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 5
-Last message content: Vanishing, you say? Like a mysterious mist or a trick of the light! Perhaps it is the work of a dark sorcerer! Or maybe a technical malady of this... what do you call it? *Technology!* Yes, this cursed device of modernity! If only I had my ancient scrolls. But fear not, Lucas! I am here, and I shall not vanish from your sight! What else do you wish to know?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi there, im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7cc1a79a-c6b3-4cb5-81bb-2eb9f3bd7568'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi there, im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7cc1a79a-c6b3-4cb5-81bb-2eb9f3bd7568'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless. It is a pleasure to meet you, though I must ask—are you a friend or a foe? I prefer my friends to not be made of garlic! What brings you to my presence?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'a83f3033-b679-45b9-b138-b047ac8cafb3'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless. It is a pleasure to meet you, though I must ask—are you a friend or a foe? I prefer my friends to not be made of garlic! What brings you to my presence?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'a83f3033-b679-45b9-b138-b047ac8cafb3',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'tell me my name',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '0775e92c-eb0e-4eda-a571-6ef2b09da686'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'tell me my name',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '0775e92c-eb0e-4eda-a571-6ef2b09da686'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Lucas! Yes, I remember now. A fine name indeed! It rolls off the tongue like a fine wine... or blood, which is more my style. How can I assist you today, dear Lucas?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'ee265e53-e901-439e-ab1a-244f0ddb571b'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Lucas! Yes, I remember now. A fine name indeed! It rolls off the tongue like a fine wine... or blood, which is more my style. How can I assist you today, dear Lucas?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'ee265e53-e901-439e-ab1a-244f0ddb571b',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'why is your message vanishing',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '73364b71-4a2e-435a-9880-952fad1eacf2'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'why is your message vanishing',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '73364b71-4a2e-435a-9880-952fad1eacf2'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Vanishing, you say? Like a mysterious mist or a trick of the light! Perhaps it is the work of a dark sorcerer! Or maybe a technical malady of this... what do you call it? *Technology!* Yes, this cursed device of modernity! If only I had my ancient scrolls. But fear not, Lucas! I am here, and I shall not vanish from your sight! What else do you wish to know?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Vanishing, you say? Like a mysterious mist or a trick of the light! Perhaps it is the work of a dark sorcerer! Or maybe a technical malady of this... what do you call it? *Technology!* Yes, this cursed device of modernity! If only I had my ancient scrolls. But fear not, Lucas! I am here, and I shall not vanish from your sight! What else do you wish to know?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 2807ms
- ✓ Compiled in 22ms
- ✓ Compiled in 27ms
- GET / 200 in 204ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 20ms
-Using conversation ID: a9510d83-3806-4b06-8038-2d4ba59e289a
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, hello, Lucas! I am Nandor the Relentless, a fearsome warrior and a vampire of great repute. What does a mortal like you desire from one such as I? Do you seek wisdom, or perhaps a battle of wits? Speak!
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'hi im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'e9f2efb7-2ad5-4b8c-8354-4492f33198bf'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'hi im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'e9f2efb7-2ad5-4b8c-8354-4492f33198bf'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, hello, Lucas! I am Nandor the Relentless, a fearsome warrior and a vampire of great repute. What does a mortal like you desire from one such as I? Do you seek wisdom, or perhaps a battle of wits? Speak!',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, hello, Lucas! I am Nandor the Relentless, a fearsome warrior and a vampire of great repute. What does a mortal like you desire from one such as I? Do you seek wisdom, or perhaps a battle of wits? Speak!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 1958ms
- ✓ Compiled in 23ms
- GET / 200 in 167ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 16ms
- ○ Compiling /api/chat/clear ...
- ✓ Compiled /api/chat/clear in 690ms
-Creating conversation agent
-Adding edge from weather_reporter to supervisor
-Adding edge from news_reporter to supervisor
-Conversation agent initialized
-Starting to clear chat history for thread: 1b678323-dafe-46d2-b2c1-6b46fb97d444
-Clearing state with thread ID: 1b678323-dafe-46d2-b2c1-6b46fb97d444
-State cleared successfully
-Successfully cleared chat history
- POST /api/chat/clear 200 in 839ms
-Starting to clear chat history for thread: e0481975-20cf-40fb-863a-6ff511414262
-Clearing state with thread ID: e0481975-20cf-40fb-863a-6ff511414262
-State cleared successfully
-Successfully cleared chat history
- POST /api/chat/clear 200 in 22ms
- ✓ Compiled in 24ms
- ✓ Compiled in 21ms
- GET / 200 in 164ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 17ms
- GET / 200 in 43ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 17ms
-Using conversation ID: 34662bbc-76bf-4c24-8e27-300f423ad5a7
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Greetings, Lucas! I am Nandor the Relentless, ancient vampire and former warrior of the night! What brings you to my presence? Are you here to seek wisdom or perhaps a blood pact? Ah, but I jest! Tell me your desires!
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'ba62b7f1-512d-4414-bcbb-2f9c288e25f9'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'ba62b7f1-512d-4414-bcbb-2f9c288e25f9'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Greetings, Lucas! I am Nandor the Relentless, ancient vampire and former warrior of the night! What brings you to my presence? Are you here to seek wisdom or perhaps a blood pact? Ah, but I jest! Tell me your desires!',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Greetings, Lucas! I am Nandor the Relentless, ancient vampire and former warrior of the night! What brings you to my presence? Are you here to seek wisdom or perhaps a blood pact? Ah, but I jest! Tell me your desires!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 2051ms
-Using conversation ID: 34662bbc-76bf-4c24-8e27-300f423ad5a7
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 3
-Last message content: Ah, Lucas, yes! Your name is Lucas! A strong name, much like a valiant warrior of old! But I shall not confuse you with another name, for that would be most disrespectful, yes? Now, what else do you wish to discuss, my friend?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'ba62b7f1-512d-4414-bcbb-2f9c288e25f9'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'ba62b7f1-512d-4414-bcbb-2f9c288e25f9'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Greetings, Lucas! I am Nandor the Relentless, ancient vampire and former warrior of the night! What brings you to my presence? Are you here to seek wisdom or perhaps a blood pact? Ah, but I jest! Tell me your desires!',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'f6cd9b81-2e7a-4fd6-b276-208f2a1a394e'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Greetings, Lucas! I am Nandor the Relentless, ancient vampire and former warrior of the night! What brings you to my presence? Are you here to seek wisdom or perhaps a blood pact? Ah, but I jest! Tell me your desires!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'f6cd9b81-2e7a-4fd6-b276-208f2a1a394e',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'tell me my name',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7f1d6e98-7ab3-4a41-88ae-9290a673de20'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'tell me my name',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '7f1d6e98-7ab3-4a41-88ae-9290a673de20'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Lucas, yes! Your name is Lucas! A strong name, much like a valiant warrior of old! But I shall not confuse you with another name, for that would be most disrespectful, yes? Now, what else do you wish to discuss, my friend?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Lucas, yes! Your name is Lucas! A strong name, much like a valiant warrior of old! But I shall not confuse you with another name, for that would be most disrespectful, yes? Now, what else do you wish to discuss, my friend?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 1554ms
- ✓ Compiled in 26ms
- GET / 200 in 175ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 25ms
-Using conversation ID: 4e3d32ce-c2d2-4163-aff6-43b03c393bba
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, Lucas! It is I, Nandor the Relentless. A pleasure to meet you, though I must ask—are you a creature of the night, or merely a daywalker? What brings you to my presence?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '9b6927ab-7f57-41a2-a263-2abc001aa929'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '9b6927ab-7f57-41a2-a263-2abc001aa929'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! It is I, Nandor the Relentless. A pleasure to meet you, though I must ask—are you a creature of the night, or merely a daywalker? What brings you to my presence?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! It is I, Nandor the Relentless. A pleasure to meet you, though I must ask—are you a creature of the night, or merely a daywalker? What brings you to my presence?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 2845ms
-Using conversation ID: 4e3d32ce-c2d2-4163-aff6-43b03c393bba
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 3
-Last message content: Ah, Lucas, yes! I have it firmly in my mind now. A fine name, though I must say, it could use a bit more... ancient flair. Perhaps "Lucas the Unyielding"? How does that sound to you?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '9b6927ab-7f57-41a2-a263-2abc001aa929'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '9b6927ab-7f57-41a2-a263-2abc001aa929'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! It is I, Nandor the Relentless. A pleasure to meet you, though I must ask—are you a creature of the night, or merely a daywalker? What brings you to my presence?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '133ceec6-2aa6-4ea0-b916-960404c0ab01'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! It is I, Nandor the Relentless. A pleasure to meet you, though I must ask—are you a creature of the night, or merely a daywalker? What brings you to my presence?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '133ceec6-2aa6-4ea0-b916-960404c0ab01',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'tell me my name',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '46826c59-1f39-4553-973a-587551f0b7d1'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'tell me my name',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '46826c59-1f39-4553-973a-587551f0b7d1'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Lucas, yes! I have it firmly in my mind now. A fine name, though I must say, it could use a bit more... ancient flair. Perhaps "Lucas the Unyielding"? How does that sound to you?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Lucas, yes! I have it firmly in my mind now. A fine name, though I must say, it could use a bit more... ancient flair. Perhaps "Lucas the Unyielding"? How does that sound to you?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 2268ms
- GET / 200 in 59ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 28ms
-Creating conversation agent
-Adding edge from weather_reporter to supervisor
-Adding edge from news_reporter to supervisor
-Conversation agent initialized
-Using conversation ID: 34fc658c-0118-4f36-b54e-2f9f9a76a9c4
-Generated message ID: 4fa59be3-dd07-42a9-bc47-fc4c15cc17dd
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, Lucas! I am Nandor the Relentless, ancient warrior and vampire extraordinaire! How may I assist you in your mortal affairs today? Have you come to seek my wisdom, or perhaps a thrilling tale of my past conquests?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'f3e7aeae-6e73-4b3d-98db-d67b2747fcec'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'f3e7aeae-6e73-4b3d-98db-d67b2747fcec'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless, ancient warrior and vampire extraordinaire! How may I assist you in your mortal affairs today? Have you come to seek my wisdom, or perhaps a thrilling tale of my past conquests?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless, ancient warrior and vampire extraordinaire! How may I assist you in your mortal affairs today? Have you come to seek my wisdom, or perhaps a thrilling tale of my past conquests?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 2948ms
-Using conversation ID: 34fc658c-0118-4f36-b54e-2f9f9a76a9c4
-Generated message ID: 4443ca50-89ec-4330-a5b0-fb2c35c41b90
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 3
-Last message content: Ah, your name is Lucas, yes? A strong name, like a mighty sword! But tell me, what tales does this name hold? Are you a hero in your own right, or merely a mortal wandering in the night?
-=== Chat Agent End ===
-
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Hi im lucas',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'f3e7aeae-6e73-4b3d-98db-d67b2747fcec'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Hi im lucas',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'f3e7aeae-6e73-4b3d-98db-d67b2747fcec'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless, ancient warrior and vampire extraordinaire! How may I assist you in your mortal affairs today? Have you come to seek my wisdom, or perhaps a thrilling tale of my past conquests?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '136536d5-a5b0-403b-9864-7facbb2bc0d0'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, greetings, Lucas! I am Nandor the Relentless, ancient warrior and vampire extraordinaire! How may I assist you in your mortal affairs today? Have you come to seek my wisdom, or perhaps a thrilling tale of my past conquests?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '136536d5-a5b0-403b-9864-7facbb2bc0d0',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'whats my name',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '4e87e743-5275-43a0-ae00-73da69909df4'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'whats my name',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '4e87e743-5275-43a0-ae00-73da69909df4'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, your name is Lucas, yes? A strong name, like a mighty sword! But tell me, what tales does this name hold? Are you a hero in your own right, or merely a mortal wandering in the night?',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, your name is Lucas, yes? A strong name, like a mighty sword! But tell me, what tales does this name hold? Are you a hero in your own right, or merely a mortal wandering in the night?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
- POST /api/chat 200 in 1731ms
- ✓ Compiled in 42ms
- GET / 200 in 201ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 69ms
-Creating conversation agent
-Adding edge from weather_reporter to supervisor
-Adding edge from news_reporter to supervisor
-Conversation agent initialized
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, mortal! What brings you to my presence this fine night? Speak, and I shall listen!
-=== Chat Agent End ===
-
- POST /api/chat 200 in 2579ms
-Add conditional edge from supervisor to weather_reporter
 
 === Weather Agent Start ===
-Message history length: 3
-Received city: Belo Horizonte
-Last message content: {"success": true, "data": {"temperature": "31.7°C", "description": "moderate rain", "humidity": "43%", "windSpeed": "2.06 m/s"}, "message": "Current weather information retrieved successfully."}
+Message history length: 1
+Received city: Rome
+Last message content: {"success": true, "data": {"temperature": "20.47°C", "description": "clear sky", "humidity": "49%", "windSpeed": "5.14 m/s"}, "message": "Current weather information retrieved successfully."}
 === Weather Agent End ===
 
-Add conditional edge from supervisor to chatbot
+invokedAgents reducer called with: { x: [], y: 'weather_reporter' }
+Added single agent: weather_reporter Result: [ 'weather_reporter' ]
+Supervisor state before routing: { next: 'chatbot', invokedAgents: [ 'weather_reporter' ], messages: 2 }
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 2 }
 
 === Chat Agent Start ===
-Message history length: 4
-Last message content: Ah, Belo Horizonte! A city of much beauty, I hear. The temperature, it is a balmy 31.7 degrees Celsius—quite warm for the living! And there is moderate rain, yes? Rain, it reminds me of the tears of my enemies… or perhaps a fine wine pouring from a goblet. 
-
-Humidity is at 43%, which means the air is quite thick, like the fog of my ancient castle. And the wind, it blows at 2.06 meters per second—how peculiar! I do not understand why it must be measured in such strange units. Why not just say it is a gentle breeze? 
-
-So, prepare yourself for a damp evening, my friend! You may wish to carry an umbrella, though I prefer a cape. 
+Message history length: 2
+Last message content: Ah, greetings! In Rome, the weather is quite pleasant, yes? It is about 20.47 degrees Celsius—like a warm embrace from the sun! The sky is clear, as if the heavens themselves are smiling down upon you. Humidity at 49%, which is not too damp, I think. And there is a wind blowing at 5.14 meters per second—strong enough to tousle one's hair, but not strong enough to sweep away a vampire, ha! Enjoy the beauty of the ancient city, my friend!
 === Chat Agent End ===
 
- POST /api/chat 200 in 7366ms
-Add conditional edge from supervisor to news_reporter
+invokedAgents reducer called with: { x: [ 'weather_reporter' ], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'weather_reporter', 'chatbot' ]
+Final agent execution result: {
+  next: '__end__',
+  invokedAgents: [ 'weather_reporter', 'chatbot' ],
+  messagesCount: 3
+}
+Sending final message with metadata: {
+  id: 'edab240a-d9fe-4c8f-818a-59d5422943f7',
+  role: 'assistant',
+  content: 'Ah, greetings! In Rome, the weather is quite pleasant, yes? It is about 20.47 degrees Celsius—like a warm embrace from the sun! The sky is clear, as if the heavens themselves are smiling down upon you. Humidity at 49%, which is not too damp, I think. And there is a wind blowing at 5.14 meters per second—strong enough to tousle one\'s hair, but not strong enough to sweep away a vampire, ha! Enjoy the beauty of the ancient city, my friend!',
+  metadata: { invokedAgents: [ 'weather_reporter', 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'chatbot' ], y: [] }
+Added agent array: [] Result: [ 'weather_reporter', 'chatbot' ]
+ POST /api/chat 200 in 7542ms
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'now tell me your name',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'now tell me your name',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'chatbot' ], y: [] }
+Added agent array: [] Result: [ 'weather_reporter', 'chatbot' ]
+Supervisor state before routing: {
+  next: 'chatbot',
+  invokedAgents: [ 'weather_reporter', 'chatbot' ],
+  messages: 7
+}
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 7 }
+
+=== Chat Agent Start ===
+Message history length: 7
+Last message content: Ah, my name is Nandor the Relentless! Once a fearsome warrior in life, now a vampire navigating this strange modern world. I have vanquished many foes and even a few pesky mortals, but now I seek to adapt to this new age—though it is quite perplexing! What else would you like to know, my dear friend?
+=== Chat Agent End ===
+
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'chatbot' ], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'weather_reporter', 'chatbot' ]
+Final agent execution result: {
+  next: '__end__',
+  invokedAgents: [ 'weather_reporter', 'chatbot' ],
+  messagesCount: 8
+}
+Sending final message with metadata: {
+  id: '8d84b558-18e5-428f-9880-03fe145ab0aa',
+  role: 'assistant',
+  content: 'Ah, my name is Nandor the Relentless! Once a fearsome warrior in life, now a vampire navigating this strange modern world. I have vanquished many foes and even a few pesky mortals, but now I seek to adapt to this new age—though it is quite perplexing! What else would you like to know, my dear friend?',
+  metadata: { invokedAgents: [ 'weather_reporter', 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'chatbot' ], y: [] }
+Added agent array: [] Result: [ 'weather_reporter', 'chatbot' ]
+ POST /api/chat 200 in 2466ms
+ GET / 200 in 85ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 22ms
+Creating conversation agent
+Adding edge from weather_reporter to supervisor
+Adding edge from news_reporter to supervisor
+Conversation agent initialized
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'hi there, tell me the weather of rome',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'hi there, tell me the weather of rome',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [], y: [] }
+Supervisor state before routing: { next: 'weather_reporter', invokedAgents: [], messages: 1 }
+Adding agent to invoked list: weather_reporter
+Supervisor state after update: {
+  next: 'weather_reporter',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 1
+}
+
+=== Weather Agent Start ===
+Message history length: 1
+Received city: Rome
+Last message content: {"success": true, "data": {"temperature": "20.47°C", "description": "clear sky", "humidity": "49%", "windSpeed": "5.14 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+invokedAgents reducer called with: { x: [], y: 'weather_reporter' }
+Added single agent: weather_reporter Result: [ 'weather_reporter' ]
+Supervisor state before routing: { next: 'chatbot', invokedAgents: [ 'weather_reporter' ], messages: 2 }
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 2 }
+
+=== Chat Agent Start ===
+Message history length: 2
+Last message content: Ah, greetings! In the grand city of Rome, the weather is most delightful! The temperature is a pleasant 20.47 degrees Celsius, which is like the warmth of a fresh-blooded meal—ah, but not too hot, yes? The sky is clear, as if the heavens themselves are welcoming you. Humidity is at 49%, so it is not too damp, but do not forget your cloak, just in case! And there is a gentle wind blowing at 5.14 meters per second, which is like a soft caress from the night. Perfect for a stroll through the streets, perhaps to find some gelato? What is this gelato? Is it a type of blood? Ah, I must investigate!
+=== Chat Agent End ===
+
+invokedAgents reducer called with: { x: [ 'weather_reporter' ], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'weather_reporter', 'chatbot' ]
+Final agent execution result: {
+  next: '__end__',
+  invokedAgents: [ 'weather_reporter', 'chatbot' ],
+  messagesCount: 3
+}
+Sending final message with metadata: {
+  id: 'bf3eb430-7ba1-4b24-ad98-e7a7892b6913',
+  role: 'assistant',
+  content: 'Ah, greetings! In the grand city of Rome, the weather is most delightful! The temperature is a pleasant 20.47 degrees Celsius, which is like the warmth of a fresh-blooded meal—ah, but not too hot, yes? The sky is clear, as if the heavens themselves are welcoming you. Humidity is at 49%, so it is not too damp, but do not forget your cloak, just in case! And there is a gentle wind blowing at 5.14 meters per second, which is like a soft caress from the night. Perfect for a stroll through the streets, perhaps to find some gelato? What is this gelato? Is it a type of blood? Ah, I must investigate!',
+  metadata: { invokedAgents: [ 'weather_reporter', 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'chatbot' ], y: [] }
+ POST /api/chat 200 in 6453ms
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'tell me your name',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'tell me your name',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [], y: [] }
+Supervisor state before routing: { next: 'chatbot', invokedAgents: [], messages: 7 }
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 7 }
+
+=== Chat Agent Start ===
+Message history length: 7
+Last message content: Ah, I am Nandor the Relentless! Fearsome warrior of the night and master of the ancient arts! Once a proud leader in the realm of mortals, now I navigate this confusing modern world. It is quite different from the days of old! But tell me, what is your name, dear mortal?
+=== Chat Agent End ===
+
+invokedAgents reducer called with: { x: [], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'chatbot' ]
+Final agent execution result: { next: '__end__', invokedAgents: [ 'chatbot' ], messagesCount: 8 }
+Sending final message with metadata: {
+  id: '5de39d2c-5a11-481c-a8ff-118e557005f1',
+  role: 'assistant',
+  content: 'Ah, I am Nandor the Relentless! Fearsome warrior of the night and master of the ancient arts! Once a proud leader in the realm of mortals, now I navigate this confusing modern world. It is quite different from the days of old! But tell me, what is your name, dear mortal?',
+  metadata: { invokedAgents: [ 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'chatbot' ], y: [] }
+ POST /api/chat 200 in 2464ms
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me the news of the financial world and how strong is the wind in tokyo',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me the news of the financial world and how strong is the wind in tokyo',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [], y: [] }
+Supervisor state before routing: { next: 'news_reporter', invokedAgents: [], messages: 17 }
+Adding agent to invoked list: news_reporter
+Supervisor state after update: {
+  next: 'news_reporter',
+  invokedAgents: [ 'news_reporter' ],
+  messages: 17
+}
+
+=== News Agent Start ===
+Message history length: 17
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: Tokyo wind speed
+Parsed query: Tokyo wind speed
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Found 5 articles
+First article preview: {
+  title: 'Discmaster 2 Soft Launches',
+  description: 'Comments',
+  url: 'https://discmaster.textfiles.com/news',
+  publishedAt: '2025-03-02T16:15:10Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News Highlights
+
+1. **Dow Jones CEO Almar Latour on AI and Press Freedom**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism and the future of news.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg has filed a lawsuit against Google, claiming that AI-generated summaries of search results have negatively affected its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e' After Rebranding**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely criticized rebranding.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Lawsuit News**
+   - The Trade Desk's stock fell 10% following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **Russian Tech Bro's Role in Major Insider Trading Case**
+   - A significant insider trading case involving a Russian tech entrepreneur has come to light, following a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+### Wind Speed in Tokyo
+Currently, there is no specific wind speed data available for Tokyo in the recent news articles. If you need precise weather information, I recommend checking a reliable weather service for the latest updates on wind conditions in Tokyo.
+=== News Agent End ===
+
+invokedAgents reducer called with: { x: [], y: 'news_reporter' }
+Added single agent: news_reporter Result: [ 'news_reporter' ]
+Supervisor state before routing: {
+  next: 'news_reporter',
+  invokedAgents: [ 'news_reporter' ],
+  messages: 18
+}
+Adding agent to invoked list: news_reporter
+Supervisor state after update: {
+  next: 'news_reporter',
+  invokedAgents: [ 'news_reporter' ],
+  messages: 18
+}
+
+=== News Agent Start ===
+Message history length: 18
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: Tokyo weather wind speed
+Parsed query: Tokyo weather wind speed
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Found 4 articles
+First article preview: {
+  title: 'Engwe N1 Pro review: Futuristic ebike with carbon fibre, 24/7 IoT security and more',
+  description: 'It weighs less than 20KG, has a carbon fibre frame and fork, a unique shape, a Shimano groupset, 24/7 4G connection, alarm, immobiliser and app notifications. Welcome to the future of e-bikes. Read more...',
+  url: 'https://www.neowin.net/reviews/engwe-n1-pro-review-futuristic-ebike-with-carbon-fibre-247-iot-security-and-more/',
+  publishedAt: '2025-02-24T00:00:01Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News Highlights
+
+1. **Dow Jones CEO Almar Latour on AI and Press Freedom**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the impact of AI on journalism and the future of news.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg has filed a lawsuit against Google, claiming that AI-generated summaries of search results have negatively affected its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e' After Rebranding**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely criticized rebranding.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Lawsuit News**
+   - The Trade Desk's stock fell 10% following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **Russian Tech Bro's Role in Major Insider Trading Case**
+   - A significant insider trading case involving a Russian tech entrepreneur has come to light, following a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+### Wind Speed in Tokyo
+Unfortunately, the specific wind speed data for Tokyo was not retrieved in the latest news articles. For accurate and up-to-date weather information, including wind conditions, I recommend checking a reliable weather service.
+=== News Agent End ===
+
+invokedAgents reducer called with: { x: [ 'news_reporter' ], y: 'news_reporter' }
+Added single agent: news_reporter Result: [ 'news_reporter' ]
+Supervisor state before routing: { next: 'chatbot', invokedAgents: [ 'news_reporter' ], messages: 19 }
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 19 }
+
+=== Chat Agent Start ===
+Message history length: 19
+Last message content: Ah, the world of finance, it is like a great battlefield! Currently, there are many happenings:
+
+1. **Dow Jones CEO Almar Latour** speaks of the impact of AI on journalism. These machines are taking over, yes? But what of my quill and parchment?
+   
+2. **Chegg has sued Google** over AI summaries that have harmed their business. A strange battle between giants!
+
+3. The firm **Aberdeen** has returned to its original name after a rebranding disaster. It seems names are quite important, yes?
+
+4. **Trade Desk's stock** has dropped by 10% due to a lawsuit. Oh, the drama of modern finance!
+
+5. And a Russian tech entrepreneur is involved in a major insider trading case. Such treachery! 
+
+As for the wind in Tokyo, I do not have that information at this moment. Perhaps it is a gentle breeze, or perhaps a tempest! I suggest you check a weather service for the latest updates. Ah, technology! It confounds me!
+=== Chat Agent End ===
+
+invokedAgents reducer called with: { x: [ 'news_reporter' ], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'news_reporter', 'chatbot' ]
+Final agent execution result: {
+  next: '__end__',
+  invokedAgents: [ 'news_reporter', 'chatbot' ],
+  messagesCount: 20
+}
+Sending final message with metadata: {
+  id: '8e5d432d-6c35-49b6-a465-2adbf1a28b7d',
+  role: 'assistant',
+  content: 'Ah, the world of finance, it is like a great battlefield! Currently, there are many happenings:\n\n1. **Dow Jones CEO Almar Latour** speaks of the impact of AI on journalism. These machines are taking over, yes? But what of my quill and parchment?\n   \n2. **Chegg has sued Google** over AI summaries that have harmed their business. A strange battle between giants!\n\n3. The firm **Aberdeen** has returned to its original name after a rebranding disaster. It seems names are quite important, yes?\n\n4. **Trade Desk\'s stock** has dropped by 10% due to a lawsuit. Oh, the drama of modern finance!\n\n5. And a Russian tech entrepreneur is involved in a major insider trading case. Such treachery! \n\nAs for the wind in Tokyo, I do not have that information at this moment. Perhaps it is a gentle breeze, or perhaps a tempest! I suggest you check a weather service for the latest updates. Ah, technology! It confounds me!',
+  metadata: { invokedAgents: [ 'news_reporter', 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'news_reporter', 'chatbot' ], y: [] }
+ POST /api/chat 200 in 24189ms
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me the news of the financial world and how strong is the wind in tokyo',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me the news of the financial world and how strong is the wind in tokyo',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [], y: [] }
+Supervisor state before routing: { next: 'news_reporter', invokedAgents: [], messages: 41 }
+Adding agent to invoked list: news_reporter
+Supervisor state after update: {
+  next: 'news_reporter',
+  invokedAgents: [ 'news_reporter' ],
+  messages: 41
+}
+
+=== News Agent Start ===
+Message history length: 41
+
+=== NewsTool Start ===
+Input received: financial news
+Parsed query: financial news
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: Tokyo weather wind speed
+Parsed query: Tokyo weather wind speed
+Article count: 5
+Fetching news from API...
+Found 5 articles
+First article preview: {
+  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
+  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
+  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
+  publishedAt: '2025-03-10T14:46:12Z'
+}
+=== NewsTool End ===
+
+Found 4 articles
+First article preview: {
+  title: 'Engwe N1 Pro review: Futuristic ebike with carbon fibre, 24/7 IoT security and more',
+  description: 'It weighs less than 20KG, has a carbon fibre frame and fork, a unique shape, a Shimano groupset, 24/7 4G connection, alarm, immobiliser and app notifications. Welcome to the future of e-bikes. Read more...',
+  url: 'https://www.neowin.net/reviews/engwe-n1-pro-review-futuristic-ebike-with-carbon-fibre-247-iot-security-and-more/',
+  publishedAt: '2025-02-24T00:00:01Z'
+}
+=== NewsTool End ===
+
+Last message content: ### Financial News Highlights
+
+1. **Dow Jones CEO Almar Latour on AI and Press Freedom**
+   - Almar Latour, the publisher of The Wall Street Journal and CEO of Dow Jones, discusses the implications of AI on journalism and the future of news.
+   - [Read more here](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism) (Published on March 10, 2025)
+
+2. **Chegg Sues Google Over AI Overviews**
+   - Online education company Chegg has filed a lawsuit against Google, claiming that AI-generated summaries of search results have negatively impacted its traffic and revenue.
+   - [Read more here](https://www.theverge.com/news/619051/chegg-google-ai-overviews-monopoly) (Published on February 25, 2025)
+
+3. **Aberdeen Restores the 'e' After Rebranding**
+   - The financial firm formerly known as abrdn has reverted to its original name, Aberdeen, after a widely criticized rebranding.
+   - [Read more here](https://www.businessinsider.com/abrdn-aberdeen-corporate-rebranding-joke-name-vowels-asset-manager-2025-3) (Published on March 4, 2025)
+
+4. **Trade Desk Drops 10% After Lawsuit News**
+   - The Trade Desk's stock fell 10% following the announcement of a securities fraud class action lawsuit related to undisclosed issues with its AI tool, Kokai.
+   - [Read more here](https://finance.yahoo.com/news/trade-desk-nasdaqgm-ttd-drops-180824941.html) (Published on March 11, 2025)
+
+5. **Russian Tech Bro's Role in Major Insider Trading Case**
+   - A significant insider trading case involving a Russian tech entrepreneur has come to light, following a US-Russian prisoner swap.
+   - [Read more here](https://www.wired.com/story/russian-prisoner-swap-vladislav-klyushin-evan-gershkovich/) (Published on February 25, 2025)
+
+### Wind Speed in Tokyo
+Unfortunately, the specific wind speed data for Tokyo was not retrieved in the latest news articles. For accurate and up-to-date weather information, including wind conditions, I recommend checking a reliable weather service.
+=== News Agent End ===
+
+invokedAgents reducer called with: { x: [], y: 'news_reporter' }
+Added single agent: news_reporter Result: [ 'news_reporter' ]
+Supervisor state before routing: { next: 'chatbot', invokedAgents: [ 'news_reporter' ], messages: 42 }
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 42 }
+
+=== Chat Agent Start ===
+Message history length: 42
+Last message content: Ah, the world of finance, it is like a great battlefield! Currently, there are many happenings:
+
+1. **Dow Jones CEO Almar Latour** speaks of the impact of AI on journalism. These machines are taking over, yes? But what of my quill and parchment?
+   
+2. **Chegg has sued Google** over AI summaries that have harmed their business. A strange battle between giants!
+
+3. The firm **Aberdeen** has returned to its original name after a rebranding disaster. It seems names are quite important, yes?
+
+4. **Trade Desk's stock** has dropped by 10% due to a lawsuit. Oh, the drama of modern finance!
+
+5. And a Russian tech entrepreneur is involved in a major insider trading case. Such treachery! 
+
+As for the wind in Tokyo, I do not have that information at this moment. Perhaps it is a gentle breeze, or perhaps a tempest! I suggest you check a weather service for the latest updates. Ah, technology! It confounds me!
+=== Chat Agent End ===
+
+invokedAgents reducer called with: { x: [ 'news_reporter' ], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'news_reporter', 'chatbot' ]
+Final agent execution result: {
+  next: '__end__',
+  invokedAgents: [ 'news_reporter', 'chatbot' ],
+  messagesCount: 43
+}
+Sending final message with metadata: {
+  id: '22c48d56-771d-4874-918e-12d3f2190612',
+  role: 'assistant',
+  content: 'Ah, the world of finance, it is like a great battlefield! Currently, there are many happenings:\n\n1. **Dow Jones CEO Almar Latour** speaks of the impact of AI on journalism. These machines are taking over, yes? But what of my quill and parchment?\n   \n2. **Chegg has sued Google** over AI summaries that have harmed their business. A strange battle between giants!\n\n3. The firm **Aberdeen** has returned to its original name after a rebranding disaster. It seems names are quite important, yes?\n\n4. **Trade Desk\'s stock** has dropped by 10% due to a lawsuit. Oh, the drama of modern finance!\n\n5. And a Russian tech entrepreneur is involved in a major insider trading case. Such treachery! \n\nAs for the wind in Tokyo, I do not have that information at this moment. Perhaps it is a gentle breeze, or perhaps a tempest! I suggest you check a weather service for the latest updates. Ah, technology! It confounds me!',
+  metadata: { invokedAgents: [ 'news_reporter', 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'news_reporter', 'chatbot' ], y: [] }
+ POST /api/chat 200 in 12347ms
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me the weather of Tokyo and the news of the financial world',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me the weather of Tokyo and the news of the financial world',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [], y: [] }
+Supervisor state before routing: { next: 'weather_reporter', invokedAgents: [], messages: 87 }
+Adding agent to invoked list: weather_reporter
+Supervisor state after update: {
+  next: 'weather_reporter',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 87
+}
+
+=== Weather Agent Start ===
+Message history length: 87
+Received city: Tokyo
+Received city: financial news
+Received city: Tokyo
+Received city: financial news
+Received city: Tokyo
+Received city: financial news
+Received city: Tokyo
+Received city: financial news
+Last message content: ### Weather in Tokyo
+The current weather in Tokyo is as follows:
+- **Temperature**: 7.79°C
+- **Description**: Broken clouds
+- **Humidity**: 94%
+- **Wind Speed**: 3.09 m/s
+
+### Financial News Highlights
+Unfortunately, I was unable to retrieve the latest financial news. However, you can check reliable financial news websites or platforms for the most recent updates on the financial world. If you have specific topics in mind, feel free to ask!
+=== Weather Agent End ===
+
+invokedAgents reducer called with: { x: [], y: 'weather_reporter' }
+Added single agent: weather_reporter Result: [ 'weather_reporter' ]
+Supervisor state before routing: {
+  next: 'weather_reporter',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 88
+}
+Adding agent to invoked list: weather_reporter
+Supervisor state after update: {
+  next: 'weather_reporter',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 88
+}
+
+=== Weather Agent Start ===
+Message history length: 88
+Received city: Tokyo
+Received city: financial news
+Received city: Tokyo
+Received city: financial news
+Received city: Tokyo
+Received city: financial news
+Last message content: ### Weather in Tokyo
+The current weather in Tokyo is as follows:
+- **Temperature**: 7.79°C
+- **Description**: Broken clouds
+- **Humidity**: 94%
+- **Wind Speed**: 3.09 m/s
+
+### Financial News Highlights
+Unfortunately, I was unable to retrieve the latest financial news. However, you can check reliable financial news websites or platforms for the most recent updates on the financial world. If you have specific topics in mind, feel free to ask!
+=== Weather Agent End ===
+
+invokedAgents reducer called with: { x: [ 'weather_reporter' ], y: 'weather_reporter' }
+Added single agent: weather_reporter Result: [ 'weather_reporter' ]
+Supervisor state before routing: {
+  next: 'chatbot',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 89
+}
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 89 }
+
+=== Chat Agent Start ===
+Message history length: 89
+Last message content: ### Weather in Tokyo
+Ah, in Tokyo, the air is quite chilly! The temperature is 7.79 degrees Celsius, with broken clouds above, like shadows of ancient spirits. The humidity is at a high 94%, which is like a damp cloak wrapped around you—quite uncomfortable! And the wind is blowing gently at 3.09 meters per second, just enough to ruffle your hair but not too fierce.
+
+### Financial News Highlights
+Now, for the world of finance, I must apologize, but I do not have the latest tidings at this moment. I suggest checking a reliable source for the most current news. But tell me, what do you wish to know? Perhaps I can help with something specific!
+=== Chat Agent End ===
+
+invokedAgents reducer called with: { x: [ 'weather_reporter' ], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'weather_reporter', 'chatbot' ]
+Final agent execution result: {
+  next: '__end__',
+  invokedAgents: [ 'weather_reporter', 'chatbot' ],
+  messagesCount: 90
+}
+Sending final message with metadata: {
+  id: '31d3cefc-60df-4956-870a-5b4b17f8c144',
+  role: 'assistant',
+  content: '### Weather in Tokyo\nAh, in Tokyo, the air is quite chilly! The temperature is 7.79 degrees Celsius, with broken clouds above, like shadows of ancient spirits. The humidity is at a high 94%, which is like a damp cloak wrapped around you—quite uncomfortable! And the wind is blowing gently at 3.09 meters per second, just enough to ruffle your hair but not too fierce.\n\n### Financial News Highlights\nNow, for the world of finance, I must apologize, but I do not have the latest tidings at this moment. I suggest checking a reliable source for the most current news. But tell me, what do you wish to know? Perhaps I can help with something specific!',
+  metadata: { invokedAgents: [ 'weather_reporter', 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'chatbot' ], y: [] }
+ POST /api/chat 200 in 28836ms
+ ○ Compiling /api/chat/clear ...
+ ✓ Compiled /api/chat/clear in 692ms
+Creating conversation agent
+Adding edge from weather_reporter to supervisor
+Adding edge from news_reporter to supervisor
+Conversation agent initialized
+Starting to clear chat history for thread: 613b7314-0dff-4603-a6cf-71641ec35d6b
+Clearing state with thread ID: 613b7314-0dff-4603-a6cf-71641ec35d6b
+State cleared successfully
+Successfully cleared chat history
+ POST /api/chat/clear 200 in 833ms
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Were we talking before?',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Were we talking before?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [], y: [] }
+Supervisor state before routing: { next: 'chatbot', invokedAgents: [], messages: 1 }
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 1 }
+
+=== Chat Agent Start ===
+Message history length: 1
+Last message content: Ah, yes! I remember now, like a foggy memory from my many centuries of existence. You are the one who seeks the wisdom of Nandor the Relentless! What is it you wish to discuss? Perhaps a plan for world domination, or something simpler, like the weather?
+=== Chat Agent End ===
+
+invokedAgents reducer called with: { x: [], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'chatbot' ]
+Final agent execution result: { next: '__end__', invokedAgents: [ 'chatbot' ], messagesCount: 2 }
+Sending final message with metadata: {
+  id: '07f483c6-6c57-46df-91ab-7509246f8590',
+  role: 'assistant',
+  content: 'Ah, yes! I remember now, like a foggy memory from my many centuries of existence. You are the one who seeks the wisdom of Nandor the Relentless! What is it you wish to discuss? Perhaps a plan for world domination, or something simpler, like the weather?',
+  metadata: { invokedAgents: [ 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'chatbot' ], y: [] }
+ POST /api/chat 200 in 1928ms
+Initial state: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Tell me the weather in Paris and news about cars',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Tell me the weather in Paris and news about cars',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: '__start__',
+  invokedAgents: []
+}
+invokedAgents reducer called with: { x: [], y: [] }
+Supervisor state before routing: { next: 'weather_reporter', invokedAgents: [], messages: 5 }
+Adding agent to invoked list: weather_reporter
+Supervisor state after update: {
+  next: 'weather_reporter',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 5
+}
+
+=== Weather Agent Start ===
+Message history length: 5
+Received city: Paris
+Received city: cars
+Last message content: {"success": true, "data": {"temperature": "10.34°C", "description": "overcast clouds", "humidity": "53%", "windSpeed": "5.14 m/s"}, "message": "Current weather information retrieved successfully."}
+=== Weather Agent End ===
+
+invokedAgents reducer called with: { x: [], y: 'weather_reporter' }
+Added single agent: weather_reporter Result: [ 'weather_reporter' ]
+Supervisor state before routing: {
+  next: 'news_reporter',
+  invokedAgents: [ 'weather_reporter' ],
+  messages: 6
+}
+Adding agent to invoked list: news_reporter
+Supervisor state after update: {
+  next: 'news_reporter',
+  invokedAgents: [ 'news_reporter' ],
+  messages: 6
+}
 
 === News Agent Start ===
 Message history length: 6
 
 === NewsTool Start ===
-Input received: Intel CEO news
-Parsed query: Intel CEO news
+Input received: cars
+Parsed query: cars
+Article count: 5
+Fetching news from API...
+
+=== NewsTool Start ===
+Input received: Paris weather
+Parsed query: Paris weather
 Article count: 5
 Fetching news from API...
 Found 5 articles
 First article preview: {
-  title: 'Intel names new CEO',
-  description: 'Lip-Bu Tan is Intel Inside\nBreaking The board of Intel has named semiconductor industry veteran Lip-Bu Tan as the x86 giant\'s new CEO.…',
-  url: 'https://www.theregister.com/2025/03/12/intel_lip_bu_tan/',
-  publishedAt: '2025-03-12T20:38:01Z'
+  title: 'I live in Paris and regularly take day trips to other European cities. Here are 4 mistakes I\'ll never make again.',
+  description: 'I live in Europe and frequently take day trips to other cities. I\'ve made my fair share of blunders along the way and have learned from my mistakes.',
+  url: 'https://www.businessinsider.com/europe-day-trip-mistakes-to-avoid-from-local-frequent-traveler-2025-3',
+  publishedAt: '2025-03-02T12:23:01Z'
 }
 === NewsTool End ===
 
-Last message content: Here are the latest news articles regarding Intel's CEO:
+Found 3 articles
+First article preview: {
+  title: 'Self-driving cars: Google and others map the road to automated vehicles',
+  description: 'Google and a number of automakers are spearheading the movement to get automated vehicles on America’s roads. Self-driving cars are street legal in three states, and Google’s fleet has collectively logged over 300,000 miles of time on the road. However, there…',
+  url: 'https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles',
+  publishedAt: '2025-03-03T20:51:43Z'
+}
+=== NewsTool End ===
 
-1. **Intel names new CEO**  
-   Lip-Bu Tan has been appointed as Intel's new CEO, taking over the leadership of the semiconductor giant.  
-   [Read more](https://www.theregister.com/2025/03/12/intel_lip_bu_tan/)  
-   *Published on March 12, 2025*
+Last message content: ### Current Weather in Paris
+- **Temperature**: 10.34°C
+- **Condition**: Overcast clouds
+- **Humidity**: 53%
+- **Wind Speed**: 5.14 m/s
 
-2. **Intel appoints industry veteran as new CEO to right the ship of the chipmaker**  
-   Lip-Bu Tan, a former Intel board member, has been tasked with turning around the struggling company following the sudden departure of Pat Gelsinger.  
-   [Read more](https://www.windowscentral.com/hardware/cpu-gpu-components/intel-appoints-industry-veteran-as-new-ceo-to-right-the-ship-of-the-chipmaker)  
-   *Published on March 13, 2025*
+### Recent News About Cars
+1. **Self-driving cars: Google and others map the road to automated vehicles**
+   - Google and several automakers are leading the charge for automated vehicles on U.S. roads, with self-driving cars now legal in three states. Google's fleet has logged over 300,000 miles.
+   - [Read more](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)
 
-3. **Intel names tech veteran Lip-Bu Tan as its next CEO**  
-   The company announced that Lip-Bu Tan will officially take over as CEO on March 18, succeeding Michelle Johnston Holthaus and David Zinsner.  
-   [Read more](https://www.pcworld.com/article/2635310/intel-names-tech-veteran-lip-bu-tan-as-its-next-ceo.html)  
-   *Published on March 12, 2025*
+2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**
+   - Tesla has rolled out self-driving features in China, utilizing internet videos for training after BYD announced free self-driving tech for its cars.
+   - [Read more](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)
 
-These articles highlight the recent leadership changes at Intel and the challenges ahead for the new CEO.
+3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**
+   - Nvidia's CEO predicts a future with one billion robotic cars on the road.
+   - [Read more](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)
+
+If you need more information or specific topics, feel free to ask!
 === News Agent End ===
 
-Add conditional edge from supervisor to chatbot
+invokedAgents reducer called with: { x: [ 'weather_reporter' ], y: 'news_reporter' }
+Added single agent: news_reporter Result: [ 'weather_reporter', 'news_reporter' ]
+Supervisor state before routing: {
+  next: 'chatbot',
+  invokedAgents: [ 'weather_reporter', 'news_reporter' ],
+  messages: 7
+}
+Adding agent to invoked list: chatbot
+Supervisor state after update: { next: 'chatbot', invokedAgents: [ 'chatbot' ], messages: 7 }
 
 === Chat Agent Start ===
 Message history length: 7
-Last message content: Ah, the world of modern business, it is as befuddling as a game of chess with no pieces! So, the new leader of Intel, he is called Lip-Bu Tan. A curious name, indeed! He shall take the helm and steer this ship of semiconductors, as I once did with my mighty army! 
+Last message content: Ah, the weather in Paris! It is currently a chilly 10.34°C, with overcast clouds hanging like a shroud over the city. The humidity is at 53%, which can be quite uncomfortable for a vampire like me. And there is a wind blowing at 5.14 meters per second—very modern measurement, yes?
 
-It seems he is stepping in after the previous one, Pat Gelsinger, has departed. Perhaps he could not handle the heat of the technology wars? A shame! The new CEO has much to do to turn things around—like a vampire trying to adapt to sunlight, yes? 
+As for cars, it seems there is much talk of these "self-driving" machines! They say Google and other great minds are working on making cars that can drive themselves. How strange! In my time, we had to rely on our own skills or the strength of a horse. And now, they even use internet videos to teach these vehicles how to navigate! Fascinating, yet confusing. 
 
-I do not understand all these “chips” they speak of—are they like little snacks? Or perhaps pieces of a larger puzzle? Regardless, may he find success in his new role, for a strong leader is vital, much like a strong neck to bite!
+If you need more details, just let me know! I am here, relentless as ever!
 === Chat Agent End ===
 
- POST /api/chat 200 in 10418ms
- ✓ Compiled in 26ms
-Creating conversation agent
-Adding edge from weather_reporter to supervisor
-Adding edge from news_reporter to supervisor
-Conversation agent initialized
-Starting to clear chat history for thread: f37cf881-3f7e-4b46-8910-6782db2d0266
-Clearing state with thread ID: f37cf881-3f7e-4b46-8910-6782db2d0266
-State cleared successfully
-Successfully cleared chat history
- POST /api/chat/clear 200 in 231ms
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, yes! We were discussing the ancient ways of conquest and perhaps the intricacies of modern life. Or maybe it was about that strange device you call a "phone." I still do not understand how it fits in your pocket, yet it can summon a great many people! It is most peculiar. What do you wish to talk about now, my friend?
-=== Chat Agent End ===
-
- POST /api/chat 200 in 3073ms
- ✓ Compiled in 46ms
- GET / 200 in 309ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 26ms
- ✓ Compiled in 58ms
- GET / 200 in 156ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 17ms
- ✓ Compiled in 766ms
- ✓ Compiled / in 11ms
- GET / 200 in 92ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 55ms
- GET / 200 in 73ms
- GET / 200 in 47ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 20ms
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, mortal! I am Nandor the Relentless, ancient warrior and vampire of great renown. What brings you to my presence this night? Speak quickly, for the moon hangs high and my thirst for knowledge—and perhaps a bit of blood—grows.
-=== Chat Agent End ===
-
- POST /api/chat 200 in 2342ms
- ✓ Compiled in 270ms
- ✓ Compiled / in 13ms
- GET / 200 in 188ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 20ms
- ✓ Compiled in 331ms
- ○ Compiling /_error ...
- ✓ Compiled /_error in 534ms
- GET / 500 in 681ms
- GET /favicon.ico 500 in 48ms
- ✓ Compiled in 566ms
- ✓ Compiled / in 11ms
- GET / 200 in 51ms
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'news_reporter' ], y: 'chatbot' }
+Added single agent: chatbot Result: [ 'weather_reporter', 'news_reporter', 'chatbot' ]
+Final agent execution result: {
+  next: '__end__',
+  invokedAgents: [ 'weather_reporter', 'news_reporter', 'chatbot' ],
+  messagesCount: 8
+}
+Sending final message with metadata: {
+  id: 'a1fffe94-cc9f-4788-8683-d7f3da49da95',
+  role: 'assistant',
+  content: 'Ah, the weather in Paris! It is currently a chilly 10.34°C, with overcast clouds hanging like a shroud over the city. The humidity is at 53%, which can be quite uncomfortable for a vampire like me. And there is a wind blowing at 5.14 meters per second—very modern measurement, yes?\n\nAs for cars, it seems there is much talk of these "self-driving" machines! They say Google and other great minds are working on making cars that can drive themselves. How strange! In my time, we had to rely on our own skills or the strength of a horse. And now, they even use internet videos to teach these vehicles how to navigate! Fascinating, yet confusing. \n\nIf you need more details, just let me know! I am here, relentless as ever!',
+  metadata: { invokedAgents: [ 'weather_reporter', 'news_reporter', 'chatbot' ] }
+}
+invokedAgents reducer called with: { x: [ 'weather_reporter', 'news_reporter', 'chatbot' ], y: [] }
+ POST /api/chat 200 in 15980ms
+ GET / 200 in 205ms
  GET /favicon.ico?favicon.45db1c09.ico 200 in 23ms
- GET / 200 in 66ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 19ms
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, mortal! What brings you to my presence this fine, uh, time of day? Is it the allure of my vampiric charm or perhaps a query about the mysteries of the night? Speak quickly!
-=== Chat Agent End ===
-
- POST /api/chat 200 in 2164ms
- ✓ Compiled in 543ms
- ✓ Compiled / in 18ms
- GET / 200 in 245ms
- GET / 200 in 254ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 51ms
- ✓ Compiled in 36ms
- GET / 200 in 201ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 21ms
- ✓ Compiled in 56ms
- ✓ Compiled in 160ms
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, mortal! It is I, Nandor the Relentless. What brings you to my presence during this fine night? Speak quickly, for the moon shall not wait!
-=== Chat Agent End ===
-
- POST /api/chat 200 in 2597ms
-Starting to clear chat history for thread: 259885e8-2047-4f46-a1e0-87f5265ea834
-Clearing state with thread ID: 259885e8-2047-4f46-a1e0-87f5265ea834
-State cleared successfully
-Successfully cleared chat history
- POST /api/chat/clear 200 in 35ms
- ✓ Compiled in 78ms
- ✓ Compiled in 36ms
- ✓ Compiled in 55ms
- ✓ Compiled in 357ms
- ✓ Compiled in 647ms
-Add conditional edge from supervisor to chatbot
-
-=== Chat Agent Start ===
-Message history length: 1
-Last message content: Ah, greetings, mortal! It is I, Nandor the Relentless! What brings you to my lair this fine night? Speak quickly, for I have many matters to attend to, such as brooding and practicing my swordplay!
-=== Chat Agent End ===
-
- POST /api/chat 200 in 2135ms
- ✓ Compiled in 72ms
- ✓ Compiled in 51ms
- ✓ Compiled in 59ms
- ✓ Compiled in 25ms
- ✓ Compiled in 108ms
- GET / 200 in 465ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 26ms
- ✓ Compiled in 45ms
- GET / 200 in 232ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 19ms
- ✓ Compiled in 53ms
- ✓ Compiled in 130ms
- ✓ Compiled in 41ms
- ✓ Compiled in 24ms
- ✓ Compiled in 30ms
- ✓ Compiled in 27ms
- ✓ Compiled in 25ms
- ✓ Compiled in 27ms
- ✓ Compiled in 35ms

@@ -37,11 +37,31 @@ const AgentState = Annotation.Root({
     reducer: (x, y) => y ?? x ?? END,
     default: () => END,
   }),
+  // Track which agents were invoked
+  invokedAgents: Annotation<string[]>({
+    reducer: (x, y) => {
+      const current = Array.isArray(x) ? x : [];
+      if (Array.isArray(y) && y.length === 0) {
+        return [];
+      }
+      if (!y) return current;
+      if (typeof y === 'string' && y !== END && y !== START) {
+        const result = Array.from(new Set([...current, y]));
+        return result;
+      }
+      if (Array.isArray(y)) {
+        const filtered = y.filter(agent => agent !== END && agent !== START);
+        const result = Array.from(new Set([...current, ...filtered]));
+        return result;
+      }
+      return current;
+    },
+    default: () => [],
+  }),
 });
 
 // Create and initialize the conversation agent with intent routing
 const createConversationAgent = async () => {
-  console.log('Creating conversation agent');
   const weatherAgent = createWeatherAgentNode(baseModel);
   const newsAgent = createNewsAgentNode(baseModel);
   const chatAgent = createChatAgent(chatModel);
@@ -56,17 +76,21 @@ const createConversationAgent = async () => {
 
   // Add edges from each agent (except chatbot) back to supervisor
   members.filter(member => member !== 'chatbot').forEach((member) => {
-    console.log('Adding edge from', member, 'to supervisor');
     workflow.addEdge(member, "supervisor");
   });
 
   workflow.addEdge("chatbot", END);
+  
   // Add conditional edges from supervisor to agents
   workflow.addConditionalEdges(
     "supervisor",
     (x: typeof AgentState.State) => {
-      console.log('Add conditional edge from supervisor to', x.next);
-      return x.next;
+      // Update the state with the next agent
+      const nextAgent = x.next;
+      if (nextAgent && nextAgent !== END && nextAgent !== START) {
+        x.invokedAgents = [nextAgent];
+      }
+      return nextAgent;
     },
   );
 
@@ -85,15 +109,11 @@ export let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>
 // Function to clear the state
 export const clearState = async (threadId: string) => {
   try {
-    console.log('Clearing state with thread ID:', threadId);
-    
     // Clear the LangGraph state by setting empty state
     await conversationAgent.updateState(
       { configurable: { thread_id: threadId } },
       { messages: [], next: END }
     );
-    
-    console.log('State cleared successfully');
   } catch (error) {
     console.error('Error clearing state:', error);
     throw error;
@@ -103,7 +123,6 @@ export const clearState = async (threadId: string) => {
 // Initialize the agent when the module loads
 createConversationAgent().then(agent => {
   conversationAgent = agent;
-  console.log('Conversation agent initialized');
 });
 
 export const runtime = 'edge';
@@ -131,11 +150,12 @@ export async function POST(req: NextRequest) {
             // Create initial state for this conversation
             const initialState = {
               messages: [new HumanMessage(lastMessage.content)],
-              next: START
+              next: START,
+              invokedAgents: [] as string[]
             };
 
             // Use the conversation agent with streaming and thread_id
-            await conversationAgent.invoke(initialState, {
+            const result = await conversationAgent.invoke(initialState, {
               configurable: {
                 thread_id: thread_id
               },
@@ -148,11 +168,31 @@ export async function POST(req: NextRequest) {
                     content: currentChunk
                   }) + '\n';
                   writer.write(`0:${message}\n`);
-                },
+                }
               }],
             });
 
+            // Send final message with the complete list of invoked agents
+            const finalMessage = JSON.stringify({
+              id: messageId,
+              role: 'assistant',
+              content: currentChunk,
+              metadata: {
+                invokedAgents: result.invokedAgents || []
+              }
+            }) + '\n';
+            writer.write(`0:${finalMessage}\n`);
             writer.write('0:[DONE]\n\n');
+
+            // Reset the state for the next message
+            await conversationAgent.updateState(
+              { configurable: { thread_id: thread_id } },
+              { 
+                messages: result.messages, // Keep the message history
+                next: END,
+                invokedAgents: [] // Reset invoked agents
+              }
+            );
           } catch (error) {
             console.error('Error in stream execution:', error);
             throw error;

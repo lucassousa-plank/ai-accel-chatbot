@@ -8,26 +8,26 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+interface ExtendedMessage extends Message {
+  metadata?: {
+    invokedAgents: string[];
+  };
+}
+
 export default function ChatInterface() {
   const [threadId, setThreadId] = useState<string>('');
 
-  const getAgentChips = (message: Message) => {
-    const chips = [
-      { label: "Nandor the Relentless", color: "primary" }
-    ];
+  const getAgentChips = (message: ExtendedMessage) => {
+    const invokedAgents = message.metadata?.invokedAgents || [];
+    const agentLabels: { [key: string]: { label: string, color: "primary" | "info" | "success" } } = {
+      'chatbot': { label: "Nandor the Relentless", color: "primary" },
+      'weather_reporter': { label: "Weather Agent", color: "info" },
+      'news_reporter': { label: "News Agent", color: "success" }
+    };
 
-    // Check message content for agent indicators
-    if (message.content.includes('"temperature":') || 
-        message.content.includes('"weather":')) {
-      chips.push({ label: "Weather Agent", color: "info" });
-    }
-
-    if (message.content.includes('"title":') || 
-        message.content.includes('"news":')) {
-      chips.push({ label: "News Agent", color: "success" });
-    }
-
-    return chips as Array<{ label: string, color: "primary" | "info" | "success" }>;
+    return invokedAgents
+      .map((agent: string) => agentLabels[agent])
+      .filter(Boolean);
   };
 
   // Create a custom MUI theme to match our vampire aesthetic
@@ -197,7 +197,7 @@ export default function ChatInterface() {
         </div>
 
         <div className="flex-1 overflow-y-auto mb-6 space-y-6 scrollbar-thin scrollbar-thumb-purple-900/50 scrollbar-track-gray-900/30 pr-4">
-          {messages.map((message: Message) => (
+          {messages.map((message: ExtendedMessage) => (
             message.role !== 'system' && (
               <div
                 key={message.id}
