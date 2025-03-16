@@ -52,6 +52,12 @@ A vampire-themed AI chatbot featuring Nandor from "What We Do in the Shadows". T
    OPENAI_API_KEY=your_openai_api_key
    WEATHERAPI_API_KEY=your_weather_api_key
    NEWSAPI_API_KEY=your_news_api_key
+   LANGCHAIN_TRACING_V2=true
+   LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+   LANGCHAIN_API_KEY=your_langsmith_api_key
+   LANGCHAIN_PROJECT=your_project_name
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_PRIVATE_KEY=your_supabase_private_key
    ```
 
 4. Run the development server:
@@ -68,7 +74,12 @@ A vampire-themed AI chatbot featuring Nandor from "What We Do in the Shadows". T
 | `OPENAI_API_KEY` | OpenAI API key for GPT-4 | Yes |
 | `WEATHERAPI_API_KEY` | WeatherAPI key for weather data | Yes |
 | `NEWSAPI_API_KEY` | NewsAPI key for news updates | Yes |
-| `OPENAI_ORG_ID` | OpenAI Organization ID | No |
+| `LANGCHAIN_TRACING_V2` | Enable LangSmith tracing (set to "true") | Yes |
+| `LANGCHAIN_ENDPOINT` | LangSmith API endpoint | Yes |
+| `LANGCHAIN_API_KEY` | LangSmith API key for tracing | Yes |
+| `LANGCHAIN_PROJECT` | LangSmith project name | Yes |
+| `SUPABASE_URL` | Supabase project URL | Yes |
+| `SUPABASE_PRIVATE_KEY` | Supabase service role key | Yes |
 
 ## Project Structure 📁
 
