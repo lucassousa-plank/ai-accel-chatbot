@@ -1,13 +1,14 @@
 import { Message as VercelChatMessage, createDataStreamResponse } from 'ai'
 import { NextRequest } from 'next/server'
 import { ChatOpenAI } from "@langchain/openai"
-import { HumanMessage, SystemMessage, BaseMessage } from "@langchain/core/messages"
+import { HumanMessage, BaseMessage } from "@langchain/core/messages"
 import { StateGraph, MemorySaver, Annotation, START, END } from "@langchain/langgraph"
 import { v4 as uuidv4 } from "uuid";
 import { createWeatherAgentNode } from "@/backend/src/agents/weatherAgent";
 import { createChatAgent } from "@/backend/src/agents/chatAgent";
 import { createNewsAgentNode } from "@/backend/src/agents/newsAgent";
 import { createSupervisorChain, members } from "@/backend/src/agents/supervisorChain";
+import { createSummaryNode } from "@/backend/src/agents/summaryAgent";
 
 // Initialize the chat model with streaming enabled
 const chatModel = new ChatOpenAI({
@@ -37,14 +38,40 @@ const AgentState = Annotation.Root({
     reducer: (x, y) => y ?? x ?? END,
     default: () => END,
   }),
+  // Track which agents were invoked
+  invokedAgents: Annotation<string[]>({
+    reducer: (x, y) => {
+      const current = Array.isArray(x) ? x : [];
+      if (Array.isArray(y) && y.length === 0) {
+        return [];
+      }
+      if (!y) return current;
+      if (typeof y === 'string' && y !== END && y !== START) {
+        const result = Array.from(new Set([...current, y]));
+        return result;
+      }
+      if (Array.isArray(y)) {
+        const filtered = y.filter(agent => agent !== END && agent !== START);
+        const result = Array.from(new Set([...current, ...filtered]));
+        return result;
+      }
+      return current;
+    },
+    default: () => [],
+  }),
+  // Track conversation summary
+  summary: Annotation<string>({
+    reducer: (x, y) => y ?? x,
+    default: () => "",
+  }),
 });
 
 // Create and initialize the conversation agent with intent routing
 const createConversationAgent = async () => {
-  console.log('Creating conversation agent');
   const weatherAgent = createWeatherAgentNode(baseModel);
   const newsAgent = createNewsAgentNode(baseModel);
   const chatAgent = createChatAgent(chatModel);
+  const summaryNode = createSummaryNode(baseModel);
   const supervisorChain = await createSupervisorChain(baseModel);
   
   // Define a new graph
@@ -52,21 +79,27 @@ const createConversationAgent = async () => {
     .addNode("weather_reporter", weatherAgent)
     .addNode("news_reporter", newsAgent)
     .addNode("chatbot", chatAgent)
+    .addNode("summary_agent", summaryNode)
     .addNode("supervisor", supervisorChain);
 
   // Add edges from each agent (except chatbot) back to supervisor
   members.filter(member => member !== 'chatbot').forEach((member) => {
-    console.log('Adding edge from', member, 'to supervisor');
     workflow.addEdge(member, "supervisor");
   });
 
-  workflow.addEdge("chatbot", END);
+  workflow.addEdge("chatbot", "summary_agent");
+  workflow.addEdge("summary_agent", END);
+  
   // Add conditional edges from supervisor to agents
   workflow.addConditionalEdges(
     "supervisor",
     (x: typeof AgentState.State) => {
-      console.log('Add conditional edge from supervisor to', x.next);
-      return x.next;
+      // Update the state with the next agent
+      const nextAgent = x.next;
+      if (nextAgent && nextAgent !== END && nextAgent !== START) {
+        x.invokedAgents = [nextAgent];
+      }
+      return nextAgent;
     },
   );
 
@@ -80,9 +113,20 @@ const createConversationAgent = async () => {
 };
 
 // Initialize the conversation agent
-let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>>;
-let currentState: { messages: BaseMessage[] } = {
-  messages: []
+export let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>>;
+
+// Function to clear the state
+export const clearState = async (threadId: string) => {
+  try {
+    // Clear the LangGraph state by setting empty state
+    await conversationAgent.updateState(
+      { configurable: { thread_id: threadId } },
+      { messages: [], next: END }
+    );
+  } catch (error) {
+    console.error('Error clearing state:', error);
+    throw error;
+  }
 };
 
 // Initialize the agent when the module loads
@@ -94,8 +138,12 @@ export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
+    const { messages, thread_id } = await req.json();
     const lastMessage = messages[messages.length - 1] as VercelChatMessage;
+
+    if (!thread_id) {
+      return new Response('thread_id is required', { status: 400 });
+    }
 
     if (!lastMessage.content) {
       return new Response('Message content is required', { status: 400 });
@@ -105,40 +153,63 @@ export async function POST(req: NextRequest) {
       const response = createDataStreamResponse({
         execute: async (writer) => {
           try {
-            console.log('Current state before update:', currentState);
-            // Add the new message to the current state
-            currentState.messages.push(new HumanMessage(lastMessage.content));
-            console.log('State after adding new message:', currentState);
-
             let currentChunk = '';
-            const responseId = uuidv4(); // Generate one ID for the entire response
+            const messageId = uuidv4(); // Generate unique ID for this message
+            let currentAgent: string | null = null;
+
+            // Create initial state for this conversation
+            const initialState = {
+              messages: [new HumanMessage(lastMessage.content)],
+              next: START,
+              invokedAgents: [] as string[],
+              summary: undefined as string | undefined
+            };
 
             // Use the conversation agent with streaming and thread_id
-            const result = await conversationAgent.invoke(currentState, {
+            const result = await conversationAgent.invoke(initialState, {
               configurable: {
-                thread_id: responseId // Use the responseId as the thread_id
+                thread_id: thread_id
               },
               callbacks: [{
                 handleLLMNewToken(token: string) {
                   currentChunk += token;
                   const message = JSON.stringify({
-                    id: responseId,
-                    role: 'assistant',
-                    content: currentChunk
+                    id: messageId,
+                    role: 'assistant', 
+                    content: currentChunk,
+                    metadata: {
+                      isThinking: true // Always thinking while streaming
+                    }
                   }) + '\n';
                   writer.write(`0:${message}\n`);
-                },
+                }
               }],
             });
 
-            console.log('Result from conversation agent:', result);
-            console.log('Next value in result:', result.next);
-
+            // Send final message with the complete list of invoked agents and summary
+            const finalMessage = JSON.stringify({
+              id: messageId,
+              role: 'assistant',
+              content: currentChunk,
+              metadata: {
+                invokedAgents: result.invokedAgents || [],
+                isThinking: false,
+                summary: result.summary
+              }
+            }) + '\n';
+            writer.write(`0:${finalMessage}\n`);
             writer.write('0:[DONE]\n\n');
 
-            // Update the current state with the complete message
-            currentState = result;
-            console.log('Updated current state:', currentState);
+            // Reset the state for the next message
+            await conversationAgent.updateState(
+              { configurable: { thread_id: thread_id } },
+              { 
+                messages: [],
+                next: END,
+                invokedAgents: [],
+                summary: result.summary
+              }
+            );
           } catch (error) {
             console.error('Error in stream execution:', error);
             throw error;

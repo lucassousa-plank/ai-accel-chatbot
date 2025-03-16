@@ -4,364 +4,466 @@
 
    ▲ Next.js 15.2.1 (Turbopack)
    - Local:        http://localhost:3000
-   - Network:      http://192.168.252.144:3000
+   - Network:      http://192.168.0.9:3000
    - Environments: .env.local
 
  ✓ Starting...
- ✓ Compiled in 179ms
- ✓ Ready in 831ms
+ ✓ Compiled in 205ms
+ ✓ Ready in 893ms
  ○ Compiling / ...
- ✓ Compiled / in 1174ms
- GET / 200 in 1372ms
- ✓ Compiled /favicon.ico in 232ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 267ms
+ ✓ Compiled / in 2s
+ GET / 200 in 2325ms
+ ✓ Compiled /favicon.ico in 264ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 302ms
+ ✓ Compiled /api/transcribe in 340ms
+ POST /api/transcribe 500 in 1790ms
+ ✓ Compiled in 45ms
+ ✓ Compiled in 32ms
+ GET / 200 in 257ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 16ms
+ POST /api/transcribe 500 in 1235ms
+ ✓ Compiled in 56ms
+ GET / 200 in 83ms
+ GET / 200 in 28ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 25ms
+ GET / 200 in 143ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 17ms
  ○ Compiling /api/chat ...
- ✓ Compiled /api/chat in 744ms
-Creating conversation agent
-Adding edge from weather_reporter to supervisor
-Adding edge from news_reporter to supervisor
-Current state before update: { messages: [] }
-State after adding new message: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Did Grok break you?',
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined
-}
-]
-}
-Add conditional edge from supervisor to chatbot
+ ✓ Compiled /api/chat in 685ms
 
 === Chat Agent Start ===
 Message history length: 1
-Last message content: Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.
-=== Chat Agent End ===
-
-Result from conversation agent: {
+State: {
   messages: [
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Did Grok break you?',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  tool_calls: [],
-  invalid_tool_calls: [],
+  content: 'I would like to make an order oh my God is actually working',
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-Next value in result: __end__
-Updated current state: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Did Grok break you?',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
- POST /api/chat 200 in 3575ms
-Current state before update: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Did Grok break you?',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-State after adding new message: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Did Grok break you?',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Tell me about the weather in Rome and the news about CEOs',
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'I would like to make an order oh my God is actually working',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
   id: undefined
 }
 ],
-  next: '__end__'
+  next: 'chatbot',
+  invokedAgents: [],
+  summary: ''
 }
-Add conditional edge from supervisor to weather_reporter
+Last message content: Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!
+=== Chat Agent End ===
+
+
+=== Summary Agent Start ===
+Total messages in state: 2
+Current summary: 
+
+Last messages to summarize:
+[1] human: I would like to make an order oh my God is actually working
+[2] ai: Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!
+
+Passing messages to agent: [
+  SystemMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Current conversation summary: No summary yet.',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Current conversation summary: No summary yet.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'I would like to make an order oh my God is actually working',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'I would like to make an order oh my God is actually working',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+]
+
+New summary generated: This is the beginning of the conversation.
+=== Summary Agent End ===
+
+ POST /api/chat 200 in 6853ms
+
+=== Chat Agent Start ===
+Message history length: 3
+State: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'I would like to make an order oh my God is actually working',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'I would like to make an order oh my God is actually working',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: 'chatbot',
+  invokedAgents: [],
+  summary: 'This is the beginning of the conversation.'
+}
+Last message content: Ah, a joke! Very well! Here it is:
+
+Why did the vampire go to the doctor? 
+
+Because he was feeling a little... *fang*-tastic! 
+
+Ha! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!
+=== Chat Agent End ===
+
+
+=== Summary Agent Start ===
+Total messages in state: 4
+Current summary: This is the beginning of the conversation.
+
+Last messages to summarize:
+[1] ai: Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!
+[2] human: so tell me a joke about bats or vampires or anything like that
+[3] ai: Ah, a joke! Very well! Here it is:
+
+Why did the vampire go to the doctor? 
+
+Because he was feeling a little... *fang*-tastic! 
+
+Ha! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!
+
+Passing messages to agent: [
+  SystemMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Current conversation summary: This is the beginning of the conversation.',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Current conversation summary: This is the beginning of the conversation.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+]
+
+New summary generated: The conversation has shifted to humor, with a request for a joke about bats or vampires. A joke was provided about a vampire visiting the doctor, playing on the word "fantastic."
+=== Summary Agent End ===
+
+ POST /api/chat 200 in 5944ms
 
 === Weather Agent Start ===
-Message history length: 3
-Received city: Rome
-Received city: CEO news
-Last message content: {"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}
+Message history length: 5
+Received city: London
+Last message content: {"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}
 === Weather Agent End ===
 
-Add conditional edge from supervisor to news_reporter
-
-=== News Agent Start ===
-Message history length: 4
-
-=== NewsTool Start ===
-Input received: CEOs news
-Parsed query: CEOs news
-Article count: 5
-Fetching news from API...
-
-=== NewsTool Start ===
-Input received: weather in Rome
-Parsed query: weather in Rome
-Article count: 5
-Fetching news from API...
-Found 5 articles
-First article preview: {
-  title: 'The Untold History of Milk: From Ancient Rome to Swill Milk',
-  description: 'Did you know that naming your cow could actually make her more productive? Forget the cows’ names in “Charlotte’s Web,” because the key to more milk is a little tender loving care and, apparently, a good moniker. A 2009 study revealed that a cow with a name a…',
-  url: 'https://www.geeksaresexy.net/2025/03/06/the-untold-history-of-milk-from-ancient-rome-to-swill-milk/',
-  publishedAt: '2025-03-06T18:00:29Z'
-}
-=== NewsTool End ===
-
-Found 4 articles
-First article preview: {
-  title: 'Dow Jones CEO Almar Latour on AI, press freedom, and the future of news',
-  description: 'Today, I’m talking with Almar Latour, who is the publisher of The Wall Street Journal and CEO of its parent company Dow Jones, which you can think of as a huge research and data provider for companies of all sizes. Dow Jones itself is part of Rupert Murdoch’s…',
-  url: 'https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism',
-  publishedAt: '2025-03-10T14:46:12Z'
-}
-=== NewsTool End ===
-
-Last message content: ### Current Weather in Rome
-- **Temperature**: 24.92°C
-- **Condition**: Broken clouds
-- **Humidity**: 45%
-- **Wind Speed**: 2.24 m/s
-
-### Recent News About CEOs
-1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  
-   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)
-
-2. **[Grok AI Caught Hiding 'Misinformation' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  
-   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)
-
-3. **[Execs shouldn't leave social media to Gen Z interns. Here's why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  
-   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)
-
-4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  
-   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)
-
-For more detailed information, you can follow the links provided.
-=== News Agent End ===
-
-Add conditional edge from supervisor to chatbot
 
 === Chat Agent Start ===
-Message history length: 5
-Last message content: Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.
+Message history length: 6
+State: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'I would like to make an order oh my God is actually working',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'I would like to make an order oh my God is actually working',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'can you tell me about the weather in London',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'can you tell me about the weather in London',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+],
+  next: 'chatbot',
+  invokedAgents: [ 'weather_reporter' ],
+  summary: 'The conversation has shifted to humor, with a request for a joke about bats or vampires. A joke was provided about a vampire visiting the doctor, playing on the word "fantastic."'
+}
+Last message content: Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!
 
-As for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!
-
-But, I digress! The world spins on, and so must I!
+And the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?
 === Chat Agent End ===
 
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
+
+=== Summary Agent Start ===
+Total messages in state: 7
+Current summary: The conversation has shifted to humor, with a request for a joke about bats or vampires. A joke was provided about a vampire visiting the doctor, playing on the word "fantastic."
+
+Last messages to summarize:
+[1] human: can you tell me about the weather in London
+[2] ai: {"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}
+[3] ai: Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!
+
+And the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?
+
+Passing messages to agent: [
+  SystemMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Did Grok break you?',
+  content: 'Current conversation summary: The conversation has shifted to humor, with a request for a joke about bats or vampires. A joke was provided about a vampire visiting the doctor, playing on the word "fantastic."',
   additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
+  content: 'Current conversation summary: The conversation has shifted to humor, with a request for a joke about bats or vampires. A joke was provided about a vampire visiting the doctor, playing on the word "fantastic."',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
+  id: undefined
 },
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'can you tell me about the weather in London',
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'can you tell me about the weather in London',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -369,34 +471,219 @@ Result from conversation agent: {
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined,
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+}
+]
+
+New summary generated: This is the beginning of the conversation.
+=== Summary Agent End ===
+
+ POST /api/chat 200 in 6488ms
+
+=== News Agent Start ===
+Message history length: 8
+
+=== NewsTool Start ===
+Input received: cars
+Parsed query: cars
+Article count: 5
+Fetching news from API...
+Found 3 articles
+First article preview: {
+  title: 'Self-driving cars: Google and others map the road to automated vehicles',
+  description: 'Google and a number of automakers are spearheading the movement to get automated vehicles on America’s roads. Self-driving cars are street legal in three states, and Google’s fleet has collectively logged over 300,000 miles of time on the road. However, there…',
+  url: 'https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles',
+  publishedAt: '2025-03-03T20:51:43Z'
+}
+=== NewsTool End ===
+
+Last message content: Here are some recent news articles regarding cars:
+
+1. **Self-driving cars: Google and others map the road to automated vehicles**  
+   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google's fleet has logged over 300,000 miles. However, challenges remain.  
+   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)
+
+2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  
+   Tesla has rolled out self-driving features to some of its cars in China, following BYD's announcement that all its cars would receive self-driving technology for free.  
+   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)
+
+3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  
+   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  
+   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)
+
+If you need more information or specific topics, feel free to ask!
+=== News Agent End ===
+
+
+=== Chat Agent Start ===
+Message history length: 9
+State: {
+  messages: [
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'I would like to make an order oh my God is actually working',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'I would like to make an order oh my God is actually working',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'so tell me a joke about bats or vampires or anything like that',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'can you tell me about the weather in London',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'can you tell me about the weather in London',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fa7a2be0-7505-4e2d-80ed-74c47188df78'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fa7a2be0-7505-4e2d-80ed-74c47188df78',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'can you tell me now about the news regarding cars',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'can you tell me now about the news regarding cars',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
@@ -406,77 +693,95 @@ Result from conversation agent: {
   usage_metadata: undefined
 }
 ],
-  next: '__end__'
+  next: 'chatbot',
+  invokedAgents: [ 'news_reporter' ],
+  summary: 'This is the beginning of the conversation.'
 }
-Next value in result: __end__
-Updated current state: {
-  messages: [
+Last message content: Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! 
+
+Now, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!
+
+And then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!
+
+If you wish to know more about these wonders or oddities of the modern world, I shall try my best!
+=== Chat Agent End ===
+
+
+=== Summary Agent Start ===
+Total messages in state: 10
+Current summary: This is the beginning of the conversation.
+
+Last messages to summarize:
+[1] human: can you tell me now about the news regarding cars
+[2] ai: Here are some recent news articles regarding cars:
+
+1. **Self-driving cars: Google and others map the road to automated vehicles**  
+   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google's fleet has logged over 300,000 miles. However, challenges remain.  
+   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)
+
+2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  
+   Tesla has rolled out self-driving features to some of its cars in China, following BYD's announcement that all its cars would receive self-driving technology for free.  
+   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)
+
+3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  
+   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  
+   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)
+
+If you need more information or specific topics, feel free to ask!
+[3] ai: Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! 
+
+Now, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!
+
+And then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!
+
+If you wish to know more about these wonders or oddities of the modern world, I shall try my best!
+
+Passing messages to agent: [
+  SystemMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Current conversation summary: This is the beginning of the conversation.',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Current conversation summary: This is the beginning of the conversation.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+},
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Did Grok break you?',
+  content: 'can you tell me now about the news regarding cars',
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
+  content: 'can you tell me now about the news regarding cars',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+  id: 'bcee515f-b53e-489c-a466-5d51a2621b44'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Tell me about the weather in Rome and the news about CEOs',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Tell me about the weather in Rome and the news about CEOs',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  id: 'bcee515f-b53e-489c-a466-5d51a2621b44',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -484,34 +789,14 @@ Updated current state: {
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
@@ -520,43 +805,49 @@ Updated current state: {
   invalid_tool_calls: [],
   usage_metadata: undefined
 }
-],
-  next: '__end__'
-}
- POST /api/chat 200 in 16416ms
-Current state before update: {
+]
+
+New summary generated: This is the beginning of the conversation.
+=== Summary Agent End ===
+
+ POST /api/chat 200 in 12061ms
+ ✓ Compiled in 48ms
+
+=== Chat Agent Start ===
+Message history length: 11
+State: {
   messages: [
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Did Grok break you?',
+  content: 'I would like to make an order oh my God is actually working',
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
+  content: 'I would like to make an order oh my God is actually working',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -564,34 +855,69 @@ Current state before update: {
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'so tell me a joke about bats or vampires or anything like that',
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'so tell me a joke about bats or vampires or anything like that',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'can you tell me about the weather in London',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'can you tell me about the weather in London',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -599,19 +925,54 @@ Current state before update: {
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
+  id: 'fa7a2be0-7505-4e2d-80ed-74c47188df78'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
+  id: 'fa7a2be0-7505-4e2d-80ed-74c47188df78',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'can you tell me now about the news regarding cars',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'can you tell me now about the news regarding cars',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'bcee515f-b53e-489c-a466-5d51a2621b44'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'bcee515f-b53e-489c-a466-5d51a2621b44',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -619,193 +980,104 @@ Current state before update: {
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
   tool_calls: [],
   invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '97ef00fd-6095-41c1-8aba-c2befe35c84f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '97ef00fd-6095-41c1-8aba-c2befe35c84f',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'tell me something about swords',
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-}
-],
-  next: '__end__'
-}
-State after adding new message: {
-  messages: [
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Did Grok break you?',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Tell me about the weather in Rome and the news about CEOs',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Tell me about the weather in Rome and the news about CEOs',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: undefined,
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Do you remember my first question?',
-  additional_kwargs: {},
-  response_metadata: {}
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Do you remember my first question?',
+  content: 'tell me something about swords',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
   id: undefined
 }
 ],
-  next: '__end__'
+  next: 'chatbot',
+  invokedAgents: [],
+  summary: 'This is the beginning of the conversation.'
 }
-Add conditional edge from supervisor to chatbot
+Last message content: Ah, the sword! A magnificent weapon, a true extension of a warrior's will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!
 
-=== Chat Agent Start ===
-Message history length: 7
-Last message content: Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...
+Swords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." 
+
+And, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!
+
+If you wish to learn more about swords or their history, just ask! I could go on for centuries!
 === Chat Agent End ===
 
-Result from conversation agent: {
-  messages: [
-  HumanMessage {
+
+=== Summary Agent Start ===
+Total messages in state: 12
+Current summary: This is the beginning of the conversation.
+
+Last messages to summarize:
+[1] ai: Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! 
+
+Now, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!
+
+And then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!
+
+If you wish to know more about these wonders or oddities of the modern world, I shall try my best!
+[2] human: tell me something about swords
+[3] ai: Ah, the sword! A magnificent weapon, a true extension of a warrior's will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!
+
+Swords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." 
+
+And, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!
+
+If you wish to learn more about swords or their history, just ask! I could go on for centuries!
+
+Passing messages to agent: [
+  SystemMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Did Grok break you?',
+  content: 'Current conversation summary: This is the beginning of the conversation.',
   additional_kwargs: {},
-  response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
+  content: 'Current conversation summary: This is the beginning of the conversation.',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  id: undefined
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+  id: '97ef00fd-6095-41c1-8aba-c2befe35c84f'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  id: '97ef00fd-6095-41c1-8aba-c2befe35c84f',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -813,104 +1085,29 @@ Result from conversation agent: {
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'tell me something about swords',
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: '7a200cdc-c413-4b54-995e-0462b09d03ef'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'tell me something about swords',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: '7a200cdc-c413-4b54-995e-0462b09d03ef'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  HumanMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Do you remember my first question?',
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '94e1de06-2e04-4518-9c69-08003168daf9'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Do you remember my first question?',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '94e1de06-2e04-4518-9c69-08003168daf9'
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  content: 'Ah, the sword! A magnificent weapon, a true extension of a warrior\'s will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!\n\nSwords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." \n\nAnd, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!\n\nIf you wish to learn more about swords or their history, just ask! I could go on for centuries!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  content: 'Ah, the sword! A magnificent weapon, a true extension of a warrior\'s will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!\n\nSwords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." \n\nAnd, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!\n\nIf you wish to learn more about swords or their history, just ask! I could go on for centuries!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
@@ -919,43 +1116,48 @@ Result from conversation agent: {
   invalid_tool_calls: [],
   usage_metadata: undefined
 }
-],
-  next: '__end__'
-}
-Next value in result: __end__
-Updated current state: {
+]
+
+New summary generated: This is the beginning of the conversation.
+=== Summary Agent End ===
+
+ POST /api/chat 200 in 4415ms
+
+=== Chat Agent Start ===
+Message history length: 13
+State: {
   messages: [
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Did Grok break you?',
+  content: 'I would like to make an order oh my God is actually working',
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Did Grok break you?',
+  content: 'I would like to make an order oh my God is actually working',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '99146d54-f129-45b8-927a-f97d80cb9b80'
+  id: '7f02f0b5-b8f2-4a2c-8c4a-a3c669ab5373'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd'
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Grok! That mischievous little creature! No, he did not break me. I am Nandor the Relentless! I have faced armies and defeated kings! A mere Grok cannot break my spirit. But, yes, he did eat my last piece of blood pudding. So, in that sense, he has wounded me deeply.',
+  content: 'Ah, yes! Making an order, how exciting! But what is it you wish to order, my dear human? Is it blood? Or perhaps a... pizza? I have heard the mortals enjoy this round bread with toppings. Very strange, but I shall support your desires! Just tell me, and I shall assist you!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '17408da0-61e1-4d83-a804-23a0cc692bbd',
+  id: '4c876968-cd76-4743-8bc8-fca959cd995e',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -963,74 +1165,34 @@ Updated current state: {
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'so tell me a joke about bats or vampires or anything like that',
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Tell me about the weather in Rome and the news about CEOs',
+  content: 'so tell me a joke about bats or vampires or anything like that',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '5e87b7d3-21ea-4be4-b526-4bb81757da35'
+  id: 'af59a926-2d4c-4949-b1fc-1581071ec49f'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41'
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '{"success": true, "data": {"temperature": "24.92°C", "description": "broken clouds", "humidity": "45%", "windSpeed": "2.24 m/s"}, "message": "Current weather information retrieved successfully."}',
+  content: 'Ah, a joke! Very well! Here it is:\n\nWhy did the vampire go to the doctor? \n\nBecause he was feeling a little... *fang*-tastic! \n\nHa! Do you see? A clever play on words! But really, I would prefer to feel *blood-tastic*! Hehe!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '82a6b77d-bcb2-46b6-b7ef-62e0e72b7a41',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: '### Current Weather in Rome\n- **Temperature**: 24.92°C\n- **Condition**: Broken clouds\n- **Humidity**: 45%\n- **Wind Speed**: 2.24 m/s\n\n### Recent News About CEOs\n1. **[Dow Jones CEO Almar Latour on AI, press freedom, and the future of news](https://www.theverge.com/decoder-podcast-with-nilay-patel/626229/dow-jones-ceo-almar-latour-wsj-interview-ai-journalism)**  \n   Almar Latour discusses the impact of AI on journalism and the future of news. (Published: March 10, 2025)\n\n2. **[Grok AI Caught Hiding \'Misinformation\' References to Musk and Trump](https://www.macrumors.com/2025/02/25/grok-ai-hiding-misinfo-references-musk-trump/)**  \n   Controversy arises as Grok AI censors information about Elon Musk and Donald Trump. (Published: February 25, 2025)\n\n3. **[Execs shouldn\'t leave social media to Gen Z interns. Here\'s why I post as a CEO — and even learned to embrace emojis.](https://www.businessinsider.com/ceo-grew-linkedin-following-personal-brand-2025-3)**  \n   Hootsuite CEO Irina Novoselsky shares her journey of engaging on social media and building her personal brand. (Published: March 11, 2025)\n\n4. **[RFK Jr. says he wants artificial dyes removed from food products](https://abcnews.go.com/Politics/rfk-jr-tells-food-leaders-artificial-dyes-removed/story?id=119683107)**  \n   Robert F. Kennedy Jr. advocates for the removal of artificial color dyes from food products. (Published: March 11, 2025)\n\nFor more detailed information, you can follow the links provided.',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: '27b9880e-41b1-43ff-a1d9-38a1f1a481d8',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  usage_metadata: undefined
-},
-  AIMessage {
-  lc_serializable: true,
-  lc_kwargs: {
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
-  tool_calls: [],
-  invalid_tool_calls: [],
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc'
-},
-  lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, Rome! The eternal city, a place of great beauty and... broken clouds? What does that even mean? In my time, clouds were either dark and ominous or not there at all! But, it sounds pleasant enough with a temperature of nearly 25 degrees... Celsius, I believe? Quite warm for a vampire like me, though I could still manage.\n\nAs for the modern CEOs! They seem to be quite busy. One named Almar Latour is talking about AI and journalism, which is confusing. In my day, we just had scrolls and parchment! And this Grok AI, it seems to be causing some mischief by hiding information about very famous humans like Musk and Trump. What a strange time we live in!\n\nBut, I digress! The world spins on, and so must I!',
-  name: undefined,
-  additional_kwargs: {},
-  response_metadata: {},
-  id: 'fc9f079d-1cb7-4af5-ac78-bcca11f7d6fc',
+  id: '1c464f23-9085-43c9-ae20-02d1f9ad1349',
   tool_calls: [],
   invalid_tool_calls: [],
   usage_metadata: undefined
@@ -1038,29 +1200,263 @@ Updated current state: {
   HumanMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Do you remember my first question?',
+  content: 'can you tell me about the weather in London',
   additional_kwargs: {},
   response_metadata: {},
-  id: '94e1de06-2e04-4518-9c69-08003168daf9'
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Do you remember my first question?',
+  content: 'can you tell me about the weather in London',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
-  id: '94e1de06-2e04-4518-9c69-08003168daf9'
+  id: '647bef0a-49e1-488c-83d7-f592460581e2'
 },
   AIMessage {
   lc_serializable: true,
   lc_kwargs: {
-  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: '{"success": true, "data": {"temperature": "6.5°C", "description": "overcast clouds", "humidity": "77%", "windSpeed": "3.09 m/s"}, "message": "Current weather information retrieved successfully."}',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f8a781b1-5bad-438d-a63c-cdaa64fc384f',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fa7a2be0-7505-4e2d-80ed-74c47188df78'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, London! A place of fog and rain, yes? As of now, the temperature is a brisk 6.5 degrees Celsius. Quite chilly for my undead body, I must say! The skies are filled with overcast clouds—very dreary, like a gloomy castle! Humidity is at 77%, which is rather high, but not as high as the bloodlust in my veins!\n\nAnd the wind is blowing gently at 3.09 meters per second. Perfect for a night flight, if one were to venture out! Just be careful of the garlic, yes?',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'fa7a2be0-7505-4e2d-80ed-74c47188df78',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'can you tell me now about the news regarding cars',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'can you tell me now about the news regarding cars',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '541b855e-6cba-4782-a197-8dd85c4b547f'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'bcee515f-b53e-489c-a466-5d51a2621b44'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Here are some recent news articles regarding cars:\n\n1. **Self-driving cars: Google and others map the road to automated vehicles**  \n   Google and several automakers are leading the charge to introduce automated vehicles on American roads. Self-driving cars are currently legal in three states, and Google\'s fleet has logged over 300,000 miles. However, challenges remain.  \n   [Read more here](https://www.theverge.com/2012/12/23/3797260/self-driving-cars-automated-vehicles) (Published on March 3, 2025)\n\n2. **Elon Musk said Tesla used internet videos to train self-driving tech in China**  \n   Tesla has rolled out self-driving features to some of its cars in China, following BYD\'s announcement that all its cars would receive self-driving technology for free.  \n   [Read more here](https://www.businessinsider.com/elon-musk-tesla-internet-videos-train-china-self-driving-tech-2025-2) (Published on February 26, 2025)\n\n3. **Nvidia CEO: Someday we’ll have 1B robotic cars on the road**  \n   Jensen Huang, CEO of Nvidia, predicts that in the future, there will be a billion robotic cars on the road, revolutionizing transportation.  \n   [Read more here](https://venturebeat.com/games/nvidia-ceo-someday-well-have-1b-robotic-cars-on-the-road/) (Published on February 26, 2025)\n\nIf you need more information or specific topics, feel free to ask!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'bcee515f-b53e-489c-a466-5d51a2621b44',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '97ef00fd-6095-41c1-8aba-c2befe35c84f'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, the automobiles! Such strange metal contraptions that mortals use to traverse the lands. They do not require a horse or a bat, yet they can go quite fast! \n\nNow, there are many news about these cars. For instance, they are developing *self-driving cars*! Imagine! No need for a human to steer! It’s like a carriage that drives itself! But I must say, I would not trust it with my life... or my blood!\n\nAnd then there is this fellow, Elon Musk—he is making quite the fuss with his electric cars and self-driving technology. They say soon there will be a billion of these robotic vehicles on the roads! But where will they park? I cannot imagine a world filled with cars, no room for my grand castle!\n\nIf you wish to know more about these wonders or oddities of the modern world, I shall try my best!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '97ef00fd-6095-41c1-8aba-c2befe35c84f',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'tell me something about swords',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7a200cdc-c413-4b54-995e-0462b09d03ef'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'tell me something about swords',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '7a200cdc-c413-4b54-995e-0462b09d03ef'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, the sword! A magnificent weapon, a true extension of a warrior\'s will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!\n\nSwords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." \n\nAnd, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!\n\nIf you wish to learn more about swords or their history, just ask! I could go on for centuries!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f4119a6e-6833-4379-9967-ee7042a7eccc'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, the sword! A magnificent weapon, a true extension of a warrior\'s will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!\n\nSwords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." \n\nAnd, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!\n\nIf you wish to learn more about swords or their history, just ask! I could go on for centuries!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f4119a6e-6833-4379-9967-ee7042a7eccc',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'no I don\'t know tell me something else',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'no I don\'t know tell me something else',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+}
+],
+  next: 'chatbot',
+  invokedAgents: [],
+  summary: 'This is the beginning of the conversation.'
+}
+Last message content: Ah, you seek something different! Very well! Let me tell you about the art of... *dancing*! 
+
+In my time, we had grand balls where the nobility would gather to twirl about in extravagant garments! It was a display of elegance and power, much like a duel with swords, but with more... glitter! 
+
+Now I see humans have strange dances, like the "floss" and the "moonwalk." Why do you move your body in such peculiar ways? Back in my day, we had the waltz! Ah, the grace of it! 
+
+But you modern mortals seem to enjoy your strange rituals. Perhaps one day, I shall join you on the dance floor, as long as there is no garlic! 
+
+What else can I share with you? I am at your service!
+=== Chat Agent End ===
+
+
+=== Summary Agent Start ===
+Total messages in state: 14
+Current summary: This is the beginning of the conversation.
+
+Last messages to summarize:
+[1] ai: Ah, the sword! A magnificent weapon, a true extension of a warrior's will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!
+
+Swords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." 
+
+And, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!
+
+If you wish to learn more about swords or their history, just ask! I could go on for centuries!
+[2] human: no I don't know tell me something else
+[3] ai: Ah, you seek something different! Very well! Let me tell you about the art of... *dancing*! 
+
+In my time, we had grand balls where the nobility would gather to twirl about in extravagant garments! It was a display of elegance and power, much like a duel with swords, but with more... glitter! 
+
+Now I see humans have strange dances, like the "floss" and the "moonwalk." Why do you move your body in such peculiar ways? Back in my day, we had the waltz! Ah, the grace of it! 
+
+But you modern mortals seem to enjoy your strange rituals. Perhaps one day, I shall join you on the dance floor, as long as there is no garlic! 
+
+What else can I share with you? I am at your service!
+
+Passing messages to agent: [
+  SystemMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Current conversation summary: This is the beginning of the conversation.',
+  additional_kwargs: {},
+  response_metadata: {}
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Current conversation summary: This is the beginning of the conversation.',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: undefined
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, the sword! A magnificent weapon, a true extension of a warrior\'s will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!\n\nSwords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." \n\nAnd, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!\n\nIf you wish to learn more about swords or their history, just ask! I could go on for centuries!',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f4119a6e-6833-4379-9967-ee7042a7eccc'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'Ah, the sword! A magnificent weapon, a true extension of a warrior\'s will! In my human days, I wielded a sword of great renown, forged from the finest steel! It could cut through the very fabric of life... and sometimes, it helped me to feast!\n\nSwords come in many forms, yes. There are the mighty broadswords, elegant rapiers, and the fearsome katana! Each has its own history, its own tale of battle and glory! The sword was once a symbol of honor and bravery—unlike these modern gadgets you call "guns." \n\nAnd, did you know? Some swords are even made with special techniques, like the famous Damascus steel! Very beautiful, but I prefer a good old-fashioned blade for slaying my enemies... or, you know, just for show in my collection!\n\nIf you wish to learn more about swords or their history, just ask! I could go on for centuries!',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: 'f4119a6e-6833-4379-9967-ee7042a7eccc',
+  tool_calls: [],
+  invalid_tool_calls: [],
+  usage_metadata: undefined
+},
+  HumanMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'no I don\'t know tell me something else',
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '415b4b3d-09a5-45ec-b666-b45af8d8e8ff'
+},
+  lc_namespace: [ 'langchain_core', 'messages' ],
+  content: 'no I don\'t know tell me something else',
+  name: undefined,
+  additional_kwargs: {},
+  response_metadata: {},
+  id: '415b4b3d-09a5-45ec-b666-b45af8d8e8ff'
+},
+  AIMessage {
+  lc_serializable: true,
+  lc_kwargs: {
+  content: 'Ah, you seek something different! Very well! Let me tell you about the art of... *dancing*! \n\nIn my time, we had grand balls where the nobility would gather to twirl about in extravagant garments! It was a display of elegance and power, much like a duel with swords, but with more... glitter! \n\nNow I see humans have strange dances, like the "floss" and the "moonwalk." Why do you move your body in such peculiar ways? Back in my day, we had the waltz! Ah, the grace of it! \n\nBut you modern mortals seem to enjoy your strange rituals. Perhaps one day, I shall join you on the dance floor, as long as there is no garlic! \n\nWhat else can I share with you? I am at your service!',
   tool_calls: [],
   invalid_tool_calls: [],
   additional_kwargs: {},
   response_metadata: {}
 },
   lc_namespace: [ 'langchain_core', 'messages' ],
-  content: 'Ah, yes! You asked if Grok broke me. I remember! I assured you that Grok, while troublesome, did not break me! I am Nandor the Relentless, after all! Just a minor inconvenience, like a pesky flea. Now, if only I could get him to stop eating my blood pudding...',
+  content: 'Ah, you seek something different! Very well! Let me tell you about the art of... *dancing*! \n\nIn my time, we had grand balls where the nobility would gather to twirl about in extravagant garments! It was a display of elegance and power, much like a duel with swords, but with more... glitter! \n\nNow I see humans have strange dances, like the "floss" and the "moonwalk." Why do you move your body in such peculiar ways? Back in my day, we had the waltz! Ah, the grace of it! \n\nBut you modern mortals seem to enjoy your strange rituals. Perhaps one day, I shall join you on the dance floor, as long as there is no garlic! \n\nWhat else can I share with you? I am at your service!',
   name: undefined,
   additional_kwargs: {},
   response_metadata: {},
@@ -1069,7 +1465,9 @@ Updated current state: {
   invalid_tool_calls: [],
   usage_metadata: undefined
 }
-],
-  next: '__end__'
-}
- POST /api/chat 200 in 1617ms
+]
+
+New summary generated: The conversation has shifted from discussing swords and their history to the topic of dancing, highlighting the elegance of traditional dances like the waltz compared to modern dance styles. The speaker expresses curiosity about contemporary dance and offers to share more information.
+=== Summary Agent End ===
+
+ POST /api/chat 200 in 4863ms

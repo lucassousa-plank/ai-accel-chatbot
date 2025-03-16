@@ -65,7 +65,8 @@ export const createWeatherAgentNode = (model: ChatOpenAI) => {
     
     return {
       messages: [new AIMessage(lastMessage.content.toString())],
-      next: "supervisor"
+      next: "supervisor",
+      invokedAgents: "weather_reporter"
     };
   };
 }; 

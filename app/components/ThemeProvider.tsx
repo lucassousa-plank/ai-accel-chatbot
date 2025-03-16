@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 type Theme = 'light' | 'dark';
 
 const ThemeContext = createContext({
-  theme: 'light' as Theme,
+  theme: 'dark' as Theme,
   toggleTheme: () => {},
 });
 
@@ -16,17 +16,16 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Set mounted to true when component mounts
     setMounted(true);
     
-    // Get initial theme from localStorage or system preference
+    // Get initial theme from localStorage or default to dark
     const storedTheme = localStorage.getItem('theme') as Theme;
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const initialTheme = storedTheme || systemTheme;
+    const initialTheme = storedTheme || 'dark';
     
     setTheme(initialTheme);
     

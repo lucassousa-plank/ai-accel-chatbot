@@ -114,7 +114,8 @@ Keep responses focused on the news content and maintain a professional tone.`),
     
     return {
       messages: [new AIMessage(lastMessage.content.toString())],
-      next: "supervisor"
+      next: "supervisor",
+      invokedAgents: "news_reporter"
     };
   };
 }; 
