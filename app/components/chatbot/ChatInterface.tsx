@@ -7,6 +7,10 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import MicIcon from '@mui/icons-material/Mic';
+import StopIcon from '@mui/icons-material/Stop';
+import IconButton from '@mui/material/IconButton';
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface ExtendedMessage extends Message {
   metadata?: {
@@ -20,7 +24,10 @@ interface ExtendedMessage extends Message {
 export default function ChatInterface() {
   const [threadId, setThreadId] = useState<string>('');
   const [localInput, setLocalInput] = useState('');
+  const [isRecording, setIsRecording] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -113,6 +120,36 @@ export default function ChatInterface() {
     setThreadId(uuidv4());
   }, []);
 
+  // Initialize speech recognition
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        recognitionRef.current = new SpeechRecognition();
+        recognitionRef.current.continuous = true;
+        recognitionRef.current.interimResults = true;
+
+        recognitionRef.current.onresult = (event: any) => {
+          const transcript = Array.from(event.results)
+            .map((result: any) => result[0].transcript)
+            .join('');
+          setLocalInput(transcript);
+        };
+
+        recognitionRef.current.onerror = (event: any) => {
+          console.error('Speech recognition error:', event.error);
+          setIsRecording(false);
+          setIsProcessing(false);
+        };
+
+        recognitionRef.current.onend = () => {
+          setIsRecording(false);
+          setIsProcessing(false);
+        };
+      }
+    }
+  }, []);
+
   const { messages, status, error, setMessages } = useChat({
     api: '/api/chat',
     body: {
@@ -176,6 +213,11 @@ export default function ChatInterface() {
   const handleCustomSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!localInput.trim()) return;
+
+    // Stop recording if active
+    if (isRecording) {
+      stopRecording();
+    }
 
     // Add user message
     const userMessage: ExtendedMessage = {
@@ -279,6 +321,29 @@ export default function ChatInterface() {
     }
   };
 
+  const startRecording = async () => {
+    try {
+      if (!recognitionRef.current) {
+        alert('Speech recognition is not supported in your browser.');
+        return;
+      }
+
+      recognitionRef.current.start();
+      setIsRecording(true);
+    } catch (error) {
+      console.error('Error starting speech recognition:', error);
+      alert('Error starting speech recognition. Please try again.');
+      setIsRecording(false);
+    }
+  };
+
+  const stopRecording = () => {
+    if (recognitionRef.current && isRecording) {
+      recognitionRef.current.stop();
+      setIsRecording(false);
+    }
+  };
+
   return (
     <ThemeProvider theme={muiTheme}>
       <div className="flex flex-col h-[80vh] w-full max-w-2xl mx-auto p-6 bg-gray-900/50 backdrop-blur-sm rounded-lg shadow-2xl border border-purple-900/50">
@@ -361,6 +426,27 @@ export default function ChatInterface() {
         </div>
 
         <form onSubmit={handleCustomSubmit} className="flex gap-3">
+          <IconButton
+            onClick={isRecording ? stopRecording : startRecording}
+            disabled={isProcessing}
+            sx={{
+              color: isRecording ? 'error.main' : 'primary.main',
+              borderRadius: '8px',
+              padding: '8px',
+              backgroundColor: 'rgba(0, 0, 0, 0.2)',
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.3)',
+              },
+            }}
+          >
+            {isProcessing ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : isRecording ? (
+              <StopIcon />
+            ) : (
+              <MicIcon />
+            )}
+          </IconButton>
           <input
             type="text"
             value={localInput}
