@@ -1,41 +1,126 @@
-# ai-accel-chatbot
-Repository for the AI Acceleration Program in Plank
-Week 1 - Building a chatbot
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nandor the Relentless - AI Chatbot 🧛‍♂️
 
-## Getting Started
+A vampire-themed AI chatbot featuring Nandor from "What We Do in the Shadows". This chatbot combines multiple AI agents to provide weather information, news updates, and general conversation in the character of Nandor the Relentless.
 
-First, run the development server:
+## Features 🌟
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Character-Based Interaction**: Communicates as Nandor the Relentless, maintaining his unique personality and speech patterns
+- **Multi-Agent System**: 
+  - Weather Agent: Provides weather information
+  - News Agent: Shares current news updates
+  - Chat Agent (Nandor): Handles general conversation and integrates information from other agents
+- **Voice Input**: Built-in speech-to-text functionality for voice commands
+- **Real-time Streaming**: Messages are streamed in real-time with visual feedback
+- **Conversation Memory**: Maintains context through conversation summaries
+- **Vampire-Themed UI**: Dark mode interface with purple and blood-red accents
+
+## Tech Stack 💻
+
+- Next.js 14 (App Router)
+- TypeScript
+- LangChain
+- OpenAI GPT-4
+- Vercel AI SDK
+- Material-UI (MUI)
+- Web Speech API
+- Tailwind CSS
+
+## Getting Started 🚀
+
+### Prerequisites
+
+- Node.js 18.17 or later
+- OpenAI API key
+- WeatherAPI key (for weather functionality)
+- NewsAPI key (for news functionality)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ai-accel-chatbot.git
+   cd ai-accel-chatbot
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env.local` file in the root directory with the following variables:
+   ```env
+   OPENAI_API_KEY=your_openai_api_key
+   WEATHERAPI_API_KEY=your_weather_api_key
+   NEWSAPI_API_KEY=your_news_api_key
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Environment Variables 🔑
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `OPENAI_API_KEY` | OpenAI API key for GPT-4 | Yes |
+| `WEATHERAPI_API_KEY` | WeatherAPI key for weather data | Yes |
+| `NEWSAPI_API_KEY` | NewsAPI key for news updates | Yes |
+| `OPENAI_ORG_ID` | OpenAI Organization ID | No |
+
+## Project Structure 📁
+
+```
+ai-accel-chatbot/
+├── app/
+│   ├── api/
+│   │   ├── chat/
+│   │   │   ├── route.ts       # Main chat endpoint
+│   │   │   └── clear/
+│   │   │       └── route.ts   # Clear chat history
+│   │   ├── components/
+│   │   │   └── chatbot/
+│   │   │       └── ChatInterface.tsx  # Main chat UI
+│   │   ├── backend/
+│   │   │   └── src/
+│   │   │       └── agents/
+│   │   │           ├── chatAgent.ts    # Nandor's personality
+│   │   │           ├── weatherAgent.ts # Weather functionality
+│   │   │           ├── newsAgent.ts    # News functionality
+│   │   │           ├── summaryAgent.ts # Conversation memory
+│   │   │           └── supervisorChain.ts # Agent routing
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features in Detail 🔍
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Voice Input
+The chatbot supports voice input using the Web Speech API. Users can:
+- Click the microphone icon to start recording
+- Speak their message
+- Click stop or send to finish recording
+- The transcribed text will appear in the input field
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Agent System
+The chatbot uses a multi-agent system where:
+1. The supervisor agent routes queries to appropriate agents
+2. Specialized agents (weather, news) gather information
+3. Nandor (chat agent) delivers responses in character
+4. Summary agent maintains conversation context
 
-## Learn More
+### UI Elements
+- Vampire-themed dark mode interface
+- Agent chips showing which agents were involved
+- Real-time "Consulting the Dark Powers..." status
+- Voice input button with recording indicator
+- Auto-scrolling message view
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing 🤝
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feel free to submit issues and enhancement requests!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License 📄
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
