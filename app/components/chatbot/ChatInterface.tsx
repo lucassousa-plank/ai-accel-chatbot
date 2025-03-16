@@ -13,6 +13,7 @@ interface ExtendedMessage extends Message {
     invokedAgents: string[];
     currentAgent?: string;
     isThinking?: boolean;
+    summary?: string;
   };
 }
 

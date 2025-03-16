@@ -8,6 +8,7 @@ import { createWeatherAgentNode } from "@/backend/src/agents/weatherAgent";
 import { createChatAgent } from "@/backend/src/agents/chatAgent";
 import { createNewsAgentNode } from "@/backend/src/agents/newsAgent";
 import { createSupervisorChain, members } from "@/backend/src/agents/supervisorChain";
+import { createSummaryNode } from "@/backend/src/agents/summaryAgent";
 
 // Initialize the chat model with streaming enabled
 const chatModel = new ChatOpenAI({
@@ -58,6 +59,11 @@ const AgentState = Annotation.Root({
     },
     default: () => [],
   }),
+  // Track conversation summary
+  summary: Annotation<string>({
+    reducer: (x, y) => y ?? x,
+    default: () => "",
+  }),
 });
 
 // Create and initialize the conversation agent with intent routing
@@ -65,6 +71,7 @@ const createConversationAgent = async () => {
   const weatherAgent = createWeatherAgentNode(baseModel);
   const newsAgent = createNewsAgentNode(baseModel);
   const chatAgent = createChatAgent(chatModel);
+  const summaryNode = createSummaryNode(baseModel);
   const supervisorChain = await createSupervisorChain(baseModel);
   
   // Define a new graph
@@ -72,6 +79,7 @@ const createConversationAgent = async () => {
     .addNode("weather_reporter", weatherAgent)
     .addNode("news_reporter", newsAgent)
     .addNode("chatbot", chatAgent)
+    .addNode("summary_agent", summaryNode)
     .addNode("supervisor", supervisorChain);
 
   // Add edges from each agent (except chatbot) back to supervisor
@@ -79,7 +87,8 @@ const createConversationAgent = async () => {
     workflow.addEdge(member, "supervisor");
   });
 
-  workflow.addEdge("chatbot", END);
+  workflow.addEdge("chatbot", "summary_agent");
+  workflow.addEdge("summary_agent", END);
   
   // Add conditional edges from supervisor to agents
   workflow.addConditionalEdges(
@@ -152,7 +161,8 @@ export async function POST(req: NextRequest) {
             const initialState = {
               messages: [new HumanMessage(lastMessage.content)],
               next: START,
-              invokedAgents: [] as string[]
+              invokedAgents: [] as string[],
+              summary: undefined as string | undefined
             };
 
             // Use the conversation agent with streaming and thread_id
@@ -176,14 +186,15 @@ export async function POST(req: NextRequest) {
               }],
             });
 
-            // Send final message with the complete list of invoked agents
+            // Send final message with the complete list of invoked agents and summary
             const finalMessage = JSON.stringify({
               id: messageId,
               role: 'assistant',
               content: currentChunk,
               metadata: {
                 invokedAgents: result.invokedAgents || [],
-                isThinking: false // Not thinking anymore, we have the final answer
+                isThinking: false,
+                summary: result.summary
               }
             }) + '\n';
             writer.write(`0:${finalMessage}\n`);
@@ -193,9 +204,10 @@ export async function POST(req: NextRequest) {
             await conversationAgent.updateState(
               { configurable: { thread_id: thread_id } },
               { 
-                messages: result.messages, // Keep the message history
+                messages: [],
                 next: END,
-                invokedAgents: [] // Reset invoked agents
+                invokedAgents: [],
+                summary: result.summary
               }
             );
           } catch (error) {

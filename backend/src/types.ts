@@ -6,6 +6,7 @@ export interface AgentState {
   next?: AgentType;
   __root__?: AgentType;
   invokedAgents?: string[];
+  summary?: string;
 }
 
 // Define the available agent types
@@ -17,4 +18,5 @@ export interface AgentResponse extends AgentUpdate {
   messages: BaseMessage[];
   next?: AgentType;
   invokedAgents?: string[];
+  summary?: string;
 } 
