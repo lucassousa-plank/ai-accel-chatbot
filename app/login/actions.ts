@@ -28,32 +28,25 @@ export async function login(formData: FormData) {
 
 export async function signup(formData: FormData) {
   const supabase = await createClient()
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
   const data = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
-    options: {
-      emailRedirectTo: `${supabaseUrl}/auth/v1/callback`,
-      data: {
-        email: formData.get('email') as string,
-      },
-    },
   }
 
   const { error } = await supabase.auth.signUp(data)
 
   if (error) {
     console.error('Signup error:', error.message)
-    redirect('/login?error=' + encodeURIComponent(error.message))
+    redirect('/signup?error=' + encodeURIComponent(error.message))
   }
 
   // Check if email confirmation is required
   const { data: { user } } = await supabase.auth.getUser()
   
-  if (user?.identities?.length === 0) {
+  if (!user || user.identities?.length === 0) {
     // Email confirmation is required
     redirect('/login?message=Please check your email to confirm your account')
   } else {
