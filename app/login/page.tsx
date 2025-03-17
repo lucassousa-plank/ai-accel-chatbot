@@ -2,10 +2,11 @@
 
 import { login, signup } from './actions'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import { useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
@@ -91,10 +92,22 @@ export default function LoginPage() {
             onClick={() => signup}
             className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500"
           >
-            Don't have an account? Sign up
+            Don&apos;t have an account? Sign up
           </button>
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">Loading...</div>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
   )
 }

@@ -21,52 +21,44 @@ const chatModel = new ChatOpenAI({
 // Initialize a separate model for the other models that don't need streaming
 const baseModel = new ChatOpenAI({
   modelName: "gpt-4o-mini",
-  temperature: 0, // Lower temperature for more consistent routing decisions
+  temperature: 0,
   openAIApiKey: process.env.OPENAI_API_KEY,
   streaming: false
 });
 
 // This defines the object that is passed between each node
-// in the graph. We will create different nodes for each agent and tool
 const AgentState = Annotation.Root({
   messages: Annotation<BaseMessage[]>({
     reducer: (x, y) => x.concat(y),
     default: () => [],
   }),
-  // The agent node that last performed work
   next: Annotation<string>({
     reducer: (x, y) => y ?? x ?? END,
     default: () => END,
   }),
-  // Track which agents were invoked
   invokedAgents: Annotation<string[]>({
     reducer: (x, y) => {
       const current = Array.isArray(x) ? x : [];
-      if (Array.isArray(y) && y.length === 0) {
-        return [];
-      }
+      if (Array.isArray(y) && y.length === 0) return [];
       if (!y) return current;
       if (typeof y === 'string' && y !== END && y !== START) {
-        const result = Array.from(new Set([...current, y]));
-        return result;
+        return Array.from(new Set([...current, y]));
       }
       if (Array.isArray(y)) {
         const filtered = y.filter(agent => agent !== END && agent !== START);
-        const result = Array.from(new Set([...current, ...filtered]));
-        return result;
+        return Array.from(new Set([...current, ...filtered]));
       }
       return current;
     },
     default: () => [],
   }),
-  // Track conversation summary
   summary: Annotation<string>({
     reducer: (x, y) => y ?? x,
     default: () => "",
   }),
 });
 
-// Create and initialize the conversation agent with intent routing
+// Create and initialize the conversation agent
 const createConversationAgent = async () => {
   const weatherAgent = createWeatherAgentNode(baseModel);
   const newsAgent = createNewsAgentNode(baseModel);
@@ -74,7 +66,6 @@ const createConversationAgent = async () => {
   const summaryNode = createSummaryNode(baseModel);
   const supervisorChain = await createSupervisorChain(baseModel);
   
-  // Define a new graph
   const workflow = new StateGraph(AgentState)
     .addNode("weather_reporter", weatherAgent)
     .addNode("news_reporter", newsAgent)
@@ -82,7 +73,6 @@ const createConversationAgent = async () => {
     .addNode("summary_agent", summaryNode)
     .addNode("supervisor", supervisorChain);
 
-  // Add edges from each agent (except chatbot) back to supervisor
   members.filter(member => member !== 'chatbot').forEach((member) => {
     workflow.addEdge(member, "supervisor");
   });
@@ -90,11 +80,9 @@ const createConversationAgent = async () => {
   workflow.addEdge("chatbot", "summary_agent");
   workflow.addEdge("summary_agent", END);
   
-  // Add conditional edges from supervisor to agents
   workflow.addConditionalEdges(
     "supervisor",
     (x: typeof AgentState.State) => {
-      // Update the state with the next agent
       const nextAgent = x.next;
       if (nextAgent && nextAgent !== END && nextAgent !== START) {
         x.invokedAgents = [nextAgent];
@@ -103,31 +91,15 @@ const createConversationAgent = async () => {
     },
   );
 
-  // Start with supervisor
   workflow.addEdge(START, "supervisor");
 
-  // Compile the graph with memory saver
   return workflow.compile({
     checkpointer: new MemorySaver()
   });
 };
 
 // Initialize the conversation agent
-export let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>>;
-
-// Function to clear the state
-export const clearState = async (threadId: string) => {
-  try {
-    // Clear the LangGraph state by setting empty state
-    await conversationAgent.updateState(
-      { configurable: { thread_id: threadId } },
-      { messages: [], next: END }
-    );
-  } catch (error) {
-    console.error('Error clearing state:', error);
-    throw error;
-  }
-};
+let conversationAgent: Awaited<ReturnType<typeof createConversationAgent>>;
 
 // Initialize the agent when the module loads
 createConversationAgent().then(agent => {
@@ -154,10 +126,8 @@ export async function POST(req: NextRequest) {
         execute: async (writer) => {
           try {
             let currentChunk = '';
-            const messageId = uuidv4(); // Generate unique ID for this message
-            let currentAgent: string | null = null;
+            const messageId = uuidv4();
 
-            // Create initial state for this conversation
             const initialState = {
               messages: [new HumanMessage(lastMessage.content)],
               next: START,
@@ -165,7 +135,6 @@ export async function POST(req: NextRequest) {
               summary: undefined as string | undefined
             };
 
-            // Use the conversation agent with streaming and thread_id
             const result = await conversationAgent.invoke(initialState, {
               configurable: {
                 thread_id: thread_id
@@ -178,7 +147,7 @@ export async function POST(req: NextRequest) {
                     role: 'assistant', 
                     content: currentChunk,
                     metadata: {
-                      isThinking: true // Always thinking while streaming
+                      isThinking: true
                     }
                   }) + '\n';
                   writer.write(`0:${message}\n`);
@@ -186,7 +155,6 @@ export async function POST(req: NextRequest) {
               }],
             });
 
-            // Send final message with the complete list of invoked agents and summary
             const finalMessage = JSON.stringify({
               id: messageId,
               role: 'assistant',
@@ -200,7 +168,6 @@ export async function POST(req: NextRequest) {
             writer.write(`0:${finalMessage}\n`);
             writer.write('0:[DONE]\n\n');
 
-            // Reset the state for the next message
             await conversationAgent.updateState(
               { configurable: { thread_id: thread_id } },
               { 

@@ -12,6 +12,56 @@ import StopIcon from '@mui/icons-material/Stop';
 import IconButton from '@mui/material/IconButton';
 import CircularProgress from '@mui/material/CircularProgress';
 
+// Add these type declarations at the top of the file after imports
+declare global {
+  interface Window {
+    SpeechRecognition: new () => SpeechRecognition;
+    webkitSpeechRecognition: new () => SpeechRecognition;
+  }
+}
+
+interface SpeechRecognition extends EventTarget {
+  continuous: boolean;
+  interimResults: boolean;
+  onresult: (event: SpeechRecognitionEvent) => void;
+  onerror: (event: SpeechRecognitionError) => void;
+  onend: () => void;
+  start: () => void;
+  stop: () => void;
+  abort: () => void;
+}
+
+interface SpeechRecognitionEvent extends Event {
+  results: {
+    length: number;
+    item(index: number): SpeechRecognitionResultList;
+    [index: number]: SpeechRecognitionResultList;
+  };
+}
+
+interface SpeechRecognitionResultList {
+  length: number;
+  item(index: number): SpeechRecognitionResult;
+  [index: number]: SpeechRecognitionResult;
+}
+
+interface SpeechRecognitionAlternative {
+  transcript: string;
+  confidence: number;
+}
+
+interface SpeechRecognitionResult {
+  isFinal: boolean;
+  length: number;
+  item(index: number): SpeechRecognitionAlternative;
+  [index: number]: SpeechRecognitionAlternative;
+}
+
+interface SpeechRecognitionError extends Event {
+  error: string;
+  message: string;
+}
+
 interface ExtendedMessage extends Message {
   metadata?: {
     invokedAgents: string[];
@@ -27,7 +77,7 @@ export default function ChatInterface() {
   const [isRecording, setIsRecording] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -123,26 +173,30 @@ export default function ChatInterface() {
   // Initialize speech recognition
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        recognitionRef.current = new SpeechRecognition();
-        recognitionRef.current.continuous = true;
-        recognitionRef.current.interimResults = true;
+      const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognitionConstructor) {
+        recognitionRef.current = new SpeechRecognitionConstructor();
+        const recognition = recognitionRef.current;
+        
+        recognition.continuous = true;
+        recognition.interimResults = true;
 
-        recognitionRef.current.onresult = (event: any) => {
-          const transcript = Array.from(event.results)
-            .map((result: any) => result[0].transcript)
-            .join('');
-          setLocalInput(transcript);
+        recognition.onresult = (event: SpeechRecognitionEvent) => {
+          const results = Array.from(event.results);
+          const transcripts = results.map(result => {
+            const firstAlternative = ((result as unknown as SpeechRecognitionResultList)[0] as unknown as SpeechRecognitionAlternative);
+            return firstAlternative.transcript;
+          });
+          setLocalInput(transcripts.join(''));
         };
 
-        recognitionRef.current.onerror = (event: any) => {
+        recognition.onerror = (event: SpeechRecognitionError) => {
           console.error('Speech recognition error:', event.error);
           setIsRecording(false);
           setIsProcessing(false);
         };
 
-        recognitionRef.current.onend = () => {
+        recognition.onend = () => {
           setIsRecording(false);
           setIsProcessing(false);
         };
@@ -150,7 +204,7 @@ export default function ChatInterface() {
     }
   }, []);
 
-  const { messages, status, error, setMessages } = useChat({
+  const { messages, status, setMessages } = useChat({
     api: '/api/chat',
     body: {
       thread_id: threadId
@@ -201,8 +255,8 @@ export default function ChatInterface() {
         reader.releaseLock();
       }
     },
-    onError: (error) => {
-      console.error('Chat error:', error);
+    onError: () => {
+      console.error('Chat error occurred');
     }
   });
 

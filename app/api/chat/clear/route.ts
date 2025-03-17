@@ -1,20 +1,20 @@
-import { NextResponse } from "next/server";
-import { clearState } from "../route";
+import { NextRequest } from 'next/server';
+import { clearState } from '@/backend/src/agents/agentManager';
 
-export async function POST(req: Request) {
+export const runtime = 'edge';
+
+export async function POST(req: NextRequest) {
   try {
     const { thread_id } = await req.json();
+    
     if (!thread_id) {
-      return NextResponse.json({ error: 'thread_id is required' }, { status: 400 });
+      return new Response('thread_id is required', { status: 400 });
     }
 
-    console.log('Starting to clear chat history for thread:', thread_id);
     await clearState(thread_id);
-    console.log('Successfully cleared chat history');
-    
-    return NextResponse.json({ message: 'Chat history cleared successfully' });
+    return new Response('Chat history cleared', { status: 200 });
   } catch (error) {
     console.error('Error clearing chat history:', error);
-    return NextResponse.json({ error: 'Failed to clear chat history' }, { status: 500 });
+    return new Response('Error clearing chat history', { status: 500 });
   }
 } 
