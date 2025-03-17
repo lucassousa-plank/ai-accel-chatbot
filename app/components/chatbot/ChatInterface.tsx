@@ -439,14 +439,14 @@ export default function ChatInterface() {
                     <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
                       {message.metadata?.isThinking ? (
                         <Chip
-                          label="Consulting the Dark Powers..."
+                          label="Nandor the Relentless is thinking"
                           variant="outlined"
                           size="small"
-                          color="warning"
+                          color="primary"
                           sx={{
-                            borderColor: 'rgba(220, 38, 38, 0.5)', // blood red with opacity
+                            borderColor: 'rgba(147, 51, 234, 0.5)', // purple with opacity
                             '& .MuiChip-label': {
-                              color: '#dc2626', // blood red text
+                              color: '#9333ea', // purple text
                             }
                           }}
                         />

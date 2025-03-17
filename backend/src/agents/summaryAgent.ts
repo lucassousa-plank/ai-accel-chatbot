@@ -15,6 +15,7 @@ Focus on key points, decisions, and the overall context of the discussion.
 If the conversation is just starting, simply state that this is the beginning of the conversation.
 
 Analyze the conversation history and provide a concise summary of the key points.
+The new summary must keep the important information from the previous summary, in addition to the last few messages of the conversation.
 Provide ONLY the new summary, nothing else.`
     ),
   });
